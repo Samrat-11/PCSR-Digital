@@ -1,0 +1,1580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>PCSR | Parvathareddy Digital</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Noto+Serif+Telugu:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- External Libraries for Poster Generator -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js"></script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: '#0f172a',    // Deep Navy
+                            light: '#ffffff',   // Pure White
+                            gold: '#d4af37',    // Premium Gold
+                            accent: '#1e3a8a',  // Accent Blue
+                            surface: '#f8fafc'  // Light Slate for backgrounds
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                        telugu: ['Noto Serif Telugu', 'serif']
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+                        'floating': '0 10px 40px -10px rgba(0, 0, 0, 0.1)',
+                        'glass': '0 8px 32px 0 rgba(31, 38, 135, 0.07)'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        :root {
+            --safe-area-inset-bottom: env(safe-area-inset-bottom, 0px);
+        }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            background-color: #f8fafc;
+            color: #0f172a;
+            overscroll-behavior-y: none;
+            -webkit-tap-highlight-color: transparent;
+            scroll-behavior: smooth;
+        }
+
+        /* Glassmorphism Utilities */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: var(--tw-shadow-glass);
+        }
+
+        .glass-dark {
+            background: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* View Transitions (SPA Routing) */
+        .view-section {
+            display: none;
+            opacity: 0;
+            animation: none;
+        }
+        
+        .view-section.active {
+            display: block;
+            animation: fadeInView 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes fadeInView {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Loading Screen specific */
+        #loading-screen {
+            transition: opacity 0.6s ease, visibility 0.6s ease;
+        }
+        .fade-out {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        /* Form Inputs */
+        .premium-input, .premium-textarea, .premium-select {
+            width: 100%;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.75rem;
+            padding: 0.875rem 1.25rem;
+            font-size: 1rem;
+            color: #0f172a;
+            transition: all 0.2s ease;
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+        }
+        .premium-input:focus, .premium-textarea:focus, .premium-select:focus {
+            outline: none;
+            border-color: #d4af37;
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.15);
+        }
+
+        /* Buttons */
+        .btn-primary {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: white;
+            border-radius: 999px;
+            padding: 0.875rem 2rem;
+            font-weight: 600;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            box-shadow: 0 4px 15px rgba(15, 23, 42, 0.2);
+            cursor: pointer;
+            border: none;
+        }
+        .btn-primary:active { transform: scale(0.97); }
+        .btn-primary:hover { box-shadow: 0 8px 25px rgba(15, 23, 42, 0.3); }
+
+        .btn-gold {
+            background: linear-gradient(135deg, #d4af37 0%, #b8860b 100%);
+            color: white;
+            border-radius: 999px;
+            padding: 0.875rem 2rem;
+            font-weight: 600;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+            cursor: pointer;
+        }
+        .btn-gold:active { transform: scale(0.97); }
+
+        /* Timeline styles */
+        .timeline-line {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: #e2e8f0;
+            z-index: 0;
+        }
+        @media (max-width: 768px) {
+            .timeline-line {
+                left: 20px;
+                transform: none;
+            }
+        }
+
+        /* Gradient Text */
+        .text-gradient {
+            background: linear-gradient(135deg, #d4af37 0%, #b8860b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+        
+        .telugu-text { font-family: 'Noto Serif Telugu', serif; }
+
+        /* Poster Generator Styles */
+        .canvas-container { position: relative; width: 100%; padding-bottom: 125%; overflow: hidden; border-radius: 1rem; box-shadow: 0 10px 30px rgba(0,0,0,0.08); background: #e2e8f0; }
+        .canvas-container canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain; }
+        #final-result-img { width: 100%; height: auto; object-fit: contain; display: block; }
+        input[type="color"] { appearance: none; -webkit-appearance: none; border: none; width: 3rem; height: 3rem; border-radius: 50%; cursor: pointer; padding: 0; background: none; }
+        input[type="color"]::-webkit-color-swatch-wrapper { padding: 0; }
+        input[type="color"]::-webkit-color-swatch { border: 2px solid #e2e8f0; border-radius: 50%; }
+        .dragover { background-color: #f1f5f9; border-color: #1e3a8a !important; transform: scale(1.02); }
+        #crop-modal { position: fixed; inset: 0; z-index: 100; background: #0f172a; display: flex; flex-direction: column; transform: translateY(100%); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+        #crop-modal.active { transform: translateY(0); }
+        .pb-safe { padding-bottom: calc(2rem + var(--safe-area-inset-bottom)); }
+        .template-card { background: white; border-radius: 1.5rem; overflow: hidden; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); cursor: pointer; transition: all 0.2s ease; border: 1px solid #e2e8f0; display: flex; flex-direction: column; height: 100%; max-width: 100%; }
+        .template-card:hover { transform: translateY(-4px); box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08); }
+        .template-card-image-container { flex: 1; position: relative; background: #f8fafc; display: flex; align-items: center; justify-content: center; overflow: hidden; min-height: 300px; max-height: 600px; }
+        @media (max-width: 640px) { .template-card-image-container { min-height: 250px; max-height: 450px; } }
+        .template-card-image { width: 100%; height: 100%; object-fit: contain; object-position: center; display: block; background: white; }
+        .template-card-info { padding: 1rem 1.5rem; text-align: center; background: white; border-top: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: center; }
+        .template-card-name { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 0.875rem; color: #0f172a; }
+        .template-card-arrow { color: #d4af37; font-size: 0.75rem; opacity: 0; transition: opacity 0.3s ease; }
+        .template-card:hover .template-card-arrow { opacity: 1; }
+    </style>
+</head>
+<body class="antialiased flex flex-col">
+
+    <div id="loading-screen" class="fixed inset-0 z-[100] bg-brand-dark flex flex-col items-center justify-center text-white">
+        <div class="w-24 h-24 rounded-full border-4 border-brand-gold border-t-transparent animate-spin mb-8"></div>
+        <div class="text-center px-4">
+            <h1 class="text-2xl font-serif font-bold mb-2 tracking-wide text-brand-gold">PCSR</h1>
+            <p class="text-sm md:text-base text-gray-300 font-medium mb-1">Always Connected to Nellore.</p>
+            <p class="text-sm md:text-base text-gray-300 telugu-text">నెల్లూరు ప్రజలతో… నిరంతరం, నిత్యం.</p>
+        </div>
+    </div>
+
+    <div id="language-modal" class="fixed inset-0 z-[90] bg-brand-dark/80 backdrop-blur-sm flex items-center justify-center p-4 hidden">
+        <div class="glass-panel w-full max-w-md rounded-3xl p-8 text-center transform scale-95 opacity-0 transition-all duration-300" id="language-modal-content">
+            <div class="w-16 h-16 rounded-full bg-brand-gold/20 flex items-center justify-center mx-auto mb-6">
+                <i class="fa-solid fa-globe text-2xl text-brand-gold"></i>
+            </div>
+            <h2 class="text-2xl font-serif font-bold mb-2">Welcome / స్వాగతం</h2>
+            <p class="text-slate-500 text-sm mb-8">Choose your preferred language to continue.</p>
+            
+            <div class="space-y-4">
+                <button onclick="initLanguage('te')" class="w-full btn-primary text-lg telugu-text !py-4">
+                    తెలుగు
+                </button>
+                <button onclick="initLanguage('en')" class="w-full rounded-full bg-white text-brand-dark border border-slate-200 text-lg py-4 font-semibold shadow-sm hover:bg-slate-50 transition-all flex items-center justify-center">
+                    English
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <header class="fixed top-0 left-0 w-full z-50 transition-all duration-300" id="main-header">
+        <div class="px-4 py-3">
+            <div class="glass-panel rounded-2xl mx-auto max-w-6xl px-4 py-3 flex justify-between items-center">
+                <!-- Logo -->
+                <div class="flex items-center gap-3 cursor-pointer" onclick="navigate('view-home')">
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-brand-gold to-yellow-200 shadow flex items-center justify-center font-bold text-white text-sm overflow-hidden">
+                        <img src="https://yt3.googleusercontent.com/ObICO3EVk6Mk-KitHb8ISoKC8hVs-zQiXTle0-Og7DXfFPjW3uyTmvqVWlfeQKczDDMaOK1-rg=s900-c-k-c0x00ffffff-no-rj" alt="PCR Logo" class="w-full h-full object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                        <span style="display:none;">P</span>
+                    </div>
+                    <div>
+                        <h1 class="font-serif font-bold text-sm leading-tight text-brand-dark hidden sm:block">Parvathareddy<br>Chandrasekhar Reddy</h1>
+                        <h1 class="font-serif font-bold text-base text-brand-dark sm:hidden">PCSR</h1>
+                    </div>
+                </div>
+
+                <!-- Desktop Nav -->
+                <nav class="hidden md:flex items-center gap-6">
+                    <button onclick="navigate('view-home')" class="nav-link font-medium text-sm text-slate-600 hover:text-brand-gold transition" data-i18n="nav_home">Home</button>
+                    <button onclick="navigate('view-journey')" class="nav-link font-medium text-sm text-slate-600 hover:text-brand-gold transition" data-i18n="nav_journey">Journey</button>
+                    <button onclick="navigate('view-campaigns')" class="nav-link font-medium text-sm text-slate-600 hover:text-brand-gold transition" data-i18n="nav_campaigns">Campaigns</button>
+                    <button onclick="navigate('view-grievance')" class="nav-link font-medium text-sm text-slate-600 hover:text-brand-gold transition" data-i18n="nav_grievance">Public Grievance</button>
+                </nav>
+
+                <!-- Language Toggle & Mobile Menu Btn -->
+                <div class="flex items-center gap-3">
+                    <div class="bg-slate-100 rounded-full p-1 flex relative">
+                        <button onclick="switchLanguage('en')" id="toggle-en" class="px-3 py-1 text-xs font-bold rounded-full transition-colors active-lang">EN</button>
+                        <button onclick="switchLanguage('te')" id="toggle-te" class="px-3 py-1 text-xs font-bold rounded-full transition-colors telugu-text">తె</button>
+                    </div>
+                    <button class="md:hidden w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-brand-dark" onclick="toggleMobileMenu()">
+                        <i class="fa-solid fa-bars" id="mobile-menu-icon"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden absolute top-full left-0 w-full px-4 pb-4">
+            <div class="glass-panel rounded-2xl p-4 flex flex-col gap-2">
+                <button onclick="navigate('view-home'); toggleMobileMenu();" class="p-3 text-left font-medium text-slate-700 rounded-xl hover:bg-slate-100" data-i18n="nav_home">Home</button>
+                <button onclick="navigate('view-journey'); toggleMobileMenu();" class="p-3 text-left font-medium text-slate-700 rounded-xl hover:bg-slate-100" data-i18n="nav_journey">Journey</button>
+                <button onclick="navigate('view-campaigns'); toggleMobileMenu();" class="p-3 text-left font-medium text-slate-700 rounded-xl hover:bg-slate-100" data-i18n="nav_campaigns">Campaigns</button>
+                <button onclick="navigate('view-grievance'); toggleMobileMenu();" class="p-3 text-left font-medium text-brand-dark bg-brand-gold/10 rounded-xl hover:bg-brand-gold/20" data-i18n="nav_grievance">Public Grievance</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-1 pt-24 pb-12 w-full max-w-7xl mx-auto px-4 md:px-6 z-10 relative">
+
+        <!-- ================= VIEW: HOME ================= -->
+        <section id="view-home" class="view-section active">
+            <!-- Hero Section -->
+            <div class="relative rounded-3xl overflow-hidden bg-brand-dark min-h-[60vh] flex items-center mb-12 shadow-xl">
+                <!-- Abstract Background representation -->
+                <div class="absolute inset-0 opacity-40 bg-[url('https://images.unsplash.com/photo-1596422846543-74c6fc0e241e?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center"></div>
+                <div class="absolute inset-0 bg-gradient-to-r from-brand-dark via-brand-dark/90 to-brand-dark/40"></div>
+                
+                <div class="relative z-10 w-full flex flex-col md:flex-row items-center justify-between p-8 md:p-16">
+                    <div class="max-w-2xl text-white md:pr-8">
+                        <span class="inline-block py-1 px-3 rounded-full bg-brand-gold/20 text-brand-gold text-xs font-bold uppercase tracking-wider mb-4 border border-brand-gold/30" data-i18n="hero_badge">YSRCP Leader | East Rayalaseema MLC</span>
+                        <h1 class="text-4xl md:text-6xl font-serif font-bold leading-tight mb-4">
+                            <span data-i18n="hero_title_1">Committed to</span><br>
+                            <span class="text-brand-gold" data-i18n="hero_title_2">Nellore's Progress</span>
+                        </h1>
+                        <p class="text-slate-300 text-lg mb-8 max-w-xl leading-relaxed" data-i18n="hero_desc">
+                            A digital platform unifying campaigns, public interactions, and continuous service for the people. Always connected, always listening.
+                        </p>
+                        <div class="flex flex-wrap gap-4">
+                            <button onclick="navigate('view-grievance')" class="btn-gold">
+                                <i class="fa-regular fa-comment-dots"></i>
+                                <span data-i18n="btn_raise_grievance">Raise Grievance</span>
+                            </button>
+                            <button onclick="navigate('view-campaigns')" class="btn-primary !bg-white/10 !border !border-white/20 hover:!bg-white/20">
+                                <span data-i18n="btn_view_campaigns">Join Campaigns</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Right Side Leader Photo -->
+                    <div class="hidden md:block w-full max-w-md mt-8 md:mt-0 relative">
+                        <div class="relative z-10 rounded-2xl overflow-hidden border-4 border-white/10 shadow-2xl transform hover:scale-105 transition-transform duration-500">
+                            <img src="./templates/pcr photo.jpeg" onerror="this.src='https://scontent.ftir1-2.fna.fbcdn.net/v/t39.30808-6/643403764_933124175929790_6986846745632727594_n.jpg?stp=dst-jpg_tt6&cstp=mx1440x1440&ctp=s1440x1440&_nc_cat=101&ccb=1-7&_nc_sid=127cfc&_nc_ohc=EzTx3W6a0UgQ7kNvwGqGy_4&_nc_oc=Adp8XxbOfOkX_h88f0cFVdJduZEGlbB0ZuHoA7vCOIIBpjwvWlRBg0_ya-a6dV7HueFE6ZDnxw-JDieuCtlnWUJy&_nc_zt=23&_nc_ht=scontent.ftir1-2.fna&_nc_gid=Zi6TtRoVR0nZqvKwbH3sfA&_nc_ss=7b289&oh=00_Af9xWZgJg0jokUF-OVZ2txVPoqFKp6dBL7G0RIaL1Y5NfQ&oe=6A34B317'" alt="Parvathareddy Chandrasekhar Reddy" class="w-full h-auto object-cover">
+                        </div>
+                        <!-- Decorative glow behind photo -->
+                        <div class="absolute -bottom-6 -right-6 w-32 h-32 bg-brand-gold/20 rounded-full blur-2xl"></div>
+                        <div class="absolute -top-6 -left-6 w-32 h-32 bg-blue-500/20 rounded-full blur-2xl"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Highlights Grid -->
+            <div class="mb-8">
+                <div class="flex justify-between items-end mb-6">
+                    <h2 class="text-2xl font-serif font-bold text-brand-dark" data-i18n="section_latest">Latest Activities</h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Card 1 -->
+                    <div class="bg-white rounded-2xl p-5 shadow-soft border border-slate-100 hover:-translate-y-1 transition-transform cursor-pointer" onclick="navigate('view-campaigns')">
+                        <div class="w-12 h-12 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center mb-4 text-xl">
+                            <i class="fa-solid fa-bullhorn"></i>
+                        </div>
+                        <h3 class="font-bold text-lg mb-2" data-i18n="card_1_title">Ongoing Campaigns</h3>
+                        <p class="text-slate-500 text-sm" data-i18n="card_1_desc">Participate in current digital campaigns, create customized posters, and show support.</p>
+                    </div>
+                    <!-- Card 2 -->
+                    <div class="bg-white rounded-2xl p-5 shadow-soft border border-slate-100 hover:-translate-y-1 transition-transform cursor-pointer" onclick="navigate('view-grievance')">
+                        <div class="w-12 h-12 rounded-full bg-green-50 text-green-600 flex items-center justify-center mb-4 text-xl">
+                            <i class="fa-solid fa-hands-helping"></i>
+                        </div>
+                        <h3 class="font-bold text-lg mb-2" data-i18n="card_2_title">Direct Resolution</h3>
+                        <p class="text-slate-500 text-sm" data-i18n="card_2_desc">Submit civic issues directly via our WhatsApp integrated public grievance portal.</p>
+                    </div>
+                    <!-- Card 3 -->
+                    <div class="bg-white rounded-2xl p-5 shadow-soft border border-slate-100 hover:-translate-y-1 transition-transform cursor-pointer" onclick="navigate('view-journey')">
+                        <div class="w-12 h-12 rounded-full bg-purple-50 text-purple-600 flex items-center justify-center mb-4 text-xl">
+                            <i class="fa-solid fa-timeline"></i>
+                        </div>
+                        <h3 class="font-bold text-lg mb-2" data-i18n="card_3_title">Political Journey</h3>
+                        <p class="text-slate-500 text-sm" data-i18n="card_3_desc">Explore the timeline of milestones, protests, and continuous public service.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= VIEW: JOURNEY ================= -->
+        <section id="view-journey" class="view-section">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-serif font-bold text-brand-dark mb-4" data-i18n="journey_title">Political Journey & Portfolio</h2>
+                    <p class="text-slate-500 max-w-2xl mx-auto" data-i18n="journey_desc">A continuous effort towards public welfare, fighting for rights, and building a stronger community.</p>
+                </div>
+
+                <!-- Vertical Timeline -->
+                <div class="relative py-8">
+                    <div class="timeline-line"></div>
+
+                    <!-- Timeline Item 1 -->
+                    <div class="relative flex md:justify-between items-center w-full mb-12 flex-col md:flex-row">
+                        <div class="md:w-5/12 w-full md:pr-8 md:text-right pl-12 md:pl-0 mb-4 md:mb-0">
+                            <h3 class="font-bold text-xl text-brand-dark mb-1">Elected as Teacher's MLC</h3>
+                            <p class="text-brand-gold font-semibold text-sm mb-2">East Rayalaseema</p>
+                            <p class="text-slate-600 text-sm">Representing the voices of educators and fighting for improvements in the educational sector across the region.</p>
+                        </div>
+                        <div class="absolute left-[20px] md:left-1/2 transform md:-translate-x-1/2 w-8 h-8 rounded-full bg-brand-gold border-4 border-white shadow flex items-center justify-center z-10">
+                            <div class="w-2 h-2 bg-white rounded-full"></div>
+                        </div>
+                        <div class="md:w-5/12 w-full pl-12 md:pl-8">
+                            <div class="bg-white p-2 rounded-xl shadow-sm border border-slate-100">
+                                <img src="https://images.unsplash.com/photo-1577960759086-63d1cc603125?auto=format&fit=crop&w=600&q=80" alt="Event" class="w-full h-40 object-cover rounded-lg">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Timeline Item 2 -->
+                    <div class="relative flex md:justify-between items-center w-full mb-12 flex-col md:flex-row-reverse">
+                        <div class="md:w-5/12 w-full md:pl-8 text-left pl-12 md:pl-0 mb-4 md:mb-0">
+                            <h3 class="font-bold text-xl text-brand-dark mb-1">YSRCP Nellore City Incharge</h3>
+                            <p class="text-brand-gold font-semibold text-sm mb-2">Nellore Urban</p>
+                            <p class="text-slate-600 text-sm">Taking responsibility for party organization, public outreach, and addressing civic issues in Nellore City.</p>
+                        </div>
+                        <div class="absolute left-[20px] md:left-1/2 transform md:-translate-x-1/2 w-8 h-8 rounded-full bg-brand-dark border-4 border-white shadow flex items-center justify-center z-10">
+                            <div class="w-2 h-2 bg-white rounded-full"></div>
+                        </div>
+                        <div class="md:w-5/12 w-full pl-12 md:pr-8">
+                            <div class="bg-white p-2 rounded-xl shadow-sm border border-slate-100">
+                                <img src="https://images.unsplash.com/photo-1529107335154-18f4bb33190b?auto=format&fit=crop&w=600&q=80" alt="Event" class="w-full h-40 object-cover rounded-lg">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Timeline Item 3 -->
+                    <div class="relative flex md:justify-between items-center w-full mb-12 flex-col md:flex-row">
+                        <div class="md:w-5/12 w-full md:pr-8 md:text-right pl-12 md:pl-0 mb-4 md:mb-0">
+                            <h3 class="font-bold text-xl text-brand-dark mb-1">Public Protests & Advocacy</h3>
+                            <p class="text-brand-gold font-semibold text-sm mb-2">Continuous Effort</p>
+                            <p class="text-slate-600 text-sm">Leading protests for public rights, infrastructure development, and transparent governance in the district.</p>
+                        </div>
+                        <div class="absolute left-[20px] md:left-1/2 transform md:-translate-x-1/2 w-8 h-8 rounded-full bg-brand-gold border-4 border-white shadow flex items-center justify-center z-10">
+                            <div class="w-2 h-2 bg-white rounded-full"></div>
+                        </div>
+                        <div class="md:w-5/12 w-full pl-12 md:pl-8">
+                            <div class="bg-white p-2 rounded-xl shadow-sm border border-slate-100">
+                                <img src="https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=600&q=80" alt="Protest" class="w-full h-40 object-cover rounded-lg">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= VIEW: CAMPAIGNS ================= -->
+        <section id="view-campaigns" class="view-section">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl md:text-4xl font-serif font-bold text-brand-dark mb-4" data-i18n="campaigns_title">Digital Campaigns Hub</h2>
+                <p class="text-slate-500 max-w-2xl mx-auto" data-i18n="campaigns_desc">Participate in our ongoing initiatives. Create personalized posters, send wishes, and show your support digitally.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Main Birthday Campaign Card (Linking conceptually to the old site's function) -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-soft border border-slate-100 flex flex-col group">
+                    <div class="h-48 bg-brand-dark relative overflow-hidden flex items-center justify-center">
+                        <div class="absolute inset-0 opacity-50 bg-[url('https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=800&q=80')] bg-cover bg-center transition-transform duration-700 group-hover:scale-110"></div>
+                        <h3 class="relative z-10 text-white font-serif text-3xl font-bold text-shadow-lg text-center px-4">Birthday<br>Celebrations</h3>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="px-2 py-1 bg-green-100 text-green-700 text-xs font-bold rounded uppercase">Active</span>
+                            <span class="text-xs text-slate-400"><i class="fa-solid fa-users mr-1"></i>10k+ Participated</span>
+                        </div>
+                        <h4 class="font-bold text-lg mb-2">Create Birthday Wishes Poster</h4>
+                        <p class="text-slate-500 text-sm mb-6 flex-1">Generate a personalized poster with your photo to celebrate PCSR Garu's birthday and share it on social media.</p>
+                        
+                        <button onclick="startPosterFlow()" class="btn-primary w-full group-hover:bg-brand-gold transition-colors">
+                            <span data-i18n="btn_participate">Participate Now</span> <i class="fa-solid fa-arrow-right ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Placeholder Campaign 2 -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-soft border border-slate-100 flex flex-col group">
+                    <div class="h-48 bg-blue-900 relative overflow-hidden flex items-center justify-center">
+                        <div class="absolute inset-0 opacity-50 bg-[url('https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=800&q=80')] bg-cover bg-center transition-transform duration-700 group-hover:scale-110"></div>
+                        <h3 class="relative z-10 text-white font-serif text-2xl font-bold text-shadow-lg text-center px-4">Digital Protest:<br>Save Nellore Roads</h3>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="px-2 py-1 bg-amber-100 text-amber-700 text-xs font-bold rounded uppercase">Upcoming</span>
+                        </div>
+                        <h4 class="font-bold text-lg mb-2">Awareness Drive</h4>
+                        <p class="text-slate-500 text-sm mb-6 flex-1">Join the digital campaign to highlight infrastructural issues in specific wards. Frame your photo with our cause.</p>
+                        <button onclick="startPosterFlow()" class="btn-primary w-full group-hover:bg-brand-gold transition-colors">
+                            <span data-i18n="btn_participate">Participate Now</span> <i class="fa-solid fa-arrow-right ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Placeholder Campaign 3 -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-soft border border-slate-100 flex flex-col group">
+                    <div class="h-48 bg-orange-800 relative overflow-hidden flex items-center justify-center">
+                        <div class="absolute inset-0 opacity-50 bg-[url('https://images.unsplash.com/photo-1604085572504-a392ddf0d86a?auto=format&fit=crop&w=800&q=80')] bg-cover bg-center transition-transform duration-700 group-hover:scale-110"></div>
+                        <h3 class="relative z-10 text-white font-serif text-2xl font-bold text-shadow-lg text-center px-4">Festival<br>Greetings</h3>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="px-2 py-1 bg-slate-100 text-slate-500 text-xs font-bold rounded uppercase">Archived</span>
+                        </div>
+                        <h4 class="font-bold text-lg mb-2">Sankranti Wishes 2026</h4>
+                        <p class="text-slate-500 text-sm mb-6 flex-1">Thank you to everyone who participated in sending digital festival greetings across the constituency.</p>
+                        <button onclick="startPosterFlow()" class="btn-primary w-full group-hover:bg-brand-gold transition-colors border border-transparent">
+                            <span data-i18n="btn_participate">Participate Now</span> <i class="fa-solid fa-arrow-right ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= VIEW: GRIEVANCE ================= -->
+        <section id="view-grievance" class="view-section">
+            <div class="max-w-3xl mx-auto">
+                <div class="text-center mb-10">
+                    <div class="w-16 h-16 bg-brand-gold/10 text-brand-gold rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">
+                        <i class="fa-solid fa-headset"></i>
+                    </div>
+                    <h2 class="text-3xl md:text-4xl font-serif font-bold text-brand-dark mb-4" data-i18n="grievance_title">Public Grievance Portal</h2>
+                    <p class="text-slate-500" data-i18n="grievance_desc">Submit your local issues directly to our team. Your submission will be formatted and sent via WhatsApp for quick tracking.</p>
+                </div>
+
+                <div class="bg-white rounded-3xl p-6 md:p-10 shadow-soft border border-slate-100">
+                    <form id="grievance-form" onsubmit="submitGrievance(event)">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                            
+                            <!-- Ward Selection -->
+                            <div class="md:col-span-2">
+                                <label class="block text-sm font-bold text-brand-dark mb-2" data-i18n="label_ward">Select Ward (Nellore City)</label>
+                                <div class="relative">
+                                    <select id="g-ward" required class="premium-select appearance-none">
+                                        <option value="" disabled selected data-i18n="placeholder_ward">-- Select Ward Number --</option>
+                                        <!-- JS will populate options 1-54 -->
+                                    </select>
+                                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-slate-500">
+                                        <i class="fa-solid fa-chevron-down text-sm"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Name -->
+                            <div>
+                                <label class="block text-sm font-bold text-brand-dark mb-2" data-i18n="label_name">Your Name</label>
+                                <input type="text" id="g-name" required class="premium-input" placeholder="Enter your full name">
+                            </div>
+
+                            <!-- Contact (Optional but good for WhatsApp context) -->
+                            <div>
+                                <label class="block text-sm font-bold text-brand-dark mb-2" data-i18n="label_phone">Contact Number (Optional)</label>
+                                <input type="tel" id="g-phone" class="premium-input" placeholder="10-digit number">
+                            </div>
+
+                            <!-- Category -->
+                            <div class="md:col-span-2">
+                                <label class="block text-sm font-bold text-brand-dark mb-2" data-i18n="label_category">Issue Category</label>
+                                <div class="relative">
+                                    <select id="g-category" required class="premium-select appearance-none">
+                                        <option value="" disabled selected data-i18n="placeholder_category">-- Select Category --</option>
+                                        <option value="Roads & Infrastructure">Roads & Infrastructure</option>
+                                        <option value="Water Supply">Water & Drainage</option>
+                                        <option value="Electricity">Electricity & Streetlights</option>
+                                        <option value="Sanitation">Sanitation & Garbage</option>
+                                        <option value="Welfare Schemes">Welfare Schemes</option>
+                                        <option value="Other">Other Issues</option>
+                                    </select>
+                                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-slate-500">
+                                        <i class="fa-solid fa-chevron-down text-sm"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Description -->
+                            <div class="md:col-span-2">
+                                <label class="block text-sm font-bold text-brand-dark mb-2" data-i18n="label_desc">Issue Description</label>
+                                <textarea id="g-desc" required rows="4" class="premium-textarea" placeholder="Please describe the issue in detail..."></textarea>
+                            </div>
+                        </div>
+
+                        <!-- Media Attachment Notice -->
+                        <div class="bg-blue-50 text-blue-800 p-4 rounded-xl flex gap-3 items-start mb-8 text-sm">
+                            <i class="fa-solid fa-info-circle mt-0.5"></i>
+                            <p data-i18n="media_notice"><strong>Note on Photos/Videos:</strong> You are about to be redirected to WhatsApp. Please attach any relevant photos or videos directly in the WhatsApp chat after clicking submit.</p>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button type="submit" class="btn-primary w-full !py-4 text-lg">
+                            <i class="fa-brands fa-whatsapp text-xl"></i>
+                            <span data-i18n="btn_submit_whatsapp">Prepare & Send via WhatsApp</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= VIEW: TEMPLATES ================= -->
+        <section id="view-templates" class="view-section">
+            <div class="w-full mb-4">
+                <button onclick="navigate('view-campaigns')" class="w-10 h-10 bg-white border border-slate-200 rounded-full shadow-sm flex items-center justify-center hover:bg-slate-50 transition-all active:scale-95 text-brand-dark">
+                    <i class="fa-solid fa-chevron-left text-sm"></i>
+                </button>
+            </div>
+
+            <div class="flex-1 flex flex-col">
+                <div class="flex justify-between items-end mb-6">
+                    <div>
+                        <h2 class="text-2xl font-serif font-bold" data-i18n="choose_template">Choose a Poster</h2>
+                        <p class="text-sm text-slate-500 mt-1" data-i18n="choose_template_desc">Select a design to start personalizing.</p>
+                    </div>
+                    <span class="text-xs font-bold bg-brand-dark text-white px-3 py-1 rounded-full" id="template-count">8 Options</span>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pb-4 auto-rows-max" id="template-list">
+                    <!-- Templates dynamically injected via JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= VIEW: UPLOAD PHOTO ================= -->
+        <section id="view-upload" class="view-section">
+            <div class="w-full mb-4">
+                <button onclick="navigate('view-templates')" class="w-10 h-10 bg-white border border-slate-200 rounded-full shadow-sm flex items-center justify-center hover:bg-slate-50 transition-all active:scale-95 text-brand-dark">
+                    <i class="fa-solid fa-chevron-left text-sm"></i>
+                </button>
+            </div>
+
+            <div class="flex-1 flex flex-col justify-center">
+                <div class="text-center mb-8">
+                    <p class="text-xs font-semibold tracking-widest text-brand-gold mb-2 uppercase" data-i18n="step_1">Step 1 of 2</p>
+                    <h2 class="text-3xl font-serif font-bold mb-3" data-i18n="upload_title">Upload Your Photo</h2>
+                    <p class="text-slate-600 text-sm max-w-xs mx-auto" data-i18n="upload_desc">Choose a clear portrait photo from your gallery or take a new one.</p>
+                </div>
+
+                <div class="bg-white rounded-3xl p-6 shadow-soft border border-slate-100 w-full max-w-sm mx-auto">
+                    <div class="grid grid-cols-2 gap-4">
+                        <!-- Gallery Option -->
+                        <label id="drop-zone-gallery" class="flex flex-col items-center justify-center border-2 border-dashed border-slate-300 rounded-2xl p-6 cursor-pointer hover:bg-slate-50 transition-all group relative">
+                            <div class="w-12 h-12 bg-slate-100 rounded-full flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                                <i class="fa-regular fa-image text-xl text-brand-dark"></i>
+                            </div>
+                            <span class="font-bold text-brand-dark text-sm mb-1" data-i18n="btn_gallery">Gallery</span>
+                            <input type="file" id="image-input-gallery" class="hidden" accept="image/jpeg, image/png, image/webp">
+                        </label>
+
+                        <!-- Camera Option -->
+                        <label class="flex flex-col items-center justify-center border-2 border-dashed border-slate-300 rounded-2xl p-6 cursor-pointer hover:bg-slate-50 transition-all group">
+                            <div class="w-12 h-12 bg-slate-100 rounded-full flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                                <i class="fa-solid fa-camera text-xl text-brand-dark"></i>
+                            </div>
+                            <span class="font-bold text-brand-dark text-sm mb-1" data-i18n="btn_camera">Camera</span>
+                            <input type="file" id="image-input-camera" class="hidden" accept="image/*" capture="environment">
+                        </label>
+                    </div>
+                    <p class="text-center text-xs text-slate-400 mt-5 hidden md:block">JPG or PNG (Drag & Drop supported)</p>
+                    <p class="text-center text-xs text-slate-400 mt-5 md:hidden">JPG or PNG</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= VIEW: CUSTOMIZE ================= -->
+        <section id="view-customize" class="view-section">
+            <div class="w-full mb-4">
+                <button onclick="navigate('view-upload')" class="w-10 h-10 bg-white border border-slate-200 rounded-full shadow-sm flex items-center justify-center hover:bg-slate-50 transition-all active:scale-95 text-brand-dark">
+                    <i class="fa-solid fa-chevron-left text-sm"></i>
+                </button>
+            </div>
+
+            <div class="flex-1 flex flex-col">
+                <p class="text-xs font-semibold tracking-widest text-brand-gold mb-2 uppercase" data-i18n="step_2">Step 2 of 2</p>
+                <h2 class="text-3xl font-serif font-bold mb-6" data-i18n="personalize_title">Add Your Details</h2>
+
+                <!-- Live Preview Mini Map -->
+                <div class="mb-8 flex justify-center">
+                    <div class="w-1/2 max-w-[200px]">
+                        <div class="canvas-container shadow-floating border-[4px] border-white">
+                            <canvas id="preview-canvas"></canvas>
+                        </div>
+                        <p class="text-center text-xs text-slate-400 mt-3 font-medium"><i class="fa-solid fa-eye mr-1"></i> <span data-i18n="live_preview">Live Preview</span></p>
+                    </div>
+                </div>
+
+                <!-- Form Controls -->
+                <div class="bg-white rounded-3xl p-5 md:p-6 shadow-soft border border-slate-100 space-y-5 max-w-2xl mx-auto w-full">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                        <div class="md:col-span-2">
+                            <label class="block text-xs font-bold tracking-widest text-brand-dark mb-2 uppercase" data-i18n="label_name">Your Name</label>
+                            <input type="text" id="input-name" class="premium-input" placeholder="e.g. Rahul Kumar">
+                        </div>
+
+                        <div class="md:col-span-2">
+                            <label class="block text-xs font-bold tracking-widest text-brand-dark mb-2 uppercase" data-i18n="label_designation">Designation</label>
+                            <input type="text" id="input-designation" class="premium-input" placeholder="e.g. YSRCP Leader">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold tracking-widest text-brand-dark mb-2 uppercase" data-i18n="label_color">Text Color</label>
+                            <div class="flex items-center gap-3 bg-[#f8fafc] p-2 rounded-2xl border border-slate-100">
+                                <input type="color" id="input-color" value="#0f172a">
+                                <span class="text-sm font-medium text-brand-dark uppercase" id="color-hex">#0F172A</span>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold tracking-widest text-brand-dark mb-2 uppercase">Text Size</label>
+                            <div class="flex items-center gap-3 bg-[#f8fafc] p-3.5 rounded-2xl border border-slate-100 h-[52px]">
+                                <i class="fa-solid fa-font text-xs text-slate-400"></i>
+                                <input type="range" id="input-scale" min="0.7" max="1.4" step="0.05" value="1" class="w-full accent-brand-dark cursor-pointer">
+                                <i class="fa-solid fa-font text-base text-slate-400"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8 max-w-2xl mx-auto w-full">
+                    <button onclick="generateFinalImage()" class="btn-primary w-full !py-4 text-lg" id="btn-apply">
+                        <span data-i18n="btn_apply_generate">Apply & Generate Poster</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= VIEW: RESULT ================= -->
+        <section id="view-result" class="view-section">
+            <div class="flex-1 flex flex-col max-w-2xl mx-auto w-full">
+                <div class="text-center mb-6 pt-4">
+                    <div class="w-16 h-16 bg-[#f8fafc] border border-slate-100 text-[#0f172a] rounded-full flex items-center justify-center mx-auto mb-4 shadow-sm">
+                        <i class="fa-solid fa-check text-2xl text-brand-gold"></i>
+                    </div>
+                    <h2 class="text-3xl font-serif font-bold mb-2" data-i18n="ready_title">Success!</h2>
+                    <p class="text-slate-600" data-i18n="ready_desc">Your personalized poster is ready to share.</p>
+                </div>
+                
+                <div class="bg-white rounded-3xl p-3 shadow-soft mb-8 border border-slate-100">
+                    <img id="final-result-img" src="" alt="Final Poster" class="w-full rounded-[1.25rem] shadow-sm">
+                </div>
+
+                <div class="space-y-4 mb-8">
+                    <button onclick="downloadPoster()" class="btn-primary w-full !py-4 text-lg">
+                        <i class="fa-solid fa-download mr-2"></i>
+                        <span data-i18n="share_download">Download Image</span>
+                    </button>
+
+                    <div class="grid grid-cols-2 gap-3">
+                        <button onclick="shareWhatsApp()" class="btn-primary !bg-white !text-[#25D366] !border border-slate-200 hover:!bg-[#25D366] hover:!text-white hover:!border-[#25D366] shadow-sm">
+                            <i class="fa-brands fa-whatsapp text-lg"></i>
+                            <span>WhatsApp</span>
+                        </button>
+                        <button onclick="shareOnFacebook()" class="btn-primary !bg-white !text-[#1877F2] !border border-slate-200 hover:!bg-[#1877F2] hover:!text-white hover:!border-[#1877F2] shadow-sm">
+                            <i class="fa-brands fa-facebook-f text-lg"></i>
+                            <span>Facebook</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="flex justify-center gap-8 border-t border-slate-200 pt-6 mb-8">
+                    <button onclick="navigate('view-campaigns')" class="text-slate-500 font-semibold text-sm hover:text-brand-dark flex items-center gap-2">
+                        <i class="fa-solid fa-layer-group"></i> <span data-i18n="nav_campaigns">Campaigns</span>
+                    </button>
+                    <button onclick="navigate('view-templates')" class="text-brand-gold font-semibold text-sm hover:text-yellow-600 flex items-center gap-2">
+                        <i class="fa-solid fa-plus"></i> <span data-i18n="btn_create_another">Create Another</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ================= MODAL: CROPPER ================= -->
+    <div id="crop-modal">
+        <div class="glass-dark px-4 py-4 flex justify-between items-center text-white z-10 sticky top-0">
+            <h3 class="font-serif font-bold text-lg" data-i18n="modal_adjust">Adjust Photo</h3>
+            <button onclick="closeCropModal()" class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-all active:scale-95">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+        
+        <div class="flex-grow relative bg-black flex items-center justify-center overflow-hidden h-full">
+            <img id="cropper-image" src="" alt="To Crop" class="max-w-full max-h-full block">
+        </div>
+
+        <div class="glass-dark p-6 pb-safe z-10">
+            <div class="flex justify-between items-center max-w-md mx-auto w-full gap-4">
+                <div class="flex gap-2">
+                    <button onclick="cropper.rotate(-90)" class="w-12 h-12 rounded-full bg-white/10 text-white flex items-center justify-center hover:bg-white/20 transition-all active:scale-95">
+                        <i class="fa-solid fa-rotate-left"></i>
+                    </button>
+                </div>
+                <div class="flex gap-3 w-full justify-end">
+                    <button onclick="closeCropModal()" class="px-5 py-3 rounded-full text-white/80 font-medium hover:bg-white/10 transition" data-i18n="btn_cancel">Cancel</button>
+                    <button onclick="applyCrop()" class="px-6 py-3 rounded-full bg-brand-gold text-white font-bold hover:bg-yellow-600 transition shadow-lg active:scale-95" data-i18n="btn_apply_crop">Crop & Apply</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hidden High-Res Canvas -->
+    <canvas id="export-canvas" style="display: none;"></canvas>
+
+    <!-- Global Footer -->
+    <footer class="w-full bg-brand-dark text-white pt-16 pb-8 px-4 mt-auto z-10 border-t-4 border-brand-gold">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10 mb-12">
+                <!-- Branding -->
+                <div>
+                    <h2 class="font-serif font-bold text-2xl mb-4 text-brand-gold">PCSR Digital</h2>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                        The unified digital platform for Parvathareddy Chandrasekhar Reddy Garu. East Rayalaseema Teacher's MLC & YSRCP Nellore City Incharge.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-gold hover:text-brand-dark transition-colors"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-gold hover:text-brand-dark transition-colors"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/thepcsrtalks" target="_blank" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-gold hover:text-brand-dark transition-colors"><i class="fa-brands fa-instagram"></i></a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="font-bold text-lg mb-4 border-b border-white/10 pb-2">Quick Links</h3>
+                    <ul class="space-y-3">
+                        <li><button onclick="navigate('view-home')" class="text-slate-400 hover:text-white transition">Home</button></li>
+                        <li><button onclick="navigate('view-journey')" class="text-slate-400 hover:text-white transition">Political Journey</button></li>
+                        <li><button onclick="navigate('view-campaigns')" class="text-slate-400 hover:text-white transition">Campaigns Hub</button></li>
+                        <li><button onclick="navigate('view-grievance')" class="text-brand-gold hover:text-white transition">Submit Grievance</button></li>
+                    </ul>
+                </div>
+
+                <!-- Contact/Credits -->
+                <div>
+                    <h3 class="font-bold text-lg mb-4 border-b border-white/10 pb-2">Initiated By</h3>
+                    <p class="text-slate-300 font-serif mb-2">The PCSR Talks</p>
+                    <ul class="text-sm text-slate-500 space-y-1 mb-6">
+                        <li>K V Dileep Kumar</li>
+                        <li>E Naveen Kumar</li>
+                        <li>B Trinadh Reddy</li>
+                        <li>Akhil Raja</li>
+                    </ul>
+                    <p class="text-xs text-slate-600 uppercase tracking-widest font-semibold mb-1">Concept & Dev</p>
+                    <p class="text-sm text-slate-400 font-serif">Samrat_Designs</p>
+                </div>
+            </div>
+
+            <!-- Copyright -->
+            <div class="text-center pt-8 border-t border-white/10">
+                <p class="text-xs text-slate-500 uppercase tracking-wider font-semibold">&copy; <span id="current-year"></span> ParvathareddyDigital.com. All rights reserved.</p>
+                <p class="text-[10px] text-slate-600 mt-2">Made with <i class="fa-solid fa-heart text-red-900 mx-1"></i> for the people of Nellore</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Custom Toast Notification -->
+    <div id="toast-container" class="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-[110] transition-all duration-300 translate-y-20 opacity-0 pointer-events-none">
+        <div class="bg-brand-dark text-white px-6 py-3 rounded-full shadow-lg flex items-center gap-3 border border-brand-gold/30">
+            <i class="fa-solid fa-check-circle text-brand-gold"></i>
+            <span id="toast-message" class="text-sm font-medium whitespace-nowrap"></span>
+        </div>
+    </div>
+
+    <script>
+        // Set current year
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Admin WhatsApp number for Grievances (Format: CountryCode + Number)
+        const ADMIN_WHATSAPP = "919876543210"; // Placeholder, replace with actual
+
+        /** --- STATE MANAGEMENT --- */
+        const state = {
+            lang: null,
+            currentView: 'view-home'
+        };
+
+        /** --- i18n DICTIONARY --- */
+        const i18n = {
+            en: {
+                nav_home: "Home",
+                nav_journey: "Journey",
+                nav_campaigns: "Campaigns",
+                nav_grievance: "Public Grievance",
+                hero_badge: "YSRCP Leader | East Rayalaseema MLC",
+                hero_title_1: "Committed to",
+                hero_title_2: "Nellore's Progress",
+                hero_desc: "A digital platform unifying campaigns, public interactions, and continuous service for the people. Always connected, always listening.",
+                btn_raise_grievance: "Raise Grievance",
+                btn_view_campaigns: "Join Campaigns",
+                section_latest: "Latest Activities",
+                card_1_title: "Ongoing Campaigns",
+                card_1_desc: "Participate in current digital campaigns, create customized posters, and show support.",
+                card_2_title: "Direct Resolution",
+                card_2_desc: "Submit civic issues directly via our WhatsApp integrated public grievance portal.",
+                card_3_title: "Political Journey",
+                card_3_desc: "Explore the timeline of milestones, protests, and continuous public service.",
+                journey_title: "Political Journey & Portfolio",
+                journey_desc: "A continuous effort towards public welfare, fighting for rights, and building a stronger community.",
+                campaigns_title: "Digital Campaigns Hub",
+                campaigns_desc: "Participate in our ongoing initiatives. Create personalized posters, send wishes, and show your support digitally.",
+                btn_participate: "Participate Now",
+                grievance_title: "Public Grievance Portal",
+                grievance_desc: "Submit your local issues directly to our team. Your submission will be formatted and sent via WhatsApp for quick tracking.",
+                label_ward: "Select Ward (Nellore City)",
+                placeholder_ward: "-- Select Ward Number --",
+                label_name: "Your Name",
+                label_phone: "Contact Number (Optional)",
+                label_category: "Issue Category",
+                placeholder_category: "-- Select Category --",
+                label_desc: "Issue Description",
+                media_notice: "<strong>Note on Photos/Videos:</strong> You are about to be redirected to WhatsApp. Please attach any relevant photos or videos directly in the WhatsApp chat after clicking submit.",
+                btn_submit_whatsapp: "Prepare & Send via WhatsApp",
+                choose_template: "Choose a Template",
+                choose_template_desc: "Select a design to start personalizing.",
+                step_1: "Step 1 of 2",
+                upload_title: "Upload Your Photo",
+                upload_desc: "Choose a clear portrait photo from your gallery or take a new one.",
+                btn_gallery: "Gallery",
+                btn_camera: "Camera",
+                step_2: "Step 2 of 2",
+                personalize_title: "Add Your Details",
+                live_preview: "Live Preview",
+                label_designation: "Designation",
+                label_color: "Text Color",
+                btn_apply_generate: "Apply & Generate Poster",
+                ready_title: "Success!",
+                ready_desc: "Your personalized poster is ready to share.",
+                share_download: "Download Image",
+                btn_create_another: "Create Another",
+                modal_adjust: "Adjust Photo",
+                btn_cancel: "Cancel",
+                btn_apply_crop: "Crop & Apply"
+            },
+            te: {
+                nav_home: "హోమ్",
+                nav_journey: "ప్రయాణం",
+                nav_campaigns: "క్యాంపెయిన్స్",
+                nav_grievance: "ప్రజా సమస్యలు",
+                hero_badge: "వైఎస్సార్సీపీ నాయకుడు | తూర్పు రాయలసీమ ఎమ్మెల్సీ",
+                hero_title_1: "నెల్లూరు ప్రగతికి",
+                hero_title_2: "కట్టుబడి ఉన్నాం",
+                hero_desc: "క్యాంపెయిన్స్, ప్రజా సంబంధాలు మరియు నిరంతర సేవలను ఒకే చోట చేర్చే డిజిటల్ ప్లాట్‌ఫారమ్. ఎల్లప్పుడూ ప్రజలకు అందుబాటులో.",
+                btn_raise_grievance: "సమస్యను తెలపండి",
+                btn_view_campaigns: "క్యాంపెయిన్స్‌లో పాల్గొనండి",
+                section_latest: "తాజా కార్యక్రమాలు",
+                card_1_title: "కొనసాగుతున్న క్యాంపెయిన్స్",
+                card_1_desc: "డిజిటల్ క్యాంపెయిన్స్‌లో పాల్గొనండి, మీ పోస్టర్‌లను రూపొందించండి మరియు మద్దతు తెలపండి.",
+                card_2_title: "ప్రత్యక్ష పరిష్కారం",
+                card_2_desc: "మా వాట్సాప్ ఇంటిగ్రేటెడ్ పబ్లిక్ గ్రీవెన్స్ పోర్టల్ ద్వారా పౌర సమస్యలను నేరుగా సమర్పించండి.",
+                card_3_title: "రాజకీయ ప్రయాణం",
+                card_3_desc: "మైలురాళ్ళు, నిరసనలు మరియు నిరంతర ప్రజా సేవ యొక్క కాలానుక్రమాన్ని అన్వేషించండి.",
+                journey_title: "రాజకీయ ప్రయాణం & పోర్ట్‌ఫోలియో",
+                journey_desc: "ప్రజా సంక్షేమం, హక్కుల సాధన మరియు బలమైన సమాజ నిర్మాణానికి నిరంతర కృషి.",
+                campaigns_title: "డిజిటల్ క్యాంపెయిన్స్ హబ్",
+                campaigns_desc: "మా కార్యక్రమాలలో పాల్గొనండి. వ్యక్తిగతీకరించిన పోస్టర్‌లను సృష్టించండి, శుభాకాంక్షలు పంపండి.",
+                btn_participate: "ఇప్పుడే పాల్గొనండి",
+                grievance_title: "ప్రజా సమస్యల పోర్టల్",
+                grievance_desc: "మీ స్థానిక సమస్యలను నేరుగా మా బృందానికి సమర్పించండి. మీ అభ్యర్థన వాట్సాప్ ద్వారా పంపబడుతుంది.",
+                label_ward: "వార్డును ఎంచుకోండి (నెల్లూరు సిటీ)",
+                placeholder_ward: "-- వార్డు నంబర్ ఎంచుకోండి --",
+                label_name: "మీ పేరు",
+                label_phone: "సంప్రదింపు నంబర్ (ఐచ్ఛికం)",
+                label_category: "సమస్య వర్గం",
+                placeholder_category: "-- వర్గం ఎంచుకోండి --",
+                label_desc: "సమస్య వివరణ",
+                media_notice: "<strong>గమనిక:</strong> మీరు వాట్సాప్‌కు మళ్ళించబడతారు. దయచేసి సంబంధిత ఫోటోలు లేదా వీడియోలను నేరుగా వాట్సాప్ చాట్‌లో జత చేయండి.",
+                btn_submit_whatsapp: "వాట్సాప్ ద్వారా పంపండి",
+                choose_template: "టెంప్లేట్‌ను ఎంచుకోండి",
+                choose_template_desc: "డిజైన్‌ను ఎంచుకుని ప్రారంభించండి.",
+                step_1: "దశ 1/2",
+                upload_title: "మీ ఫోటోను అప్‌లోడ్ చేయండి",
+                upload_desc: "గ్యాలరీ నుండి లేదా కెమెరా ద్వారా స్పష్టమైన ఫోటోను ఎంచుకోండి.",
+                btn_gallery: "గ్యాలరీ",
+                btn_camera: "కెమెరా",
+                step_2: "దశ 2/2",
+                personalize_title: "మీ వివరాలను జోడించండి",
+                live_preview: "లైవ్ ప్రివ్యూ",
+                label_designation: "హోదా",
+                label_color: "అక్షరాల రంగు",
+                btn_apply_generate: "పోస్టర్‌ను రూపొందించండి",
+                ready_title: "విజయం!",
+                ready_desc: "మీ పోస్టర్ పంచుకోవడానికి సిద్ధంగా ఉంది.",
+                share_download: "ఇమేజ్ డౌన్‌లోడ్",
+                btn_create_another: "మరొకటి సృష్టించండి",
+                modal_adjust: "ఫోటోను క్రాప్ చేయండి",
+                btn_cancel: "రద్దు",
+                btn_apply_crop: "క్రాప్ చేయండి"
+            }
+        };
+
+        /** --- POSTER GENERATOR STATE --- */
+        const posterState = {
+            templateId: 'tpl-1',
+            userImageObj: null,
+            inputs: { name: "", designation: "", color: "#0f172a", scale: 1 },
+            isRendering: false
+        };
+
+        const templates = [
+            { id: `tpl-5`, name: `Poster 1`, src: './templates/template5.png', referenceImage: './templates/template1-reference.png', width: 2400, height: 2400, photoRect: { x: 200, y: 800, w: 800, h: 800, shape: 'circle', cropAspect: 1, offsetX: 0, offsetY: 0, zoom: 1, rotation: 0 }, textRect: { x: 1650, y: 2200, width: 541, height: 177 }, textConfig: { name: { size: 100, weight: 'bold' }, message: { size: 56, weight: 'normal', lineHeight: 70 } }, imgObj: null, loaded: false },
+            { id: `tpl-8`, name: `Poster 2`, src: './templates/template8.png', referenceImage: './templates/template2-reference.png', width: 2400, height: 2400, photoRect: { x: 200, y: 800, w: 800, h: 800, shape: 'circle', cropAspect: 1, offsetX: 0, offsetY: 0, zoom: 1, rotation: 0 }, textRect: { x: 1470, y: 2170, width: 541, height: 177 }, textConfig: { name: { size: 100, weight: 'bold' }, message: { size: 56, weight: 'normal', lineHeight: 70 } }, imgObj: null, loaded: false },
+            { id: `tpl-3`, name: `Poster 3`, src: './templates/template3.png', referenceImage: './templates/template3-reference.png', width: 2400, height: 2400, photoRect: { x: 200, y: 800, w: 800, h: 800, shape: 'circle', cropAspect: 1, offsetX: 0, offsetY: 0, zoom: 1, rotation: 0 }, textRect: { x: 300, y: 2220, width: 541, height: 177 }, textConfig: { name: { size: 100, weight: 'bold' }, message: { size: 56, weight: 'normal', lineHeight: 70 } }, imgObj: null, loaded: false },
+            { id: `tpl-4`, name: `Poster 4`, src: './templates/template4.png', referenceImage: './templates/template4-reference.png', width: 2400, height: 2400, photoRect: { x: 200, y: 800, w: 800, h: 800, shape: 'circle', cropAspect: 1, offsetX: 0, offsetY: 0, zoom: 1, rotation: 0 }, textRect: { x: 1440, y: 2220, width: 541, height: 177 }, textConfig: { name: { size: 100, weight: 'bold' }, message: { size: 56, weight: 'normal', lineHeight: 70 } }, imgObj: null, loaded: false },
+            { id: `tpl-7`, name: `Poster 5`, src: './templates/template7.png', referenceImage: './templates/template5-reference.png', width: 2400, height: 2400, photoRect: { x: 200, y: 800, w: 800, h: 800, shape: 'circle', cropAspect: 1, offsetX: 0, offsetY: 0, zoom: 1, rotation: 0 }, textRect: { x: 1650, y: 2200, width: 541, height: 177 }, textConfig: { name: { size: 100, weight: 'bold' }, message: { size: 56, weight: 'normal', lineHeight: 70 } }, imgObj: null, loaded: false },
+            { id: `tpl-1`, name: `Poster 6`, src: './templates/template1.png', referenceImage: './templates/template6-reference.png', width: 2464, height: 2464, photoRect: { x: 140, y: 1186, w: 844, h: 844, shape: 'circle', cropAspect: 1, offsetX: 0, offsetY: 0, zoom: 1, rotation: 0 }, textRect: { x: 300, y: 2320, width: 541, height: 177 }, textConfig: { name: { size: 60, weight: 'bold' }, message: { size: 64, weight: 'normal', lineHeight: 80 } }, imgObj: null, loaded: false },
+            { id: `tpl-6`, name: `Poster 7`, src: './templates/template6.png', referenceImage: './templates/template7-reference.png', width: 2400, height: 2400, photoRect: { x: 200, y: 800, w: 800, h: 800, shape: 'circle', cropAspect: 1, offsetX: 0, offsetY: 0, zoom: 1, rotation: 0 }, textRect: { x: 300, y: 2220, width: 541, height: 177 }, skipPosterText: true, textConfig: { name: { size: 100, weight: 'bold' }, message: { size: 56, weight: 'normal', lineHeight: 70 } }, imgObj: null, loaded: false },
+            { id: `tpl-2`, name: `Poster 8`, src: './templates/template2.png', referenceImage: './templates/template8-reference.jpeg', width: 1632, height: 2480, photoRect: { x: 151.1, y: 831.1, w: 664.7, h: 664.7, shape: 'circle', cropAspect: 1, offsetX: 0, offsetY: 0, zoom: 1, rotation: 0 }, textRect: { x: 180, y: 2120, width: 541, height: 177 }, skipPosterText: true, textConfig: { name: { size: 73, weight: 'bold' }, message: { size: 42, weight: 'normal', lineHeight: 54 } }, imgObj: null, loaded: false }
+        ];
+
+        let cropper = null;
+        let previewDebounceTimer;
+        let ctxPreview, ctxExport;
+
+        /** --- INITIALIZATION --- */
+        function init() {
+            populateWards();
+            initPosterEngine();
+            
+            // Loading Screen Sequence
+            setTimeout(() => {
+                const loader = document.getElementById('loading-screen');
+                loader.classList.add('fade-out');
+                
+                setTimeout(() => {
+                    checkLanguagePreference();
+                }, 600); // Wait for fade out
+            }, 2500); // Show loading for 2.5s for impact
+        }
+
+        function checkLanguagePreference() {
+            const savedLang = localStorage.getItem('pcsr_lang');
+            if (savedLang && (savedLang === 'en' || savedLang === 'te')) {
+                switchLanguage(savedLang);
+            }
+            
+            // Always show modal on load/refresh
+            const modal = document.getElementById('language-modal');
+            const content = document.getElementById('language-modal-content');
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                content.classList.remove('scale-95', 'opacity-0');
+                content.classList.add('scale-100', 'opacity-100');
+            }, 10);
+        }
+
+        /** --- LANGUAGE HANDLING --- */
+        function initLanguage(lang) {
+            const modal = document.getElementById('language-modal');
+            const content = document.getElementById('language-modal-content');
+            
+            content.classList.remove('scale-100', 'opacity-100');
+            content.classList.add('scale-95', 'opacity-0');
+            
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                switchLanguage(lang);
+            }, 300);
+        }
+
+        function switchLanguage(lang) {
+            state.lang = lang;
+            localStorage.setItem('pcsr_lang', lang);
+
+            // Update Toggle UI
+            const btnEn = document.getElementById('toggle-en');
+            const btnTe = document.getElementById('toggle-te');
+            
+            if(lang === 'en') {
+                btnEn.className = 'px-3 py-1 text-xs font-bold rounded-full transition-colors bg-white text-brand-dark shadow-sm';
+                btnTe.className = 'px-3 py-1 text-xs font-bold rounded-full transition-colors text-slate-500 hover:text-brand-dark telugu-text';
+                document.body.classList.remove('telugu-text');
+            } else {
+                btnTe.className = 'px-3 py-1 text-xs font-bold rounded-full transition-colors bg-white text-brand-dark shadow-sm telugu-text';
+                btnEn.className = 'px-3 py-1 text-xs font-bold rounded-full transition-colors text-slate-500 hover:text-brand-dark';
+                document.body.classList.add('telugu-text');
+            }
+
+            // Apply Translations
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if(i18n[lang][key]) {
+                    if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                        el.placeholder = i18n[lang][key];
+                    } else if (el.tagName === 'OPTION') {
+                        el.textContent = i18n[lang][key];
+                    } else {
+                        el.innerHTML = i18n[lang][key];
+                    }
+                }
+            });
+        }
+
+        /** --- NAVIGATION --- */
+        function navigate(viewId) {
+            // Hide all views
+            document.querySelectorAll('.view-section').forEach(el => {
+                el.classList.remove('active');
+            });
+            
+            // Show target view
+            const target = document.getElementById(viewId);
+            if(target) {
+                target.classList.add('active');
+                state.currentView = viewId;
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+
+            // Update nav highlighting
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('text-brand-gold');
+                link.classList.add('text-slate-600');
+            });
+            // Find active link (simple approach based on onclick attribute)
+            const activeLinks = document.querySelectorAll(`.nav-link[onclick*="${viewId}"]`);
+            activeLinks.forEach(link => {
+                link.classList.remove('text-slate-600');
+                link.classList.add('text-brand-gold');
+            });
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const icon = document.getElementById('mobile-menu-icon');
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+                icon.classList.replace('fa-bars', 'fa-xmark');
+            } else {
+                menu.classList.add('hidden');
+                icon.classList.replace('fa-xmark', 'fa-bars');
+            }
+        }
+
+        /** --- GRIEVANCE LOGIC --- */
+        function populateWards() {
+            const select = document.getElementById('g-ward');
+            for (let i = 1; i <= 54; i++) {
+                const option = document.createElement('option');
+                option.value = `Ward ${i}`;
+                option.textContent = `Ward ${i}`;
+                select.appendChild(option);
+            }
+        }
+
+        function submitGrievance(e) {
+            e.preventDefault();
+            
+            const ward = document.getElementById('g-ward').value;
+            const name = document.getElementById('g-name').value.trim();
+            const phone = document.getElementById('g-phone').value.trim();
+            const category = document.getElementById('g-category').value;
+            const desc = document.getElementById('g-desc').value.trim();
+
+            if(!ward || !name || !category || !desc) {
+                showToast("Please fill all required fields.");
+                return;
+            }
+
+            // Construct WhatsApp Message
+            const d = new Date();
+            const dateStr = `${d.getDate()}/${d.getMonth()+1}/${d.getFullYear()}`;
+            
+            const isTelugu = state.lang === 'te';
+            
+            let message = "";
+            if (isTelugu) {
+                message = `*కొత్త ప్రజా సమస్య నమోదు*\n\n` +
+                          `*తేదీ:* ${dateStr}\n` +
+                          `*వార్డు:* ${ward}\n` +
+                          `*పేరు:* ${name}\n` +
+                          (phone ? `*సంప్రదింపు నంబర్:* ${phone}\n` : "") +
+                          `*సమస్య వర్గం:* ${category}\n\n` +
+                          `*వివరాలు:*\n${desc}\n\n` +
+                          `_పంపబడినది: ParvathareddyDigital.com పోర్టల్_`;
+            } else {
+                message = `*New Public Grievance Submitted*\n\n` +
+                          `*Date:* ${dateStr}\n` +
+                          `*Ward:* ${ward}\n` +
+                          `*Name:* ${name}\n` +
+                          (phone ? `*Contact:* ${phone}\n` : "") +
+                          `*Category:* ${category}\n\n` +
+                          `*Description:*\n${desc}\n\n` +
+                          `_Sent via ParvathareddyDigital.com Portal_`;
+            }
+
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappUrl = `https://wa.me/${ADMIN_WHATSAPP}?text=${encodedMessage}`;
+
+            // Reset Form
+            document.getElementById('grievance-form').reset();
+            
+            // Show Success & Redirect
+            showToast(isTelugu ? "వాట్సాప్‌ను తెరుస్తోంది..." : "Opening WhatsApp...");
+            
+            setTimeout(() => {
+                window.open(whatsappUrl, '_blank');
+            }, 800);
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast-container');
+            document.getElementById('toast-message').textContent = msg;
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3000);
+        }
+
+        /** --- POSTER ENGINE LOGIC --- */
+        function initPosterEngine() {
+            const previewCanvas = document.getElementById('preview-canvas');
+            const exportCanvas = document.getElementById('export-canvas');
+            if(previewCanvas && exportCanvas) {
+                ctxPreview = previewCanvas.getContext('2d');
+                ctxExport = exportCanvas.getContext('2d');
+            }
+
+            // Helper function for auto-detecting transparent cutout
+            function detectPlaceholderFromImage(img, templateWidth, templateHeight) {
+                try {
+                    const w = img.naturalWidth || img.width;
+                    const h = img.naturalHeight || img.height;
+                    if (!w || !h) return null;
+
+                    const c = document.createElement('canvas');
+                    c.width = w; c.height = h;
+                    const cx = c.getContext('2d');
+                    cx.drawImage(img, 0, 0, w, h);
+
+                    let data;
+                    try { data = cx.getImageData(0, 0, w, h).data; }
+                    catch (e) { return null; }
+
+                    let minX = w, minY = h, maxX = 0, maxY = 0, count = 0;
+                    for (let y = 0; y < h; y++) {
+                        for (let x = 0; x < w; x++) {
+                            const idx = (y * w + x) * 4 + 3; // alpha
+                            const a = data[idx];
+                            if (a <= 32) { // transparent or very transparent
+                                count++;
+                                if (x < minX) minX = x;
+                                if (y < minY) minY = y;
+                                if (x > maxX) maxX = x;
+                                if (y > maxY) maxY = y;
+                            }
+                        }
+                    }
+
+                    if (count === 0) return null;
+
+                    const boxW = maxX - minX + 1;
+                    const boxH = maxY - minY + 1;
+                    const bboxArea = boxW * boxH;
+                    const transparentRatio = count / bboxArea;
+                    const overallRatio = bboxArea / (w * h);
+
+                    if (bboxArea < 500 || overallRatio < 0.0001) return null;
+
+                    let shape = 'rectangle';
+                    const ratio = boxW / boxH;
+                    if (Math.abs(ratio - 1) < 0.25 && transparentRatio > 0.4) {
+                        shape = 'circle';
+                    } else if (ratio > 0.85 && ratio < 1.15 && transparentRatio > 0.3) {
+                        shape = 'square';
+                    }
+
+                    const scaleX = templateWidth / w;
+                    const scaleY = templateHeight / h;
+
+                    return {
+                        x: Math.round(minX * scaleX),
+                        y: Math.round(minY * scaleY),
+                        w: Math.round(boxW * scaleX),
+                        h: Math.round(boxH * scaleY),
+                        shape: shape,
+                        cropAspect: boxW / boxH
+                    };
+                } catch (err) {
+                    return null;
+                }
+            }
+
+            // Load templates dynamically
+            Promise.all(templates.map(tpl => new Promise(resolve => {
+                const img = new Image();
+                img.crossOrigin = 'anonymous';
+                img.onload = () => { 
+                    tpl.imgObj = img; 
+                    tpl.loaded = true; 
+                    
+                    // Auto-detect placeholder from transparent areas for templates (skipping hardcoded #1)
+                    if (!['tpl-1'].includes(tpl.id)) {
+                        try {
+                            const detected = detectPlaceholderFromImage(img, tpl.width, tpl.height);
+                            if (detected) {
+                                tpl.photoRect = {
+                                    x: detected.x,
+                                    y: detected.y,
+                                    w: detected.w,
+                                    h: detected.h,
+                                    shape: detected.shape,
+                                    cropAspect: detected.cropAspect,
+                                    offsetX: 0,
+                                    offsetY: 0,
+                                    zoom: 1,
+                                    rotation: 0
+                                };
+                            }
+                        } catch (e) {
+                            console.warn(`Placeholder detection failed for ${tpl.id}:`, e);
+                        }
+                    }
+                    
+                    resolve(tpl); 
+                };
+                img.onerror = () => resolve(tpl);
+                img.src = tpl.src;
+            }))).then(() => {
+                document.getElementById('template-count').textContent = `${templates.length} Options`;
+                const templateList = document.getElementById('template-list');
+                if(templateList) {
+                    templates.forEach(tpl => {
+                        const aspectRatio = tpl.width / tpl.height;
+                        const html = `
+                            <div onclick="selectTemplate('${tpl.id}')" class="template-card">
+                                <div class="template-card-image-container" style="aspect-ratio: ${aspectRatio};">
+                                    <img src="${tpl.referenceImage}" class="template-card-image" alt="${tpl.name}" onerror="this.src='${tpl.src}'">
+                                </div>
+                                <div class="template-card-info">
+                                    <h3 class="template-card-name">${tpl.name}</h3>
+                                    <i class="fa-solid fa-arrow-right template-card-arrow"></i>
+                                </div>
+                            </div>
+                        `;
+                        templateList.insertAdjacentHTML('beforeend', html);
+                    });
+                }
+            });
+
+            // Input bindings
+            ['name', 'designation', 'color', 'scale'].forEach(key => {
+                const input = document.getElementById(`input-${key}`);
+                if(input) {
+                    input.value = posterState.inputs[key];
+                    if(key === 'color') document.getElementById('color-hex').textContent = posterState.inputs[key].toUpperCase();
+                    input.addEventListener('input', (e) => {
+                        posterState.inputs[key] = key === 'scale' ? parseFloat(e.target.value) : e.target.value;
+                        if(key === 'color') document.getElementById('color-hex').textContent = e.target.value.toUpperCase();
+                        clearTimeout(previewDebounceTimer);
+                        previewDebounceTimer = setTimeout(renderPreview, 50);
+                    });
+                }
+            });
+
+            // Drag/Drop and File Events
+            const dropZone = document.getElementById('drop-zone-gallery');
+            if(dropZone) {
+                ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(ev => dropZone.addEventListener(ev, e => { e.preventDefault(); e.stopPropagation(); }, false));
+                ['dragenter', 'dragover'].forEach(ev => dropZone.addEventListener(ev, () => dropZone.classList.add('dragover'), false));
+                ['dragleave', 'drop'].forEach(ev => dropZone.addEventListener(ev, () => dropZone.classList.remove('dragover'), false));
+                dropZone.addEventListener('drop', e => { if(e.dataTransfer.files.length) handleFileSelect({target: {files: e.dataTransfer.files}}); }, false);
+            }
+            const imgInputGallery = document.getElementById('image-input-gallery');
+            const imgInputCamera = document.getElementById('image-input-camera');
+            if(imgInputGallery) imgInputGallery.addEventListener('change', handleFileSelect);
+            if(imgInputCamera) imgInputCamera.addEventListener('change', handleFileSelect);
+        }
+
+        function startPosterFlow() {
+            navigate('view-templates');
+        }
+
+        function getTemplate() {
+            return templates.find(t => t.id === posterState.templateId) || templates[0];
+        }
+
+        function updateCanvasSizes(tpl) {
+            if (!tpl) return;
+            const exportCanvas = document.getElementById('export-canvas');
+            const previewCanvas = document.getElementById('preview-canvas');
+            const container = document.querySelector('.canvas-container');
+            
+            exportCanvas.width = tpl.width;
+            exportCanvas.height = tpl.height;
+            previewCanvas.width = tpl.width;
+            previewCanvas.height = tpl.height;
+            previewCanvas.style.width = '100%';
+            previewCanvas.style.height = 'auto';
+            previewCanvas.style.aspectRatio = `${tpl.width} / ${tpl.height}`;
+            if (container) container.style.paddingBottom = `${(tpl.height / tpl.width) * 100}%`;
+        }
+
+        function selectTemplate(id) {
+            posterState.templateId = id;
+            updateCanvasSizes(getTemplate());
+            renderPreview();
+            navigate('view-upload');
+        }
+
+        function handleFileSelect(e) {
+            if (e.target.files && e.target.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    const modal = document.getElementById('crop-modal');
+                    const cropperImg = document.getElementById('cropper-image');
+                    modal.classList.add('active');
+                    
+                    cropperImg.onload = function() {
+                        setTimeout(() => {
+                            if (cropper) cropper.destroy();
+                            const tpl = getTemplate();
+                            const aspect = tpl.photoRect ? tpl.photoRect.cropAspect : 1;
+                            cropper = new Cropper(cropperImg, {
+                                aspectRatio: aspect, viewMode: 1, dragMode: 'move', autoCropArea: 0.9, guides: true, background: false, responsive: true
+                            });
+                        }, 350); 
+                    };
+                    cropperImg.src = event.target.result;
+                }
+                reader.readAsDataURL(e.target.files[0]);
+            }
+        }
+
+        function closeCropModal() {
+            document.getElementById('crop-modal').classList.remove('active');
+            document.getElementById('image-input-gallery').value = '';
+            document.getElementById('image-input-camera').value = '';
+            if(cropper) setTimeout(() => cropper.destroy(), 400);
+        }
+
+        function applyCrop() {
+            if (!cropper) return;
+            const canvas = cropper.getCroppedCanvas({ width: 1200, imageSmoothingEnabled: true, imageSmoothingQuality: 'high' });
+            const img = new Image();
+            img.onload = () => {
+                posterState.userImageObj = img;
+                closeCropModal();
+                navigate('view-customize');
+                renderPreview();
+            };
+            img.src = canvas.toDataURL('image/jpeg', 0.92);
+        }
+
+        function getCoverDrawOptions(img, rect) {
+            const targetW = rect.w; const targetH = rect.h; const zoom = rect.zoom || 1;
+            const imgRatio = img.width / img.height; const rectRatio = targetW / targetH;
+            let scale = rectRatio > imgRatio ? targetW / img.width : targetH / img.height;
+            scale *= zoom;
+            const drawWidth = img.width * scale; const drawHeight = img.height * scale;
+            const offsetX = (targetW - drawWidth) / 2 + (rect.offsetX || 0);
+            const offsetY = (targetH - drawHeight) / 2 + (rect.offsetY || 0);
+            return { drawWidth, drawHeight, offsetX, offsetY, rotation: (rect.rotation || 0) * Math.PI / 180 };
+        }
+
+        function drawPhotoPlaceholder(ctx, tpl) {
+            if (!posterState.userImageObj || !tpl.photoRect) return;
+            const r = tpl.photoRect;
+            ctx.save();
+            ctx.beginPath();
+            if (r.shape === 'circle') ctx.arc(r.x + r.w / 2, r.y + r.h / 2, Math.min(r.w, r.h) / 2, 0, Math.PI * 2);
+            else ctx.rect(r.x, r.y, r.w, r.h);
+            ctx.clip();
+            const { drawWidth, drawHeight, offsetX, offsetY, rotation } = getCoverDrawOptions(posterState.userImageObj, r);
+            ctx.translate(r.x + r.w / 2, r.y + r.h / 2);
+            if (rotation) ctx.rotate(rotation);
+            ctx.drawImage(posterState.userImageObj, -drawWidth / 2 + offsetX, -drawHeight / 2 + offsetY, drawWidth, drawHeight);
+            ctx.restore();
+        }
+
+        function getPosterNameFont(size) { return `italic 700 ${size}px "Playfair Display", "Noto Serif Telugu", Georgia, serif`; }
+        function getPosterFont(weight, size) { return `${weight} ${size}px "Playfair Display", "Noto Serif Telugu", Georgia, serif`; }
+
+        function fitFontSize(ctx, text, config, scale, maxWidth) {
+            const targetSize = config.size * scale;
+            const minSize = Math.max(24, targetSize * 0.45);
+            let fittedSize = targetSize;
+            while (fittedSize > minSize) {
+                ctx.font = getPosterNameFont(fittedSize);
+                if (ctx.measureText(text).width <= maxWidth) break;
+                fittedSize -= 2;
+            }
+            return Math.max(minSize, fittedSize);
+        }
+
+        function renderTemplate(ctx) {
+            const tpl = getTemplate();
+            if(!tpl || !ctx) return;
+            ctx.clearRect(0, 0, tpl.width, tpl.height);
+
+            if (posterState.userImageObj) drawPhotoPlaceholder(ctx, tpl);
+            if (tpl.imgObj && tpl.loaded) ctx.drawImage(tpl.imgObj, 0, 0, tpl.width, tpl.height);
+
+            if (tpl.skipPosterText) return;
+
+            const c = tpl.textConfig;
+            const scale = parseFloat(posterState.inputs.scale) || 1;
+            
+            ctx.fillStyle = posterState.inputs.color;
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'top';
+
+            const textRect = tpl.textRect;
+            const textX = textRect.x + (textRect.width / 2);
+            const maxTextWidth = textRect.width;
+
+            const name = posterState.inputs.name.trim().toUpperCase();
+            const designation = posterState.inputs.designation.trim();
+            let nameWasDrawn = false;
+            let drawnNameSize = c.name.size * scale;
+
+            if(name) {
+                drawnNameSize = fitFontSize(ctx, name, c.name, scale, maxTextWidth);
+                ctx.font = getPosterNameFont(drawnNameSize);
+                ctx.fillText(name, textX, textRect.y, maxTextWidth);
+                nameWasDrawn = true;
+            }
+
+            if(designation) {
+                ctx.font = getPosterFont(c.message.weight, c.message.size * scale);
+                const nameHeight = nameWasDrawn ? drawnNameSize : 0;
+                const messageHeight = c.message.size * scale;
+                const textGap = textRect.height ? Math.max(8 * scale, (textRect.height - nameHeight - messageHeight) / 2) : c.message.lineHeight * scale * 0.35;
+                ctx.fillText(designation, textX, nameWasDrawn ? textRect.y + nameHeight + textGap : textRect.y, maxTextWidth);
+            }
+        }
+
+        function renderPreview() {
+            if(posterState.isRendering) return;
+            renderTemplate(ctxPreview);
+        }
+
+        function generateFinalImage() {
+            posterState.isRendering = true;
+            const btn = document.getElementById('btn-apply');
+            const origHTML = btn.innerHTML;
+            btn.innerHTML = `<i class="fa-solid fa-circle-notch fa-spin"></i> Processing...`;
+            btn.disabled = true;
+
+            setTimeout(() => {
+                const tpl = getTemplate();
+                updateCanvasSizes(tpl);
+                renderTemplate(ctxExport);
+                document.getElementById('final-result-img').src = document.getElementById('export-canvas').toDataURL('image/png', 1.0);
+                
+                posterState.isRendering = false;
+                btn.innerHTML = origHTML;
+                btn.disabled = false;
+                navigate('view-result');
+                
+                if(typeof confetti !== 'undefined') {
+                    confetti({ particleCount: 150, spread: 80, origin: { y: 0.6 }, colors: ['#d4af37', '#0f172a', '#ffffff'] });
+                }
+            }, 100);
+        }
+
+        function downloadPoster() {
+            const link = document.createElement('a');
+            link.download = `PCSR_Campaign_Poster_${Date.now()}.png`;
+            link.href = document.getElementById('export-canvas').toDataURL('image/png', 1.0);
+            document.body.appendChild(link); link.click(); document.body.removeChild(link);
+        }
+
+        async function createExportBlob() {
+            return new Promise((resolve) => {
+                document.getElementById('export-canvas').toBlob((blob) => { resolve(blob); }, 'image/png');
+            });
+        }
+
+        function getShareText() {
+            const senderDetails = [posterState.inputs.name.trim(), posterState.inputs.designation.trim()].filter(Boolean).join('\n');
+            const langPrefix = state.lang === 'te' 
+                ? "నెల్లూరు ప్రజలతో నిరంతరం, నిత్యం. పర్వతరెడ్డి చంద్రశేఖర్ రెడ్డి గారి డిజిటల్ క్యాంపెయిన్‌లో నేను భాగమయ్యాను."
+                : "I have joined the digital campaign supporting Parvathareddy Chandrasekhar Reddy Garu.";
+            
+            return `${langPrefix}\n\n${senderDetails}\n\n#PCSR4NELLORECITY #ParvathareddyDigital\nJoin here: https://www.parvathareddydigital.com`;
+        }
+
+        async function shareWhatsApp() {
+            const blob = await createExportBlob();
+            if (!blob) { downloadPoster(); showToast('Image downloaded. Attach it manually in WhatsApp.'); return; }
+            const file = new File([blob], `PCSR_Campaign_${Date.now()}.png`, { type: 'image/png' });
+            try {
+                if (navigator.share && (!navigator.canShare || navigator.canShare({ files: [file] }))) {
+                    await navigator.share({ title: 'Campaign Poster', text: getShareText(), files: [file] });
+                    return;
+                }
+            } catch (err) { console.warn('Share API failed', err); }
+            downloadPoster();
+            setTimeout(() => { showToast('Image downloaded! Attach it manually in WhatsApp.'); }, 200);
+        }
+
+        function shareOnFacebook() {
+            const websiteUrl = 'https://www.parvathareddydigital.com';
+            window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(websiteUrl)}&quote=${encodeURIComponent(getShareText())}`, '_blank');
+        }
+
+        // Start Application
+        window.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>
