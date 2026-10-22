@@ -157,6 +157,17 @@
       accent-color: #087CC1;
     }
 
+    /* Auto-fit the PCSR hero portrait without stretching or cropping it. */
+    .pcsr-hero-portrait {
+      position: absolute;
+      inset: 0.75rem;
+      width: calc(100% - 1.5rem);
+      height: calc(100% - 1.5rem);
+      object-fit: contain;
+      object-position: center bottom;
+      display: block;
+    }
+
     /* Hide inactive views cleanly */
     .view-section {
       display: none;
@@ -251,7 +262,7 @@
         <div class="relative w-10 h-10 sm:w-11 sm:h-11 rounded-full overflow-hidden border-2 border-[#48C8D2] bg-campaign-gradient flex items-center justify-center shrink-0 shadow-sm">
           <img
             id="navLogoImg"
-            src="assets/images/logo.png"
+            src="templates/logo.png"
             alt="PCSR Digital Campaign Logo"
             class="w-full h-full object-cover"
             onerror="this.style.display='none'; document.getElementById('navLogoFallback').style.display='flex';"
@@ -395,16 +406,16 @@
             <!-- Right Column: PCSR Leader Portrait Cutout / Frame -->
             <div class="lg:col-span-5 flex flex-col items-center justify-end relative mt-2 lg:mt-0">
               <div class="relative w-full max-w-[360px] aspect-[4/4.6] rounded-3xl bg-gradient-to-b from-white/20 to-white/5 border border-white/30 backdrop-blur-md p-3 flex flex-col items-center justify-end overflow-hidden shadow-2xl">
-                <!-- Actual Owner Portrait Image (`assets/images/pcsr-leader.png`) -->
+                <!-- Actual Owner Portrait Image (`templates/pcsr-leader.png`) -->
                 <img
                   id="pcsrHeroPortrait"
-                  src="assets/images/pcsr-leader.png"
+                  src="templates/pcsr-leader.png"
                   alt="Parvathareddy Chandrasekhar Reddy (PCSR) - Nellore City In-charge"
-                  class="w-full h-full object-contain object-bottom z-10 transition-opacity duration-300"
+                  class="pcsr-hero-portrait z-10 transition-opacity duration-300"
                   onerror="this.style.display='none'; document.getElementById('pcsrPortraitPlaceholder').style.display='flex';"
                 />
 
-                <!-- Clearly identified owner-replaceable portrait slot when `assets/images/pcsr-leader.png` is not yet uploaded -->
+                <!-- Clearly identified owner-replaceable portrait slot when `templates/pcsr-leader.png` is not yet uploaded -->
                 <div id="pcsrPortraitPlaceholder" class="hidden w-full h-full flex-col items-center justify-between p-5 text-center z-10">
                   <div class="w-full flex items-center justify-between text-[11px] font-semibold bg-[#075477]/70 px-3 py-1.5 rounded-full text-[#DDF3F7] border border-white/20">
                     <span>OFFICIAL LEADER PORTRAIT SLOT</span>
@@ -431,7 +442,7 @@
                       Nellore City In-charge
                     </p>
                     <p class="text-[11px] text-white/75 mt-2 max-w-[230px]">
-                      Place <code class="bg-black/25 px-1.5 py-0.5 rounded">assets/images/pcsr-leader.png</code> or click below to preview your official cutout photo now.
+                      Place <code class="bg-black/25 px-1.5 py-0.5 rounded">templates/pcsr-leader.png</code> or click below to preview your official cutout photo now.
                     </p>
                     <button
                       type="button"
@@ -641,14 +652,26 @@
             <span class="w-2 h-2 rounded-full bg-[#079B59]"></span>
             <span id="wardCountBadge">Showing all 72 Ward Templates</span>
           </div>
-          <button
-            type="button"
-            onclick="navigateTo('calibration')"
-            class="font-bold text-[#087CC1] hover:underline inline-flex items-center gap-1 cursor-pointer"
-          >
-            <i data-lucide="sliders" class="w-3.5 h-3.5"></i>
-            <span data-i18n="calibrateTemplatesLink">Manage Artwork & Slot Calibration</span>
-          </button>
+          <div class="flex flex-wrap items-center gap-3 sm:gap-4">
+            <label for="hideMissingWardTemplates" class="inline-flex items-center gap-2 font-semibold cursor-pointer select-none">
+              <input
+                id="hideMissingWardTemplates"
+                type="checkbox"
+                checked
+                onchange="filterWardTemplates()"
+                class="h-4 w-4 accent-[#087CC1] cursor-pointer"
+              />
+              <span data-i18n="hideMissingWardTemplates">Hide wards without images</span>
+            </label>
+            <button
+              type="button"
+              onclick="navigateTo('calibration')"
+              class="font-bold text-[#087CC1] hover:underline inline-flex items-center gap-1 cursor-pointer"
+            >
+              <i data-lucide="sliders" class="w-3.5 h-3.5"></i>
+              <span data-i18n="calibrateTemplatesLink">Manage Artwork & Slot Calibration</span>
+            </button>
+          </div>
         </div>
 
         <!-- 72-Template Responsive Grid (2 cols on mobile, 3 on tablet, 4 on desktop) -->
@@ -742,7 +765,7 @@
                 <i data-lucide="image" class="w-7 h-7"></i>
               </div>
               <span class="text-base font-extrabold text-[#11182D]" data-i18n="uploadFromGallery">Choose from Gallery</span>
-              <span class="text-xs text-[#68758B] mt-1" data-i18n="uploadFormatsHint">JPG, JPEG, PNG or WebP (Max 15MB)</span>
+              <span class="text-xs text-[#68758B] mt-1" data-i18n="uploadFormatsHint">JPG, PNG, WebP, GIF, BMP, AVIF and other browser-supported images (Max 15MB)</span>
             </button>
 
             <!-- Camera Capture Option -->
@@ -758,8 +781,8 @@
               <span class="text-xs text-[#68758B] mt-1" data-i18n="cameraHint">Use front or rear camera</span>
             </button>
 
-            <input id="galleryFileInput" type="file" accept="image/jpeg,image/jpg,image/png,image/webp" class="hidden" onchange="handleUserPhotoSelected(event)" />
-            <input id="cameraFileInput" type="file" accept="image/jpeg,image/jpg,image/png" capture="user" class="hidden" onchange="handleUserPhotoSelected(event)" />
+            <input id="galleryFileInput" type="file" accept="image/*" class="hidden" onchange="handleUserPhotoSelected(event)" />
+            <input id="cameraFileInput" type="file" accept="image/*" capture="user" class="hidden" onchange="handleUserPhotoSelected(event)" />
           </div>
 
           <!-- Selected Photo Preview & Client-Side AI Background Removal Panel -->
@@ -850,14 +873,22 @@
                 </button>
               </div>
 
-              <!-- Continue to Crop & Position -->
+              <!-- Automatic center-fit is the default; cropping remains optional. -->
+              <button
+                type="button"
+                onclick="continueWithAutoFitPhoto()"
+                class="w-full py-4 px-4 rounded-full bg-[#079B59] hover:bg-[#067D49] text-white font-extrabold text-base inline-flex items-center justify-center gap-2 cursor-pointer mt-1 shadow-sm"
+              >
+                <span data-i18n="btnAutoFitContinue">Use Photo (Auto-Fit)</span>
+                <i data-lucide="check-circle" class="w-5 h-5"></i>
+              </button>
               <button
                 type="button"
                 onclick="openCropModal()"
-                class="btn-primary-campaign w-full py-4 text-base inline-flex items-center justify-center gap-2 cursor-pointer mt-1"
+                class="btn-secondary-campaign w-full py-3.5 text-sm inline-flex items-center justify-center gap-2 cursor-pointer"
               >
-                <span data-i18n="btnContinueToCrop">Adjust & Crop Photo</span>
-                <i data-lucide="crop" class="w-5 h-5"></i>
+                <span data-i18n="btnContinueToCrop">Need to Crop? Adjust Photo</span>
+                <i data-lucide="crop" class="w-4 h-4"></i>
               </button>
             </div>
           </div>
@@ -1236,7 +1267,7 @@
                 <img id="finalGeneratedPosterImg" src="" alt="Completed PCSR Digital Campaign Poster" class="w-full h-auto block" />
               </div>
               <span id="finalPosterMetaLabel" class="text-xs font-semibold text-[#68758B] mt-2.5">
-                PCSR-Digital-Ward-01-Poster.png (1080 × 1350 px HD)
+                Poster export uses the selected template’s original dimensions
               </span>
             </div>
 
@@ -1532,9 +1563,9 @@
             <div class="p-5 rounded-2xl bg-[#F8FCFD] border border-slate-200 space-y-2">
               <h3 class="font-extrabold text-base text-[#075477]">3. Required Campaign Assets Checklist</h3>
               <ul class="list-disc list-inside space-y-1.5 text-[#68758B]">
-                <li><code class="text-[#11182D]">assets/images/logo.png</code> — Official PCSR Digital campaign logo.</li>
-                <li><code class="text-[#11182D]">assets/images/pcsr-leader.png</code> — High-resolution cutout portrait of Parvathareddy Chandrasekhar Reddy (PCSR).</li>
-                <li><code class="text-[#11182D]">assets/images/templates/ward-01.png</code> through <code class="text-[#11182D]">ward-72.png</code> — The 72 approved ward-member poster templates (1080×1350 px recommended).</li>
+                <li><code class="text-[#11182D]">templates/logo.png</code> — Official PCSR Digital campaign logo.</li>
+                <li><code class="text-[#11182D]">templates/pcsr-leader.png</code> — High-resolution cutout portrait of Parvathareddy Chandrasekhar Reddy (PCSR).</li>
+                <li><code class="text-[#11182D]">templates/ward-01.png</code> through <code class="text-[#11182D]">ward-72.png</code> — The 72 approved ward-member poster templates (1080×1350 px recommended).</li>
                 <li><code class="text-[#11182D]">SITE_CONFIG.websiteUrl</code> — Set your final custom domain for social share links.</li>
               </ul>
             </div>
@@ -1617,8 +1648,8 @@
         }
         return "https://pcsrdigital.in";
       },
-      leaderPortraitPath: "assets/images/pcsr-leader.png",
-      logoPath: "assets/images/logo.png",
+      leaderPortraitPath: "templates/pcsr-leader.png",
+      logoPath: "templates/logo.png",
       socialLinks: {
         // Populated only when official URLs are provided by the campaign owner
       }
@@ -1659,7 +1690,7 @@
         mediaHeading: "Campaign Photographs & Videos",
         mediaAddBtn: "Preview Local Campaign Media",
         mediaEmptyTitle: "Official Campaign Media Gallery",
-        mediaEmptyDesc: "Place official campaign photos and MP4 videos in assets/images/ or click 'Preview Local Campaign Media' above to test with your campaign files.",
+        mediaEmptyDesc: "Place official campaign photos and MP4 videos in templates/ or click 'Preview Local Campaign Media' above to test with your campaign files.",
         ctaBannerHeading: "Create Your Personalized Campaign Poster",
         ctaBannerSubtext: "Choose your ward member, add your photo, and share your support.",
         ctaBannerPrimaryBtn: "Create Poster",
@@ -1670,6 +1701,7 @@
         searchPlaceholder: "Search ward (1-72) or candidate...",
         filterAllWards: "All 72 Wards (1–72)",
         calibrateTemplatesLink: "Manage Artwork & Slot Calibration",
+        hideMissingWardTemplates: "Hide wards without images",
         emptySearchTitle: "No matching ward templates found",
         emptySearchDesc: "Try searching a ward number between 1 and 72 or clear your search filter.",
         clearSearchBtn: "Show All 72 Wards",
@@ -1682,7 +1714,7 @@
         uploadHeading: "Upload Your Photo",
         uploadSubtext: "Choose a clear portrait photo from your gallery or take a new one.",
         uploadFromGallery: "Choose from Gallery",
-        uploadFormatsHint: "JPG, JPEG, PNG or WebP (Max 15MB)",
+        uploadFormatsHint: "JPG, PNG, WebP, GIF, BMP, AVIF and other browser-supported images (Max 15MB)",
         uploadFromCamera: "Take a Photo",
         cameraHint: "Use front or rear camera",
         previewPhotoLabel: "Selected Portrait",
@@ -1691,7 +1723,8 @@
         bgRemovingTitle: "Removing Background in Browser...",
         btnRemoveBgAi: "Remove Background (AI Auto)",
         btnReplacePhoto: "Replace Photo",
-        btnContinueToCrop: "Adjust & Crop Photo",
+        btnAutoFitContinue: "Use Photo (Auto-Fit)",
+        btnContinueToCrop: "Need to Crop? Adjust Photo",
         privacyNote: "100% Private: Your photo is processed locally in your browser and never uploaded to any external server.",
         cropCancelBtn: "Cancel",
         cropModalHeading: "Adjust Photo",
@@ -1766,7 +1799,7 @@
         mediaHeading: "ప్రచార ఫోటోలు & వీడియోలు",
         mediaAddBtn: "ప్రచార మీడియాను ప్రివ్యూ చేయండి",
         mediaEmptyTitle: "అధికారిక ప్రచార మీడియా గ్యాలరీ",
-        mediaEmptyDesc: "అధికారిక ప్రచార ఫోటోలు మరియు వీడియోలను assets/images/ ఫోల్డర్‌లో ఉంచండి లేదా పై బటన్ ద్వారా ప్రివ్యూ చేయండి.",
+        mediaEmptyDesc: "అధికారిక ప్రచార ఫోటోలు మరియు వీడియోలను templates/ ఫోల్డర్‌లో ఉంచండి లేదా పై బటన్ ద్వారా ప్రివ్యూ చేయండి.",
         ctaBannerHeading: "మీ వ్యక్తిగత ప్రచార పోస్టర్‌ను ఇప్పుడే రూపొందించండి",
         ctaBannerSubtext: "మీ వార్డు మెంబర్‌ను ఎంచుకోండి, మీ ఫోటోను జోడించి మీ మద్దతును పంచుకోండి.",
         ctaBannerPrimaryBtn: "పోస్టర్ తయారు చేయండి",
@@ -1777,6 +1810,7 @@
         searchPlaceholder: "వార్డు నంబర్ (1-72) లేదా అభ్యర్థి పేరు వెతకండి...",
         filterAllWards: "మొత్తం 72 వార్డులు (1–72)",
         calibrateTemplatesLink: "టెంప్లేట్ అమరిక & కాలిబ్రేషన్",
+        hideMissingWardTemplates: "ఫోటోలు లేని వార్డులను దాచండి",
         emptySearchTitle: "మీరు వెతికిన వార్డు టెంప్లేట్ కనుగొనబడలేదు",
         emptySearchDesc: "దయచేసి 1 నుండి 72 మధ్య వార్డు నంబర్‌ను నమోదు చేయండి లేదా ఫిల్టర్‌ను క్లియర్ చేయండి.",
         clearSearchBtn: "మొత్తం 72 వార్డులను చూపించు",
@@ -1789,7 +1823,7 @@
         uploadHeading: "మీ ఫోటోను అప్‌లోడ్ చేయండి",
         uploadSubtext: "మీ గ్యాలరీ నుండి స్పష్టమైన ఫోటోను ఎంచుకోండి లేదా కెమెరాతో కొత్త ఫోటో తీయండి.",
         uploadFromGallery: "గ్యాలరీ నుండి ఎంచుకోండి",
-        uploadFormatsHint: "JPG, JPEG, PNG లేదా WebP (గరిష్టంగా 15MB)",
+        uploadFormatsHint: "JPG, PNG, WebP, GIF, BMP, AVIF తదితర బ్రౌజర్-సపోర్ట్ చిత్రాలు (గరిష్టంగా 15MB)",
         uploadFromCamera: "కెమెరాతో ఫోటో తీయండి",
         cameraHint: "ఫ్రంట్ లేదా బ్యాక్ కెమెరా ఉపయోగించండి",
         previewPhotoLabel: "ఎంచుకున్న ఫోటో",
@@ -1798,7 +1832,8 @@
         bgRemovingTitle: "బ్యాక్‌గ్రౌండ్ తొలగించబడుతోంది...",
         btnRemoveBgAi: "బ్యాక్‌గ్రౌండ్ తొలగించండి (AI Auto)",
         btnReplacePhoto: "మరొక ఫోటో మార్చండి",
-        btnContinueToCrop: "ఫోటోను సర్దుబాటు & క్రాప్ చేయండి",
+        btnAutoFitContinue: "ఫోటోను ఆటో-ఫిట్ చేసి కొనసాగించండి",
+        btnContinueToCrop: "క్రాప్ చేయాలా? ఫోటోను సర్దుబాటు చేయండి",
         privacyNote: "100% సురక్షితం: మీ ఫోటో మీ బ్రౌజర్‌లోనే ప్రాసెస్ చేయబడుతుంది, ఏ సర్వర్‌కు అప్‌లోడ్ చేయబడదు.",
         cropCancelBtn: "రద్దు చేయండి",
         cropModalHeading: "ఫోటోను సర్దుబాటు చేయండి",
@@ -1860,37 +1895,29 @@
        and textSlots so photo and text placement adapt accurately per template.
        ============================================================================ */
     const LAYOUT_PRESETS = [
-      // Preset A: Supporter circular frame bottom-right, Name & Role centered on bottom ribbon
       {
-        name: "Bottom Ribbon + Right Circle Cutout",
-        photoSlot: { id: "supporter-photo", x: 0.65, y: 0.54, width: 0.27, height: 0.22, shape: "circle", fit: "cover", borderColor: "#FFFFFF", borderWidth: 6 },
-        nameSlot:  { id: "supporter-name",  x: 0.50, y: 0.885, width: 0.86, fontSize: 42, minSize: 24, maxSize: 58, color: "#FFFFFF", align: "center", strokeColor: "#075477", strokeWidth: 4 },
-        roleSlot:  { id: "supporter-role",  x: 0.50, y: 0.935, width: 0.84, fontSize: 28, minSize: 18, maxSize: 40, color: "#B9EACB", align: "center", strokeColor: "#075477", strokeWidth: 2 },
+        name: "Bottom-Right Photo Circle + Left Nameplate",
+        // Fits the white circle in the supplied ward-7.jpeg artwork.
+        // Normalized positions let the layout work at the template's native resolution.
+        photoSlot: {
+          id: "supporter-photo",
+          x: 0.728, y: 0.805, width: 0.231, height: 0.185,
+          shape: "circle", fit: "cover", borderColor: "transparent", borderWidth: 0
+        },
+        // Name and designation sit in the coloured strip, immediately left of the circle.
+        nameSlot: {
+          id: "supporter-name",
+          x: 0.38, y: 0.914, width: 0.66,
+          fontSize: 34, minSize: 22, maxSize: 44,
+          color: "#FFFFFF", align: "center", strokeColor: "#075477", strokeWidth: 3
+        },
+        roleSlot: {
+          id: "supporter-role",
+          x: 0.38, y: 0.95, width: 0.66,
+          fontSize: 24, minSize: 17, maxSize: 32,
+          color: "#FFFFFF", align: "center", strokeColor: "#075477", strokeWidth: 2
+        },
         themeVariant: 0
-      },
-      // Preset B: Supporter rounded portrait card bottom-left, Name & Role right-aligned on footer banner
-      {
-        name: "Left Rounded Portrait + Right Footer Nameplate",
-        photoSlot: { id: "supporter-photo", x: 0.07, y: 0.62, width: 0.28, height: 0.27, shape: "rounded", fit: "cover", borderColor: "#48C8D2", borderWidth: 6 },
-        nameSlot:  { id: "supporter-name",  x: 0.65, y: 0.875, width: 0.56, fontSize: 40, minSize: 22, maxSize: 54, color: "#FFFFFF", align: "center", strokeColor: "#11182D", strokeWidth: 4 },
-        roleSlot:  { id: "supporter-role",  x: 0.65, y: 0.928, width: 0.56, fontSize: 27, minSize: 18, maxSize: 38, color: "#DDF3F7", align: "center", strokeColor: "#11182D", strokeWidth: 2 },
-        themeVariant: 1
-      },
-      // Preset C: Supporter rounded portrait bottom-right, Name & Role left-aligned on lower banner
-      {
-        name: "Right Rounded Portrait + Left Nameplate",
-        photoSlot: { id: "supporter-photo", x: 0.65, y: 0.61, width: 0.28, height: 0.27, shape: "rounded", fit: "cover", borderColor: "#B9EACB", borderWidth: 6 },
-        nameSlot:  { id: "supporter-name",  x: 0.35, y: 0.875, width: 0.56, fontSize: 40, minSize: 22, maxSize: 54, color: "#FFFFFF", align: "center", strokeColor: "#075477", strokeWidth: 4 },
-        roleSlot:  { id: "supporter-role",  x: 0.35, y: 0.928, width: 0.56, fontSize: 27, minSize: 18, maxSize: 38, color: "#D6B64C", align: "center", strokeColor: "#075477", strokeWidth: 2 },
-        themeVariant: 2
-      },
-      // Preset D: Center-right circular supporter badge + Full-width dark-navy nameplate bar
-      {
-        name: "Badge Circle + Full-Width Campaign Bar",
-        photoSlot: { id: "supporter-photo", x: 0.63, y: 0.51, width: 0.29, height: 0.23, shape: "circle", fit: "cover", borderColor: "#D6B64C", borderWidth: 6 },
-        nameSlot:  { id: "supporter-name",  x: 0.50, y: 0.89,  width: 0.88, fontSize: 44, minSize: 24, maxSize: 60, color: "#FFFFFF", align: "center", strokeColor: "#11182D", strokeWidth: 4 },
-        roleSlot:  { id: "supporter-role",  x: 0.50, y: 0.94,  width: 0.86, fontSize: 28, minSize: 18, maxSize: 40, color: "#48C8D2", align: "center", strokeColor: "#11182D", strokeWidth: 2 },
-        themeVariant: 3
       }
     ];
 
@@ -1907,8 +1934,11 @@
         candidateNameTe: "",
         candidateRoleEn: `Ward ${wardNum} Corporator Candidate`,
         candidateRoleTe: `వార్డు ${wardNum} కార్పొరేటర్ అభ్యర్థి`,
-        image: `assets/images/templates/ward-${padded}.png`,
-        thumbnail: `assets/images/templates/ward-${padded}.png`,
+        // Inside the WARD_TEMPLATES Array.from generator:
+        // image: `templates/ward-${padded}.png`,
+        // thumbnail: `templates/ward-${padded}.png`,
+        image: `templates/ward-${wardNum}.jpeg`,
+        thumbnail: `templates/ward-${wardNum}.jpeg`,
         customDataUrl: null, // Holds owner-uploaded template image if calibrated in browser
         aspectRatio: "4:5",
         canvas: {
@@ -1927,7 +1957,45 @@
       };
     });
 
-    // Verified Campaign Media Items (Starts empty or loads actual owner files from assets/images/)
+    // Tracks which ward artwork files actually load in this browser session.
+    // Unknown entries are shown temporarily until the image checks finish.
+    const WARD_TEMPLATE_IMAGE_STATUS = Object.create(null);
+    let wardTemplateImageCheckPromise = null;
+
+    async function checkWardTemplateImages() {
+      if (wardTemplateImageCheckPromise) return wardTemplateImageCheckPromise;
+
+      wardTemplateImageCheckPromise = Promise.all(WARD_TEMPLATES.map((template) => {
+        const wardNum = template.wardNumber;
+        if (WARD_TEMPLATE_IMAGE_STATUS[wardNum] !== undefined) return Promise.resolve();
+
+        const src = template.customDataUrl || template.thumbnail || template.image;
+        return new Promise((resolve) => {
+          if (!src) {
+            WARD_TEMPLATE_IMAGE_STATUS[wardNum] = false;
+            resolve();
+            return;
+          }
+
+          const img = new Image();
+          img.onload = () => {
+            WARD_TEMPLATE_IMAGE_STATUS[wardNum] = true;
+            resolve();
+          };
+          img.onerror = () => {
+            WARD_TEMPLATE_IMAGE_STATUS[wardNum] = false;
+            resolve();
+          };
+          img.src = src;
+        });
+      })).then(() => {
+        renderWardTemplatesGrid();
+      });
+
+      return wardTemplateImageCheckPromise;
+    }
+
+    // Verified Campaign Media Items (Starts empty or loads actual owner files from templates/)
     const CAMPAIGN_MEDIA = [];
 
     /* ============================================================================
@@ -2246,8 +2314,12 @@
       const dict = TRANSLATIONS[APP_STATE.language];
       const query = (document.getElementById("wardSearchInput")?.value || "").trim().toLowerCase();
       const rangeVal = document.getElementById("wardRangeSelect")?.value || "all";
+      const hideMissing = document.getElementById("hideMissingWardTemplates")?.checked ?? true;
 
       const filtered = WARD_TEMPLATES.filter((t) => {
+        // Hide templates whose artwork image failed to load (enabled by default).
+        if (hideMissing && WARD_TEMPLATE_IMAGE_STATUS[t.wardNumber] === false) return false;
+
         // Range check
         if (rangeVal !== "all") {
           const [minW, maxW] = rangeVal.split("-").map(Number);
@@ -2437,7 +2509,7 @@
        STREAMING_CHUNK:Implementing Photo Upload Validation and Client-Side AI Background Removal...
        ============================================================================
        MODULE 5: PHOTO UPLOAD & REAL CLIENT-SIDE BACKGROUND REMOVAL
-       - Validates file type (JPG, JPEG, PNG, WebP) and max size (15MB)
+       - Validates browser-supported image files and max size (15MB)
        - Uses @imgly/background-removal via dynamic ES module import in browser
        - Includes an automatic client-side portrait edge-keying fallback if the user's
          mobile connection blocks the 35MB WASM model or runs out of WebAssembly memory,
@@ -2462,50 +2534,67 @@
       const file = event.target.files?.[0];
       if (!file) return;
 
-      const allowedTypes = ["image/jpeg", "image/jpg", "image/png", "image/webp"];
-      if (!allowedTypes.includes(file.type.toLowerCase())) {
+      const fileType = String(file.type || "").toLowerCase();
+      const knownImageExtension = /\.(jpe?g|png|webp|gif|bmp|avif|tiff?)$/i.test(file.name);
+      if (!fileType.startsWith("image/") && !knownImageExtension) {
         showUploadError(
           APP_STATE.language === "te"
-            ? "దయచేసి చెల్లుబాటు అయ్యే ఫోటో ఫార్మాట్ (JPG, JPEG, PNG, WebP) ఎంచుకోండి."
-            : "Unsupported file format. Please choose a JPG, JPEG, PNG, or WebP photograph."
+            ? "దయచేసి JPG, PNG, WebP లేదా మీ బ్రౌజర్ సపోర్ట్ చేసే చిత్ర ఫైల్‌ను ఎంచుకోండి."
+            : "Please choose an image file such as JPG, PNG, WebP, GIF, BMP, or another format supported by your browser."
         );
+        event.target.value = "";
         return;
       }
 
-      const maxBytes = 15 * 1024 * 1024; // 15 MB
+      const maxBytes = 15 * 1024 * 1024;
       if (file.size > maxBytes) {
         showUploadError(
           APP_STATE.language === "te"
             ? "ఫోటో పరిమాణం 15MB కంటే ఎక్కువగా ఉంది. దయచేసి చిన్న ఫోటోను ఎంచుకోండి."
-            : "This photo exceeds the 15MB limit. Please select a smaller portrait image."
+            : "This photo exceeds the 15MB limit. Please select a smaller image."
         );
+        event.target.value = "";
         return;
       }
 
-      if (APP_STATE.originalPhotoUrl) {
-        URL.revokeObjectURL(APP_STATE.originalPhotoUrl);
-      }
+      // Verify that this browser can decode the selected image before opening the crop tool.
       const objectUrl = URL.createObjectURL(file);
-      APP_STATE.originalPhotoUrl = objectUrl;
-      APP_STATE.cutoutPhotoUrl = null;
-      APP_STATE.activePhotoVersion = "original";
-      IDB_HELPER.saveBlob("original_photo", file);
+      const testImage = new Image();
+      testImage.onload = () => {
+        if (APP_STATE.originalPhotoUrl) URL.revokeObjectURL(APP_STATE.originalPhotoUrl);
+        if (APP_STATE.cutoutPhotoUrl) URL.revokeObjectURL(APP_STATE.cutoutPhotoUrl);
 
-      // Update UI to show preview panel
-      const previewImg = document.getElementById("uploadedPhotoPreviewImg");
-      const previewPanel = document.getElementById("uploadedPreviewPanel");
-      const compareGroup = document.getElementById("compareToggleGroup");
-      const noticeBox = document.getElementById("bgRemovalNoticeBox");
-      const statusBadge = document.getElementById("bgStatusBadge");
+        APP_STATE.originalPhotoUrl = objectUrl;
+        APP_STATE.cutoutPhotoUrl = null;
+        APP_STATE.activePhotoVersion = "original";
+        IDB_HELPER.saveBlob("original_photo", file);
 
-      if (previewImg) previewImg.src = objectUrl;
-      if (previewPanel) previewPanel.classList.remove("hidden");
-      if (compareGroup) compareGroup.classList.add("hidden");
-      if (noticeBox) noticeBox.classList.add("hidden");
-      if (statusBadge) {
-        statusBadge.textContent = APP_STATE.language === "te" ? "ఒరిజినల్ ఫోటో" : "Original Image";
-        statusBadge.className = "text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-slate-200 text-slate-700";
-      }
+        const previewImg = document.getElementById("uploadedPhotoPreviewImg");
+        const previewPanel = document.getElementById("uploadedPreviewPanel");
+        const compareGroup = document.getElementById("compareToggleGroup");
+        const noticeBox = document.getElementById("bgRemovalNoticeBox");
+        const statusBadge = document.getElementById("bgStatusBadge");
+
+        if (previewImg) previewImg.src = objectUrl;
+        if (previewPanel) previewPanel.classList.remove("hidden");
+        if (compareGroup) compareGroup.classList.add("hidden");
+        if (noticeBox) noticeBox.classList.add("hidden");
+        if (statusBadge) {
+          statusBadge.textContent = APP_STATE.language === "te" ? "ఒరిజినల్ ఫోటో" : "Original Image";
+          statusBadge.className = "text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-slate-200 text-slate-700";
+        }
+        event.target.value = "";
+      };
+      testImage.onerror = () => {
+        URL.revokeObjectURL(objectUrl);
+        showUploadError(
+          APP_STATE.language === "te"
+            ? "ఈ చిత్ర ఫార్మాట్‌ను మీ బ్రౌజర్ తెరవలేకపోయింది. JPG, PNG లేదా WebP ఉపయోగించండి."
+            : "Your browser cannot open this image format. Please try JPG, PNG, or WebP."
+        );
+        event.target.value = "";
+      };
+      testImage.src = objectUrl;
     }
 
     /**
@@ -2761,6 +2850,27 @@
        ============================================================================
        MODULE 6: CROP & ADJUST PHOTO INTERFACE (crop.js)
        ============================================================================ */
+    function continueWithAutoFitPhoto() {
+      const sourceUrl = APP_STATE.activePhotoVersion === "cutout" && APP_STATE.cutoutPhotoUrl
+        ? APP_STATE.cutoutPhotoUrl
+        : APP_STATE.originalPhotoUrl;
+      if (!sourceUrl) return;
+
+      // Canvas cover-fit automatically centers and scales this image inside the circle.
+      const img = new Image();
+      img.onload = () => {
+        APP_STATE.croppedPhotoUrl = sourceUrl;
+        APP_STATE.croppedImageElement = img;
+        navigateTo("editor");
+      };
+      img.onerror = () => showUploadError(
+        APP_STATE.language === "te"
+          ? "ఫోటోను తెరవలేకపోయాం. దయచేసి మరో ఫోటోను ఎంచుకోండి."
+          : "Could not open this photo. Please choose another image."
+      );
+      img.src = sourceUrl;
+    }
+
     function openCropModal() {
       const sourceUrl = APP_STATE.activePhotoVersion === "cutout" && APP_STATE.cutoutPhotoUrl
         ? APP_STATE.cutoutPhotoUrl
@@ -2884,7 +2994,7 @@
        5. User name & designation in their designated normalized coordinates
        6. Configured font family, color, stroke, and automatic line-wrapping/scaling for long names & Telugu glyphs
        7. Foreground decorative badges
-       8. Export as 1080x1350 HD PNG
+       8. Export as a high-resolution PNG at the source template dimensions
        ============================================================================ */
     function initializeEditorForSelectedWard() {
       const ward = getSelectedWardTemplate();
@@ -3010,22 +3120,24 @@
 
     /**
      * Core Canvas Poster Composition Engine
-     * Renders at full 1080x1350 resolution on targetCanvas.
+     * Renders at the source template’s native dimensions on targetCanvas.
      */
     async function composePosterOnCanvas(targetCanvas, wardTemplate, options = {}) {
       if (!targetCanvas || !wardTemplate) return;
-      const ctx = targetCanvas.getContext("2d");
-      const W = wardTemplate.canvas.width || 1080;
-      const H = wardTemplate.canvas.height || 1350;
-      targetCanvas.width = W;
-      targetCanvas.height = H;
 
-      ctx.clearRect(0, 0, W, H);
-
-      // STEP 1 & 2: Draw Official Template Background Artwork if present, or high-resolution Campaign Artwork Layer
+      // Load the artwork first so export uses its real width and height instead of resizing it.
       const templateSrc = wardTemplate.customDataUrl || wardTemplate.image;
       const bgImg = await loadImageSafe(templateSrc);
+      const W = bgImg?.naturalWidth || wardTemplate.canvas.width || 1080;
+      const H = bgImg?.naturalHeight || wardTemplate.canvas.height || 1350;
+      const canvasScale = W / 1080;
+      const ctx = targetCanvas.getContext("2d");
 
+      targetCanvas.width = W;
+      targetCanvas.height = H;
+      ctx.clearRect(0, 0, W, H);
+
+      // Draw the source artwork at native dimensions to retain its exact size and ratio.
       if (bgImg) {
         ctx.drawImage(bgImg, 0, 0, W, H);
       } else {
@@ -3058,7 +3170,7 @@
           ctx.fillStyle = "rgba(7, 84, 119, 0.16)";
           ctx.fillRect(slotX, slotY, slotW, slotH);
           ctx.fillStyle = "#075477";
-          ctx.font = "700 26px 'Inter', sans-serif";
+          ctx.font = `700 ${26 * canvasScale}px 'Inter', sans-serif`;
           ctx.textAlign = "center";
           ctx.fillText(
             APP_STATE.language === "te" ? "మీ ఫోటో ఇక్కడ" : "YOUR PHOTO",
@@ -3068,13 +3180,15 @@
         }
         ctx.restore();
 
-        // Draw crisp slot border ring
-        ctx.save();
-        createSlotClipPath(ctx, slotX, slotY, slotW, slotH, photoSlot.shape);
-        ctx.lineWidth = photoSlot.borderWidth || 8;
-        ctx.strokeStyle = photoSlot.borderColor || "#FFFFFF";
-        ctx.stroke();
-        ctx.restore();
+        // Draw an extra ring only when this template explicitly requests one.
+        if ((photoSlot.borderWidth || 0) > 0 && photoSlot.borderColor !== "transparent") {
+          ctx.save();
+          createSlotClipPath(ctx, slotX, slotY, slotW, slotH, photoSlot.shape);
+          ctx.lineWidth = photoSlot.borderWidth * canvasScale;
+          ctx.strokeStyle = photoSlot.borderColor || "#FFFFFF";
+          ctx.stroke();
+          ctx.restore();
+        }
       }
 
       // STEP 5 & 6: Draw Supporter Name and Designation in Configured Text Slots
@@ -3091,14 +3205,14 @@
       );
 
       const scaleFactor = (APP_STATE.editor.textSizeScale || 100) / 100;
-      const yOffsetPx = (APP_STATE.editor.verticalOffset || 0) * 2.2;
+      const yOffsetPx = (APP_STATE.editor.verticalOffset || 0) * 2.2 * canvasScale;
       const chosenFont = APP_STATE.editor.fontFamily || "'Noto Sans Telugu', 'Inter', sans-serif";
       const chosenAlign = APP_STATE.editor.textAlign || nameSlot.align || "center";
       const chosenColor = APP_STATE.editor.textColor || nameSlot.color || "#FFFFFF";
 
       if (nameSlot) {
-        const targetFontSize = Math.round((nameSlot.fontSize || 42) * scaleFactor);
-        const clampedFontSize = Math.max(nameSlot.minSize || 22, Math.min(nameSlot.maxSize || 64, targetFontSize));
+        const targetFontSize = Math.round((nameSlot.fontSize || 42) * scaleFactor * canvasScale);
+        const clampedFontSize = Math.max((nameSlot.minSize || 22) * canvasScale, Math.min((nameSlot.maxSize || 64) * canvasScale, targetFontSize));
         const maxTextWidth = (nameSlot.width || 0.84) * W;
 
         let anchorX = nameSlot.x * W;
@@ -3116,12 +3230,13 @@
           color: chosenColor,
           align: chosenAlign,
           strokeColor: nameSlot.strokeColor || "#075477",
-          strokeWidth: nameSlot.strokeWidth || 5
+          strokeWidth: (nameSlot.strokeWidth || 5) * canvasScale,
+          minFontSize: (nameSlot.minSize || 22) * canvasScale
         });
       }
 
       if (roleSlot && displayRole) {
-        const roleFontSize = Math.round((roleSlot.fontSize || 28) * scaleFactor);
+        const roleFontSize = Math.round((roleSlot.fontSize || 28) * scaleFactor * canvasScale);
         const maxRoleWidth = (roleSlot.width || 0.82) * W;
 
         let roleAnchorX = roleSlot.x * W;
@@ -3139,23 +3254,18 @@
           color: roleSlot.color || "#DDF3F7",
           align: chosenAlign,
           strokeColor: roleSlot.strokeColor || "#11182D",
-          strokeWidth: 3
+          strokeWidth: 3 * canvasScale,
+          minFontSize: (roleSlot.minSize || 18) * canvasScale
         });
       }
 
-      // STEP 7: Foreground verification watermark / campaign seal
-      ctx.save();
-      ctx.fillStyle = "rgba(255, 255, 255, 0.82)";
-      ctx.font = "600 18px 'Inter', sans-serif";
-      ctx.textAlign = "right";
-      ctx.fillText("PCSR Digital • Nellore 72 Wards", W - 36, H - 22);
-      ctx.restore();
+      // Keep the source template unchanged beyond the photo, name, and designation overlays.
     }
 
     /**
-     * Draws a rich, high-resolution (1080x1350) Nellore 72-Ward campaign poster template
+     * Draws a rich, high-resolution Nellore 72-Ward campaign poster template
      * using the exact blue (#087CC1), aqua (#48C8D2), deep blue (#075477), green (#079B59),
-     * and white palette when `assets/images/templates/ward-XX.png` is not yet uploaded.
+     * and white palette when `templates/ward-XX.png` is not yet uploaded.
      */
     async function drawBuiltInWardPosterArtwork(ctx, W, H, ward) {
       const padded = String(ward.wardNumber).padStart(2, "0");
@@ -3371,9 +3481,10 @@
       let currentSize = cfg.fontSize;
       ctx.font = `${cfg.fontWeight} ${currentSize}px ${cfg.fontFamily}`;
 
-      // Shrink font size smoothly if name exceeds maxWidth
-      while (ctx.measureText(cfg.text).width > cfg.maxWidth && currentSize > 20) {
-        currentSize -= 2;
+      // Shrink long names to fit without dropping below the configured minimum size.
+      const minFontSize = cfg.minFontSize || 20;
+      while (ctx.measureText(cfg.text).width > cfg.maxWidth && currentSize > minFontSize) {
+        currentSize = Math.max(minFontSize, currentSize - 2);
         ctx.font = `${cfg.fontWeight} ${currentSize}px ${cfg.fontFamily}`;
       }
 
@@ -3451,7 +3562,7 @@
 
       if (finalImg) finalImg.src = dataUrl;
       if (metaLabel) {
-        metaLabel.textContent = `PCSR-Digital-Ward-${padded}-Poster.png (${ward.canvas.width} × ${ward.canvas.height} px HD)`;
+        metaLabel.textContent = `PCSR-Digital-Ward-${padded}-Poster.png (${canvas.width} × ${canvas.height} px)`;
       }
 
       navigateTo("success");
@@ -3682,6 +3793,8 @@
 
       const url = URL.createObjectURL(file);
       ward.customDataUrl = url;
+      WARD_TEMPLATE_IMAGE_STATUS[wardNum] = true;
+      renderWardTemplatesGrid();
       renderCalibratorCanvas(ward);
     }
 
@@ -3731,9 +3844,9 @@ PCSR Digital is a static, mobile-first bilingual (English & Telugu) campaign pos
 
 ## 2. Assets to Supply Before Launch
 Place your official campaign files in these relative paths:
-- \`assets/images/logo.png\` — Official PCSR Digital logo.
-- \`assets/images/pcsr-leader.png\` — High-resolution transparent PNG or portrait of Parvathareddy Chandrasekhar Reddy (PCSR).
-- \`assets/images/templates/ward-01.png\` through \`assets/images/templates/ward-72.png\` — The 72 approved ward-member poster templates (1080×1350 px recommended).
+- \`templates/logo.png\` — Official PCSR Digital logo.
+- \`templates/pcsr-leader.png\` — High-resolution transparent PNG or portrait of Parvathareddy Chandrasekhar Reddy (PCSR).
+- \`templates/ward-01.png\` through \`templates/ward-72.png\` — The 72 approved ward-member poster templates (1080×1350 px recommended).
 
 ## 3. GitHub Pages Deployment Steps
 1. Create a public GitHub repository (e.g., \`pcsr-digital\`).
@@ -3776,6 +3889,9 @@ Place your official campaign files in these relative paths:
 
       // Apply saved or default language
       setLanguage(APP_STATE.language);
+
+      // Detect missing ward artwork and hide those cards by default.
+      checkWardTemplateImages();
 
       // Requirement 5B: Display language-selection popup when visitor opens or refreshes the homepage
       navigateTo("home", { isInitialHomeLoad: true });
