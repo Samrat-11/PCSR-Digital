@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
-  <title>PCSR Digital — Nellore 72 Ward Campaign Poster Creation Platform</title>
-  <meta name="description" content="PCSR Digital — Official Nellore City 72 Ward Campaign Poster Creation Platform supporting Parvathareddy Chandrasekhar Reddy (PCSR) and 72 Ward Members." />
+  <title>Parvathareddy Digital — Nellore 72 Ward Campaign Poster Creation Platform</title>
+  <meta name="description" content="Parvathareddy Digital — Nellore City 72 Ward Campaign Poster Creation Platform supporting Parvathareddy Chandrasekhar Reddy (PCSR) and all 72 wards." />
 
   <!-- Tailwind CSS CDN for rapid responsive layout utilities alongside custom CSS3 design system -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -70,11 +70,11 @@
     }
 
     .glass-nav {
-      background: rgba(255, 255, 255, 0.92);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(72, 200, 210, 0.28);
-      box-shadow: 0 10px 30px -10px rgba(7, 84, 119, 0.12);
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      border: 1px solid rgba(8, 124, 193, 0.14);
+      box-shadow: 0 10px 30px -10px rgba(17, 24, 45, 0.08);
     }
 
     .premium-card {
@@ -192,6 +192,75 @@
       background-size: 20px 20px;
       background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
     }
+
+    /* Scoped Apple-inspired Political Campaign Styles for Home Page (#view-home) */
+    #view-home {
+      background:
+        radial-gradient(ellipse at 50% 0%, rgba(72, 200, 210, 0.14), transparent 52rem),
+        linear-gradient(180deg, #F8FCFD 0%, #F4F9FB 100%);
+    }
+
+    #view-home .apple-hero-surface {
+      background: linear-gradient(145deg, #0D1528 0%, #073B56 58%, #075477 100%);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      box-shadow: 0 30px 60px -24px rgba(17, 24, 45, 0.45);
+    }
+
+    #view-home .apple-glass-pill {
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+    }
+
+    #view-home .apple-section-card {
+      background: rgba(255, 255, 255, 0.94);
+      border-radius: 2rem;
+      border: 1px solid rgba(17, 24, 45, 0.07);
+      box-shadow: 0 20px 50px -22px rgba(17, 24, 45, 0.08);
+    }
+
+    #view-home .home-profile-card {
+      background: #FFFFFF;
+      border-radius: 1.75rem;
+      border: 1px solid rgba(17, 24, 45, 0.08);
+      box-shadow: 0 16px 40px -18px rgba(17, 24, 45, 0.08);
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
+    }
+
+    #view-home .home-profile-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 24px 48px -20px rgba(7, 84, 119, 0.16);
+    }
+
+    #view-home .home-profile-photo {
+      aspect-ratio: 4 / 3.6;
+      background: linear-gradient(160deg, #EBF8FA 0%, #DDF3F7 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    #view-home .home-profile-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center bottom;
+      display: block;
+    }
+
+    #view-home .instagram-embed-slot {
+      min-height: 540px;
+      background: #FFFFFF;
+      border-radius: 1.75rem;
+      border: 1px solid rgba(17, 24, 45, 0.08);
+      box-shadow: 0 14px 34px -18px rgba(17, 24, 45, 0.07);
+    }
+
+    @media (max-width: 640px) {
+      #view-home .instagram-embed-slot {
+        min-height: 480px;
+      }
+    }
   </style>
 </head>
 <body class="min-h-screen flex flex-col justify-between selection:bg-[#48C8D2]/30 selection:text-[#075477]">
@@ -207,13 +276,17 @@
       <div class="absolute top-0 left-0 right-0 h-2 bg-campaign-gradient"></div>
 
       <div class="flex flex-col items-center text-center">
-        <!-- Campaign Emblem -->
-        <div class="w-16 h-16 rounded-2xl bg-soft-campaign border border-[#48C8D2]/40 flex items-center justify-center mb-4 shadow-sm">
-          <span class="text-xl font-extrabold text-gradient-campaign tracking-tight">PCSR</span>
+        <!-- Campaign logo -->
+        <div class="w-16 h-16 rounded-2xl bg-white border border-[#48C8D2]/40 flex items-center justify-center mb-4 shadow-sm p-2">
+          <img
+            src="https://yt3.googleusercontent.com/ObICO3EVk6Mk-KitHb8ISoKC8hVs-zQiXTle0-Og7DXfFPjW3uyTmvqVWlfeQKczDDMaOK1-rg=s900-c-k-c0x00ffffff-no-rj"
+            alt="Parvathareddy Digital Logo"
+            class="w-full h-full object-contain"
+          />
         </div>
 
         <span class="text-xs font-bold uppercase tracking-widest text-[#087CC1] bg-[#DDF3F7] px-3 py-1 rounded-full mb-3">
-          PCSR Digital • Nellore 72 Wards
+          Parvathareddy Digital • Nellore 72 Wards
         </span>
 
         <h2 id="langModalTitle" class="text-xl sm:text-2xl font-bold text-[#11182D] leading-snug mb-1">
@@ -244,7 +317,7 @@
         </div>
 
         <p class="text-xs text-[#68758B] mt-5">
-          You can switch between <strong class="text-[#11182D]">EN</strong> and <strong class="text-[#11182D]">TE</strong> anytime in the top navigation bar.
+          You can switch between <strong class="text-[#11182D]">English</strong> and <strong class="text-[#11182D]">తెలుగు</strong> anytime in the top navigation bar.
         </p>
       </div>
     </div>
@@ -252,65 +325,62 @@
 
   <!-- =====================================================================
        5A. TOP NAVIGATION BAR
-       Compact, pill-shaped, Apple-inspired header with actual logo slot,
-       PCSR Digital brand, navigation links, and EN/TE language switcher.
+       Compact, pill-shaped, Apple-inspired header with supplied campaign logo,
+       Parvathareddy Digital brand, navigation links, and English/Telugu selector.
        ===================================================================== -->
   <header class="sticky top-0 z-40 px-3 sm:px-6 pt-3 pb-2">
-    <nav aria-label="Main Navigation" class="max-w-7xl mx-auto glass-nav rounded-full px-3.5 sm:px-6 py-2.5 flex items-center justify-between gap-2">
-      <!-- Left: Campaign Logo & PCSR Digital Title -->
-      <a href="#home" onclick="navigateTo('home'); return false;" class="flex items-center gap-2.5 sm:gap-3 group focus:outline-none">
-        <div class="relative w-10 h-10 sm:w-11 sm:h-11 rounded-full overflow-hidden border-2 border-[#48C8D2] bg-campaign-gradient flex items-center justify-center shrink-0 shadow-sm">
+    <nav aria-label="Main Navigation" class="max-w-7xl mx-auto glass-nav rounded-full px-3 sm:px-6 py-2.5 flex items-center justify-between gap-2">
+      <!-- Left: Campaign Logo & Parvathareddy Digital Title -->
+      <a href="#home" onclick="navigateTo('home'); return false;" class="flex items-center gap-2.5 sm:gap-3 min-w-0 group focus:outline-none">
+        <div class="relative w-10 h-10 sm:w-11 sm:h-11 rounded-full overflow-hidden border border-[#48C8D2]/50 bg-white flex items-center justify-center shrink-0 shadow-sm">
           <img
             id="navLogoImg"
-            src="templates/logo.png"
-            alt="PCSR Digital Campaign Logo"
-            class="w-full h-full object-cover"
+            src="https://yt3.googleusercontent.com/ObICO3EVk6Mk-KitHb8ISoKC8hVs-zQiXTle0-Og7DXfFPjW3uyTmvqVWlfeQKczDDMaOK1-rg=s900-c-k-c0x00ffffff-no-rj"
+            alt="Parvathareddy Digital Logo"
+            class="w-full h-full object-contain p-0.5"
             onerror="this.style.display='none'; document.getElementById('navLogoFallback').style.display='flex';"
           />
-          <div id="navLogoFallback" class="hidden w-full h-full items-center justify-center text-white font-extrabold text-xs tracking-tighter">
-            PCSR
+          <div id="navLogoFallback" class="hidden w-full h-full items-center justify-center bg-campaign-gradient text-white font-extrabold text-xs tracking-tighter">
+            PD
           </div>
         </div>
-        <div class="flex flex-col">
-          <div class="flex items-center gap-1.5">
-            <span class="font-extrabold text-base sm:text-lg tracking-tight text-[#11182D] group-hover:text-[#087CC1] transition-colors">
-              PCSR Digital
+        <div class="flex flex-col min-w-0">
+          <div class="flex items-center gap-1.5 min-w-0">
+            <span class="font-extrabold text-sm sm:text-lg tracking-tight text-[#11182D] group-hover:text-[#087CC1] transition-colors truncate">
+              Parvathareddy Digital
             </span>
-            <span class="hidden md:inline-block text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-[#DDF3F7] text-[#075477]">
+            <span class="hidden xl:inline-block text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-[#DDF3F7] text-[#075477] shrink-0">
               72 Wards
             </span>
           </div>
-          <span class="text-[11px] text-[#68758B] hidden sm:inline leading-none" data-i18n="navSubtitle">
+          <span class="text-[11px] text-[#68758B] hidden sm:inline leading-none truncate" data-i18n="navSubtitle">
             Nellore City Campaign Platform
           </span>
         </div>
       </a>
 
       <!-- Center Quick Nav Links (Desktop) -->
-      <div class="hidden lg:flex items-center gap-1 bg-[#F2F9FB] p-1 rounded-full border border-[#087CC1]/10">
-        <button type="button" onclick="navigateTo('home')" data-nav="home" class="nav-pill px-4 py-1.5 rounded-full text-xs font-semibold text-[#075477] hover:bg-white transition-all" data-i18n="navHome">
+      <div class="hidden lg:flex items-center gap-1 bg-[#F2F9FB] p-1 rounded-full border border-[#087CC1]/10 shrink-0">
+        <button type="button" onclick="navigateTo('home')" data-nav="home" class="nav-pill px-4 py-1.5 rounded-full text-xs font-semibold text-[#075477] hover:bg-white transition-all cursor-pointer" data-i18n="navHome">
           Home
         </button>
-        <button type="button" onclick="navigateTo('templates')" data-nav="templates" class="nav-pill px-4 py-1.5 rounded-full text-xs font-semibold text-[#075477] hover:bg-white transition-all" data-i18n="navTemplates">
+        <button type="button" onclick="navigateTo('templates')" data-nav="templates" class="nav-pill px-4 py-1.5 rounded-full text-xs font-semibold text-[#075477] hover:bg-white transition-all cursor-pointer" data-i18n="navTemplates">
           72 Ward Templates
-        </button>
-        <button type="button" onclick="navigateTo('calibration')" data-nav="calibration" class="nav-pill px-4 py-1.5 rounded-full text-xs font-semibold text-[#075477] hover:bg-white transition-all" data-i18n="navAdmin">
-          Calibration & Setup
         </button>
       </div>
 
-      <!-- Right: Quick CTA & EN / TE Language Selector -->
-      <div class="flex items-center gap-2 sm:gap-3">
+      <!-- Right: Create Poster CTA & English / Telugu Language Selector -->
+      <div class="flex items-center gap-2 sm:gap-3 shrink-0">
         <button
           type="button"
           onclick="navigateTo('templates')"
-          class="hidden sm:inline-flex items-center gap-1.5 btn-primary-campaign text-xs sm:text-sm px-4 py-2"
+          class="hidden md:inline-flex items-center gap-1.5 btn-primary-campaign text-xs sm:text-sm px-4 py-2 cursor-pointer"
         >
           <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
           <span data-i18n="navCreatePoster">Create Poster</span>
         </button>
 
-        <!-- Pill Language Switcher: EN | TE -->
+        <!-- Pill Language Switcher: English | తెలుగు -->
         <div role="group" aria-label="Language Selector" class="inline-flex items-center bg-[#EBF7FA] p-1 rounded-full border border-[#48C8D2]/40">
           <button
             type="button"
@@ -319,7 +389,7 @@
             class="px-2.5 sm:px-3 py-1 rounded-full text-xs font-bold transition-all cursor-pointer"
             aria-label="Switch language to English"
           >
-            EN
+            English
           </button>
           <button
             type="button"
@@ -328,65 +398,66 @@
             class="px-2.5 sm:px-3 py-1 rounded-full text-xs font-bold font-telugu transition-all cursor-pointer"
             aria-label="తెలుగు భాషకు మార్చండి"
           >
-            TE
+            తెలుగు
           </button>
         </div>
       </div>
     </nav>
-  </header>
+
+    <!-- Mobile Navigation Bar -->
+    <!-- <nav aria-label="Mobile navigation" class="lg:hidden max-w-7xl mx-auto mt-2 glass-nav rounded-full px-2 py-1.5 flex items-center justify-around gap-1">
+      <button type="button" onclick="navigateTo('home')" data-nav="home" class="nav-pill flex items-center gap-1 px-3 py-1.5 rounded-full text-[11px] font-semibold text-[#075477] hover:bg-white transition-all cursor-pointer">
+        <i data-lucide="house" class="w-3.5 h-3.5"></i>
+        <span data-i18n="mobileNavHome">Home</span>
+      </button>
+      <button type="button" onclick="navigateTo('templates')" data-nav="templates" class="nav-pill flex items-center gap-1 px-3 py-1.5 rounded-full text-[11px] font-semibold text-[#075477] hover:bg-white transition-all cursor-pointer">
+        <i data-lucide="layout-grid" class="w-3.5 h-3.5"></i>
+        <span data-i18n="mobileNavTemplates">72 Ward Templates</span>
+      </button>
+      <button type="button" onclick="navigateTo('templates')" class="flex items-center gap-1 px-3 py-1.5 rounded-full text-[11px] font-extrabold bg-campaign-gradient text-white shadow-sm transition-all cursor-pointer">
+        <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+        <span data-i18n="mobileNavCreatePoster">Create Poster</span>
+      </button>
+    </nav>
+  </header> -->
 
   <!-- MAIN APPLICATION CONTAINER -->
   <main class="flex-grow">
 
     <!-- =====================================================================
-         VIEW 1: HOMEPAGE (index.html equivalent)
+         VIEW 1: HOMEPAGE — PREMIUM APPLE-INSPIRED POLITICAL CAMPAIGN THEME
          ===================================================================== -->
     <section id="view-home" class="view-section active">
-      <!-- 5C. PCSR LEADER SPOTLIGHT HERO SECTION -->
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 pt-3 pb-10 sm:py-8">
-        <div class="relative rounded-[2rem] overflow-hidden bg-campaign-gradient text-white shadow-xl border border-white/20">
-          <!-- Subtle ambient radial highlight -->
-          <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.22),transparent_60%)] pointer-events-none"></div>
 
-          <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 items-center gap-6 lg:gap-8 p-6 sm:p-10 lg:p-14 pb-0 lg:pb-14">
-            <!-- Left Column: Campaign Copy & CTAs -->
+      <!-- 1. HERO SECTION -->
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 pt-4 pb-8 sm:pt-8 sm:pb-12">
+        <div class="apple-hero-surface relative rounded-[2.25rem] overflow-hidden text-white">
+          <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(72,200,210,0.22),transparent_58%)] pointer-events-none"></div>
+
+          <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 items-center gap-8 lg:gap-10 p-6 sm:p-10 lg:p-14">
+            <!-- Left Column: Concise Campaign Messaging & Primary/Secondary CTAs -->
             <div class="lg:col-span-7 flex flex-col items-start text-left">
-              <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/15 backdrop-blur-md border border-white/25 mb-4">
-                <span class="w-2 h-2 rounded-full bg-[#B9EACB] animate-pulse"></span>
-                <span class="text-xs font-extrabold tracking-widest uppercase text-white" data-i18n="heroEyebrow">
+              <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full apple-glass-pill mb-5">
+                <span class="w-2 h-2 rounded-full bg-[#B9EACB]"></span>
+                <span class="text-[11px] sm:text-xs font-extrabold tracking-widest uppercase text-white" data-i18n="heroEyebrow">
                   NELLORE CITY CAMPAIGN
                 </span>
               </div>
 
-              <h1 class="text-3xl sm:text-5xl lg:text-[3.35rem] font-extrabold tracking-tight leading-[1.12] mb-4" data-i18n="heroHeading">
-                Together for Our 72 Wards
+              <h1 class="text-3xl sm:text-5xl lg:text-[3.5rem] font-extrabold tracking-tight leading-[1.08] mb-5" data-i18n="heroHeading">
+                Together for Nellore's 72 Wards
               </h1>
 
-              <p class="text-base sm:text-lg text-white/90 max-w-xl leading-relaxed mb-6 font-normal" data-i18n="heroSubtext">
-                Explore the 72 ward-member campaign posters and create your personalized poster to show your support.
+              <p class="text-base sm:text-lg text-white/85 max-w-2xl leading-relaxed mb-8 font-normal" data-i18n="heroSubtext">
+                Explore campaign posters for all 72 wards of Nellore City. Choose your ward template, add your photo and details, and create a personalized poster ready to download and share.
               </p>
 
-              <!-- Leader Identification Card -->
-              <div class="w-full sm:w-auto bg-white/15 backdrop-blur-md border border-white/25 rounded-2xl p-4 mb-7 flex items-center gap-3.5">
-                <div class="w-11 h-11 rounded-xl bg-white text-[#075477] flex items-center justify-center font-extrabold text-sm shrink-0 shadow">
-                  PCSR
-                </div>
-                <div>
-                  <div class="text-base sm:text-lg font-extrabold text-white leading-snug" data-i18n="leaderName">
-                    Parvathareddy Chandrasekhar Reddy (PCSR)
-                  </div>
-                  <div class="text-xs sm:text-sm font-medium text-[#DDF3F7]" data-i18n="leaderRole">
-                    Nellore City In-charge • Supporting 72 Ward Candidates
-                  </div>
-                </div>
-              </div>
-
               <!-- Primary & Secondary CTA Buttons -->
-              <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 w-full sm:w-auto">
+              <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 w-full sm:w-auto mb-8">
                 <button
                   type="button"
                   onclick="navigateTo('templates')"
-                  class="inline-flex items-center justify-center gap-2.5 bg-white text-[#075477] hover:bg-[#DDF3F7] font-extrabold text-base px-7 py-4 rounded-full shadow-lg transition-all cursor-pointer"
+                  class="inline-flex items-center justify-center gap-2.5 bg-white text-[#11182D] hover:bg-[#DDF3F7] font-extrabold text-sm sm:text-base px-7 py-4 rounded-full shadow-lg transition-all cursor-pointer"
                 >
                   <i data-lucide="image-plus" class="w-5 h-5 text-[#087CC1]"></i>
                   <span data-i18n="heroPrimaryCta">Create Your Support Poster</span>
@@ -395,30 +466,44 @@
                 <button
                   type="button"
                   onclick="navigateTo('templates')"
-                  class="inline-flex items-center justify-center gap-2 bg-white/15 hover:bg-white/25 text-white border border-white/35 font-bold text-base px-6 py-4 rounded-full backdrop-blur-sm transition-all cursor-pointer"
+                  class="inline-flex items-center justify-center gap-2 apple-glass-pill hover:bg-white/20 text-white font-bold text-sm sm:text-base px-7 py-4 rounded-full transition-all cursor-pointer"
                 >
-                  <span data-i18n="heroSecondaryCta">Explore 72 Ward Members</span>
+                  <span data-i18n="heroSecondaryCta">Explore 72 Ward Templates</span>
                   <i data-lucide="arrow-right" class="w-4 h-4"></i>
                 </button>
               </div>
+
+              <!-- Leader Quick Context Pill -->
+              <!-- <div class="w-full sm:w-auto apple-glass-pill rounded-2xl p-4 flex items-center gap-3.5">
+                <div class="w-11 h-11 rounded-xl bg-white text-[#075477] flex items-center justify-center font-extrabold text-sm shrink-0 shadow-sm">
+                  PCSR
+                </div>
+                <div>
+                  <div class="text-sm sm:text-base font-extrabold text-white leading-snug" data-i18n="leaderName">
+                    Parvathareddy Chandrasekhar Reddy (PCSR)
+                  </div>
+                  <div class="text-xs sm:text-sm font-medium text-[#DDF3F7]" data-i18n="leaderRole">
+                    Nellore City YSRCP Party In-charge
+                  </div>
+                </div>
+              </div> -->
             </div>
 
-            <!-- Right Column: PCSR Leader Portrait Cutout / Frame -->
-            <div class="lg:col-span-5 flex flex-col items-center justify-end relative mt-2 lg:mt-0">
-              <div class="relative w-full max-w-[360px] aspect-[4/4.6] rounded-3xl bg-gradient-to-b from-white/20 to-white/5 border border-white/30 backdrop-blur-md p-3 flex flex-col items-center justify-end overflow-hidden shadow-2xl">
-                <!-- Actual Owner Portrait Image (`templates/pcsr-leader.png`) -->
+            <!-- Right Column: PCSR Spotlight Portrait Frame -->
+            <div class="lg:col-span-5 flex flex-col items-center justify-center">
+              <div class="relative w-full max-w-[360px] aspect-[4/4.5] rounded-[2rem] bg-gradient-to-b from-white/15 to-white/5 border border-white/25 backdrop-blur-md p-0 flex flex-col items-center justify-end overflow-hidden shadow-2xl">
                 <img
                   id="pcsrHeroPortrait"
                   src="templates/pcsr-leader.png"
-                  alt="Parvathareddy Chandrasekhar Reddy (PCSR) - Nellore City In-charge"
+                  alt="Parvathareddy Chandrasekhar Reddy (PCSR) - Nellore City YSRCP Party In-charge"
                   class="pcsr-hero-portrait z-10 transition-opacity duration-300"
                   onerror="this.style.display='none'; document.getElementById('pcsrPortraitPlaceholder').style.display='flex';"
                 />
 
-                <!-- Clearly identified owner-replaceable portrait slot when `templates/pcsr-leader.png` is not yet uploaded -->
+                <!-- Fallback slot if templates/pcsr-leader.png is not found on disk -->
                 <div id="pcsrPortraitPlaceholder" class="hidden w-full h-full flex-col items-center justify-between p-5 text-center z-10">
                   <div class="w-full flex items-center justify-between text-[11px] font-semibold bg-[#075477]/70 px-3 py-1.5 rounded-full text-[#DDF3F7] border border-white/20">
-                    <span>OFFICIAL LEADER PORTRAIT SLOT</span>
+                    <span>OFFICIAL LEADER PORTRAIT</span>
                     <button
                       type="button"
                       onclick="document.getElementById('quickPcsrUpload').click()"
@@ -428,30 +513,16 @@
                     </button>
                   </div>
 
-                  <!-- Stylized Campaign Silhouette & Framing (No fake AI face) -->
                   <div class="my-auto flex flex-col items-center">
-                    <div class="w-28 h-28 rounded-full bg-white/15 border-2 border-white/40 flex items-center justify-center mb-3 shadow-inner">
-                      <svg class="w-16 h-16 text-white/90" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
-                      </svg>
+                    <div class="w-24 h-24 rounded-full bg-white/15 border border-white/35 flex items-center justify-center mb-3">
+                      <i data-lucide="user-round" class="w-12 h-12 text-white/90"></i>
                     </div>
                     <p class="text-sm font-extrabold text-white" data-i18n="leaderName">
                       Parvathareddy Chandrasekhar Reddy (PCSR)
                     </p>
-                    <p class="text-xs text-[#DDF3F7] mt-0.5" data-i18n="leaderRoleShort">
-                      Nellore City In-charge
+                    <p class="text-xs text-[#DDF3F7] mt-1" data-i18n="leaderRole">
+                      Nellore City YSRCP Party In-charge
                     </p>
-                    <p class="text-[11px] text-white/75 mt-2 max-w-[230px]">
-                      Place <code class="bg-black/25 px-1.5 py-0.5 rounded">templates/pcsr-leader.png</code> or click below to preview your official cutout photo now.
-                    </p>
-                    <button
-                      type="button"
-                      onclick="document.getElementById('quickPcsrUpload').click()"
-                      class="mt-3 inline-flex items-center gap-1.5 text-xs font-bold bg-white text-[#075477] px-3.5 py-2 rounded-full shadow hover:bg-[#DDF3F7] transition-all cursor-pointer"
-                    >
-                      <i data-lucide="upload" class="w-3.5 h-3.5"></i>
-                      <span data-i18n="btnPreviewOfficialPhoto">Load Official PCSR Photo</span>
-                    </button>
                     <input type="file" id="quickPcsrUpload" accept="image/png,image/jpeg,image/webp" class="hidden" onchange="handleLeaderPhotoPreview(event)" />
                   </div>
 
@@ -467,99 +538,241 @@
         </div>
       </div>
 
-      <!-- 5D. CAMPAIGN INTRODUCTION SECTION -->
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
-        <div class="bg-white rounded-[2rem] p-6 sm:p-10 lg:p-12 border border-[#087CC1]/15 shadow-sm">
-          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            <!-- Left: Visual Indicator for 72 Ward Members -->
-            <div class="lg:col-span-5">
-              <div class="rounded-3xl bg-soft-campaign p-6 sm:p-8 border border-[#48C8D2]/40 relative overflow-hidden">
-                <div class="flex items-center justify-between mb-4">
-                  <span class="text-xs font-extrabold uppercase tracking-wider text-[#075477] bg-white px-3 py-1 rounded-full shadow-sm" data-i18n="introTag">
-                    Nellore Municipal Corporation
-                  </span>
-                  <span class="text-xs font-bold text-[#079B59] bg-[#B9EACB]/60 px-2.5 py-1 rounded-full">
-                    Ward 01 – Ward 72
-                  </span>
+      <!-- 2. CAMPAIGN LEADERSHIP SECTION (PCSR + MAYORAL CANDIDATE PROFILE CARDS) -->
+      <section class="max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-12" aria-labelledby="leadershipHeading">
+        <div class="max-w-2xl mb-8">
+          <span class="text-xs font-extrabold uppercase tracking-widest text-[#087CC1]" data-i18n="leadershipEyebrow">
+            CAMPAIGN LEADERSHIP
+          </span>
+          <h2 id="leadershipHeading" class="text-2xl sm:text-4xl font-extrabold text-[#11182D] tracking-tight mt-1.5" data-i18n="leadershipHeading">
+            Leadership Supporting Nellore's 72 Wards
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+          <!-- Profile Card 1: Parvathareddy Chandrasekhar Reddy (PCSR) -->
+          <article class="home-profile-card overflow-hidden flex flex-col">
+            <div class="home-profile-photo">
+              <img
+                id="pcsrLeadershipCardImg"
+                src="templates/pcsr-leader.png"
+                alt="Parvathareddy Chandrasekhar Reddy (PCSR)"
+                loading="lazy"
+                onerror="this.style.display='none'; document.getElementById('pcsrCardPhotoFallback').style.display='flex';"
+              />
+              <div id="pcsrCardPhotoFallback" class="hidden absolute inset-0 flex-col items-center justify-center text-center p-6 text-[#075477]">
+                <div class="w-20 h-20 rounded-full bg-white/85 border border-[#087CC1]/20 flex items-center justify-center mb-3 shadow-sm">
+                  <i data-lucide="user-round" class="w-10 h-10 text-[#087CC1]"></i>
                 </div>
-                <div class="flex items-baseline gap-3 my-2">
-                  <span class="text-6xl sm:text-7xl font-extrabold text-gradient-campaign tracking-tight">72</span>
-                  <span class="text-xl sm:text-2xl font-extrabold text-[#11182D]" data-i18n="intro72Label">
-                    Ward Members
-                  </span>
-                </div>
-                <p class="text-sm text-[#075477] font-medium leading-relaxed mb-5" data-i18n="introCardDesc">
-                  Every single ward across Nellore City has a dedicated, custom-calibrated campaign poster template supporting its corporator candidate.
-                </p>
-                <div class="grid grid-cols-3 gap-2 text-center">
-                  <div class="bg-white/90 rounded-xl p-2.5 border border-[#087CC1]/10">
-                    <div class="text-xs font-bold text-[#68758B]" data-i18n="statStep1">Step 1</div>
-                    <div class="text-xs font-extrabold text-[#075477] mt-0.5" data-i18n="statPickWard">Pick Ward</div>
-                  </div>
-                  <div class="bg-white/90 rounded-xl p-2.5 border border-[#087CC1]/10">
-                    <div class="text-xs font-bold text-[#68758B]" data-i18n="statStep2">Step 2</div>
-                    <div class="text-xs font-extrabold text-[#087CC1] mt-0.5" data-i18n="statAddPhoto">Add Photo</div>
-                  </div>
-                  <div class="bg-white/90 rounded-xl p-2.5 border border-[#087CC1]/10">
-                    <div class="text-xs font-bold text-[#68758B]" data-i18n="statStep3">Step 3</div>
-                    <div class="text-xs font-extrabold text-[#079B59] mt-0.5" data-i18n="statShare">Download & Share</div>
-                  </div>
-                </div>
+                <span class="text-sm font-extrabold" data-i18n="leaderName">Parvathareddy Chandrasekhar Reddy (PCSR)</span>
               </div>
+              <span class="absolute top-4 left-4 text-[11px] font-extrabold uppercase tracking-wider px-3 py-1 rounded-full bg-white/90 backdrop-blur-md text-[#075477] shadow-sm" data-i18n="leaderBadgeLabel">
+                PCSR
+              </span>
             </div>
 
-            <!-- Right: Campaign Introduction Explanation & Action -->
+            <div class="p-6 sm:p-8 flex flex-col flex-grow justify-between">
+              <div>
+                <h3 class="text-xl sm:text-2xl font-extrabold text-[#11182D] tracking-tight" data-i18n="leaderName">
+                  Parvathareddy Chandrasekhar Reddy
+                </h3>
+                <p class="text-sm font-bold text-[#087CC1] mt-1" data-i18n="leaderRole">
+                  Nellore City YSRCP Party In-charge
+                </p>
+                <p class="text-sm text-[#68758B] leading-relaxed mt-3" data-i18n="leaderSupport">
+                  Supporting the campaign across all 72 wards of Nellore City.
+                </p>
+              </div>
+            </div>
+          </article>
+
+          <!-- =================================================================
+               MAYORAL CANDIDATE PROFILE CARD PLACEHOLDER
+               To replace the mayoral candidate's photo, name, and designation:
+               1. Place the official candidate photo at `templates/mayoral-candidate.png`
+                  (or update `MAYORAL_CANDIDATE_CONFIG.photoPath` in the script).
+               2. Update the candidate's name and role in `MAYORAL_CANDIDATE_CONFIG`
+                  or directly in `#mayoralCandidateName` and `#mayoralCandidateRole` below.
+               ================================================================= -->
+          <article class="home-profile-card overflow-hidden flex flex-col">
+            <div class="home-profile-photo">
+              <img
+                id="mayoralCandidatePhotoImg"
+                src="templates/mayoral-candidate.jpg"
+                alt="Nellore City Mayoral Candidate"
+                loading="lazy"
+                onerror="this.style.display='none'; document.getElementById('mayoralPhotoPlaceholderBox').style.display='flex';"
+              />
+              <div id="mayoralPhotoPlaceholderBox" class="hidden absolute inset-0 flex-col items-center justify-center text-center p-6 text-[#075477]">
+                <div class="w-20 h-20 rounded-full bg-white/85 border border-[#079B59]/25 flex items-center justify-center mb-3 shadow-sm">
+                  <i data-lucide="user-check" class="w-10 h-10 text-[#079B59]"></i>
+                </div>
+                <span class="text-sm font-bold text-[#11182D]" data-i18n="mayoralPhotoPlaceholder">
+                  Mayoral Candidate Photograph Placeholder
+                </span>
+                <span class="text-xs text-[#68758B] mt-1">
+                  Asset path: <code class="bg-white/90 px-1.5 py-0.5 rounded text-[#075477]">templates/mayoral-candidate.jpg</code>
+                </span>
+              </div>
+              <span class="absolute top-4 left-4 text-[11px] font-extrabold uppercase tracking-wider px-3 py-1 rounded-full bg-white/90 backdrop-blur-md text-[#079B59] shadow-sm" data-i18n="mayoralBadgeLabel">
+                Mayoral Election
+              </span>
+            </div>
+
+            <div class="p-6 sm:p-8 flex flex-col flex-grow justify-between">
+              <div>
+                <!-- Configurable Mayoral Candidate Name & Role -->
+                <h3 id="mayoralCandidateName" class="text-xl sm:text-2xl font-extrabold text-[#11182D] tracking-tight" data-i18n="mayoralNamePlaceholder">
+                  Anam Vijay Kumar Reddy
+                </h3>
+                <p id="mayoralCandidateRole" class="text-sm font-bold text-[#079B59] mt-1" data-i18n="mayoralRole">
+                  Nellore Municipal Corporation Mayoral Candidate
+                </p>
+                <p id="mayoralCandidateMessage" class="text-sm text-[#68758B] leading-relaxed mt-3" data-i18n="mayoralSupportingMessage">
+                  Participating as the mayoral candidate in the Nellore City election.
+                </p>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- 3. CAMPAIGN OVERVIEW SECTION (ABOUT THE 72-WARD INITIATIVE) -->
+      <section class="max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-12" aria-labelledby="overviewHeading">
+        <div class="apple-section-card p-6 sm:p-10 lg:p-14">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            <!-- Left Column: Eyebrow, Heading, Description & CTA -->
             <div class="lg:col-span-7 flex flex-col items-start">
-              <span class="text-xs font-extrabold uppercase tracking-widest text-[#087CC1] mb-2" data-i18n="introEyebrow">
+              <span class="text-xs font-extrabold uppercase tracking-widest text-[#087CC1] mb-2.5" data-i18n="introEyebrow">
                 ABOUT THE 72-WARD INITIATIVE
               </span>
-              <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#11182D] leading-tight mb-4" data-i18n="introHeading">
-                Show Your Personal Support for Your Ward Candidate & PCSR
+              <h2 id="overviewHeading" class="text-2xl sm:text-4xl font-extrabold text-[#11182D] tracking-tight leading-tight mb-4" data-i18n="introHeading">
+                Show Your Personal Support for Your Ward Candidate
               </h2>
-              <p class="text-base text-[#68758B] leading-relaxed mb-4" data-i18n="introBody1">
-                Under the leadership of Nellore City In-charge Parvathareddy Chandrasekhar Reddy (PCSR), our campaign unites all 72 wards of Nellore City with a shared vision for civic progress and responsive representation.
+              <p class="text-base sm:text-lg text-[#68758B] leading-relaxed mb-8" data-i18n="introBody">
+                Each of Nellore City's 72 wards has a dedicated campaign poster template. Select your ward, upload your photo, enter your name and designation, and generate a personalized campaign poster.
               </p>
-              <p class="text-base text-[#68758B] leading-relaxed mb-6" data-i18n="introBody2">
-                Each poster template corresponds to a specific ward member candidate (Ward 1 to Ward 72). Simply select your ward, upload your photo with automatic background removal, enter your name and designation, and download a high-resolution poster ready for WhatsApp, Facebook, and X.
-              </p>
+
               <button
                 type="button"
                 onclick="navigateTo('templates')"
-                class="btn-primary-campaign inline-flex items-center gap-2.5 px-7 py-3.5 text-base cursor-pointer"
+                class="btn-primary-campaign inline-flex items-center gap-2.5 px-7 py-4 text-sm sm:text-base font-extrabold cursor-pointer"
               >
                 <span data-i18n="introExploreBtn">Explore All 72 Ward Templates</span>
                 <i data-lucide="layout-grid" class="w-4 h-4"></i>
               </button>
             </div>
+
+            <!-- Right Column: 3-Step Visual Workflow Cards -->
+            <div class="lg:col-span-5 flex flex-col gap-4">
+              <div class="flex items-start gap-4 p-5 rounded-2xl bg-[#F8FCFD] border border-[#087CC1]/12">
+                <div class="w-10 h-10 rounded-xl bg-[#DDF3F7] text-[#075477] font-extrabold text-sm flex items-center justify-center shrink-0">
+                  1
+                </div>
+                <div>
+                  <h3 class="text-base font-extrabold text-[#11182D]" data-i18n="step1Title">
+                    Select your ward.
+                  </h3>
+                  <p class="text-xs sm:text-sm text-[#68758B] mt-0.5" data-i18n="step1Desc">
+                    Browse all 72 Nellore City ward templates and choose your ward.
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-4 p-5 rounded-2xl bg-[#F8FCFD] border border-[#087CC1]/12">
+                <div class="w-10 h-10 rounded-xl bg-[#DDF3F7] text-[#087CC1] font-extrabold text-sm flex items-center justify-center shrink-0">
+                  2
+                </div>
+                <div>
+                  <h3 class="text-base font-extrabold text-[#11182D]" data-i18n="step2Title">
+                    Add your photo and details.
+                  </h3>
+                  <p class="text-xs sm:text-sm text-[#68758B] mt-0.5" data-i18n="step2Desc">
+                    Upload your photo and enter your name and designation.
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-4 p-5 rounded-2xl bg-[#F7FCF9] border border-[#079B59]/20">
+                <div class="w-10 h-10 rounded-xl bg-[#B9EACB]/70 text-[#079B59] font-extrabold text-sm flex items-center justify-center shrink-0">
+                  3
+                </div>
+                <div>
+                  <h3 class="text-base font-extrabold text-[#11182D]" data-i18n="step3Title">
+                    Download and share your poster.
+                  </h3>
+                  <p class="text-xs sm:text-sm text-[#68758B] mt-0.5" data-i18n="step3Desc">
+                    Save your high-resolution PNG poster and share it on social media.
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
+      </section>
 
-      <!-- 5E. CAMPAIGN MEDIA GALLERY -->
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-10">
-        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-6">
-          <div>
-            <span class="text-xs font-extrabold uppercase tracking-widest text-[#079B59]" data-i18n="mediaEyebrow">
-              NELLORE CAMPAIGN MOMENTS
-            </span>
-            <h2 class="text-2xl sm:text-3xl font-extrabold text-[#11182D] mt-1" data-i18n="mediaHeading">
-              Campaign Photographs & Videos
-            </h2>
-          </div>
-          <div class="flex items-center gap-2">
-            <label for="mediaGalleryInput" class="btn-secondary-campaign inline-flex items-center gap-2 px-4 py-2 text-xs font-bold cursor-pointer">
-              <i data-lucide="folder-plus" class="w-4 h-4 text-[#087CC1]"></i>
-              <span data-i18n="mediaAddBtn">Preview Local Campaign Media</span>
-            </label>
-            <input id="mediaGalleryInput" type="file" accept="image/*,video/mp4,video/webm" multiple class="hidden" onchange="handleCampaignMediaPreview(event)" />
-          </div>
+      <!-- 4. OFFICIAL MEDIA CAMPAIGN SECTION (INSTAGRAM VIDEO EMBED PLACEHOLDERS) -->
+      <section class="max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-12" aria-labelledby="mediaCampaignHeading">
+        <div class="mb-7">
+          <span class="text-xs font-extrabold uppercase tracking-widest text-[#079B59]" data-i18n="mediaEyebrow">
+            NELLORE CITY CAMPAIGN
+          </span>
+          <h2 id="mediaCampaignHeading" class="text-2xl sm:text-4xl font-extrabold text-[#11182D] tracking-tight mt-1" data-i18n="mediaHeading">
+            Official Media Campaign
+          </h2>
+          <p class="text-sm sm:text-base text-[#68758B] mt-2" data-i18n="mediaPlaceholderDescription">
+            Official Instagram campaign videos can be embedded directly in the containers below.
+          </p>
         </div>
 
-        <!-- Media Grid Container (Rendered via JS from verified `CAMPAIGN_MEDIA` config or graceful state) -->
-        <div id="campaignMediaContainer" class="grid grid-cols-1 md:grid-cols-3 gap-5"></div>
-      </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+          <!-- Media Container 1 -->
+          <div class="instagram-embed-slot p-5 flex flex-col items-center justify-center text-center" aria-label="Official Instagram campaign video placeholder 1">
+            <!-- INSTAGRAM CAMPAIGN VIDEO EMBED 1: PASTE OFFICIAL INSTAGRAM EMBED CODE HERE -->
+             <blockquote class="instagram-media"  data-instgrm-permalink="https://www.instagram.com/reel/De4Vn6MCU6a/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:16px;"> <a href="https://www.instagram.com/reel/De4Vn6MCU6a/?utm_source=ig_embed&amp;utm_campaign=loading" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank"> <div style=" display: flex; flex-direction: row; align-items: center;"> <div style="background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;"></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;"></div></div></div><div style="padding: 19% 0;"></div> <div style="display:block; height:50px; margin:0 auto 12px; width:50px;"><svg width="50px" height="50px" viewBox="0 0 60 60" version="1.1" xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g transform="translate(-511.000000, -20.000000)" fill="#000000"><g><path d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"></path></g></g></g></svg></div><div style="padding-top: 8px;"> <div style=" color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;">View this post on Instagram</div></div><div style="padding: 12.5% 0;"></div> <div style="display: flex; flex-direction: row; margin-bottom: 14px; align-items: center;"><div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(0px) translateY(7px);"></div> <div style="background-color: #F4F4F4; height: 12.5px; transform: rotate(-45deg) translateX(3px) translateY(1px); width: 12.5px; flex-grow: 0; margin-right: 14px; margin-left: 2px;"></div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(9px) translateY(-18px);"></div></div><div style="margin-left: 8px;"> <div style=" background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 20px; width: 20px;"></div> <div style=" width: 0; height: 0; border-top: 2px solid transparent; border-left: 6px solid #f4f4f4; border-bottom: 2px solid transparent; transform: translateX(16px) translateY(-4px) rotate(30deg)"></div></div><div style="margin-left: auto;"> <div style=" width: 0px; border-top: 8px solid #F4F4F4; border-right: 8px solid transparent; transform: translateY(16px);"></div> <div style=" background-color: #F4F4F4; flex-grow: 0; height: 12px; width: 16px; transform: translateY(-4px);"></div> <div style=" width: 0; height: 0; border-top: 8px solid #F4F4F4; border-left: 8px solid transparent; transform: translateY(-4px) translateX(8px);"></div></div></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center; margin-bottom: 24px;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 224px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 144px;"></div></div></a><p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;"><a href="https://www.instagram.com/reel/De4Vn6MCU6a/?utm_source=ig_embed&amp;utm_campaign=loading" style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;" target="_blank">A post shared by Parvathareddy Chandra Sekhar Reddy (@chandrasekharreddy.mlc)</a></p></div></blockquote>
+<script async src="//www.instagram.com/embed.js"></script>
+            <!-- <div class="max-w-xs text-[#68758B]">
+              <div class="w-12 h-12 rounded-2xl bg-[#F2F9FB] border border-[#087CC1]/15 text-[#087CC1] flex items-center justify-center mx-auto mb-3">
+                <i data-lucide="video" class="w-6 h-6"></i>
+              </div>
+              <p class="text-sm font-extrabold text-[#11182D]" data-i18n="igEmbedSlotTitle1">Official Campaign Video 1</p>
+              <p class="text-xs text-[#68758B] mt-1" data-i18n="igEmbedSlotHint">Paste the official Instagram embed code in this container.</p>
+            </div> -->
+          </div>
 
-      <!-- 5F. HOMEPAGE CALL TO ACTION BANNER -->
+          <!-- Media Container 2 -->
+          <div class="instagram-embed-slot p-5 flex flex-col items-center justify-center text-center" aria-label="Official Instagram campaign video placeholder 2">
+            <!-- INSTAGRAM CAMPAIGN VIDEO EMBED 2: PASTE OFFICIAL INSTAGRAM EMBED CODE HERE -->
+             <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DewhlptiUko/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:16px;"> <a href="https://www.instagram.com/reel/DewhlptiUko/?utm_source=ig_embed&amp;utm_campaign=loading" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank"> <div style=" display: flex; flex-direction: row; align-items: center;"> <div style="background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;"></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;"></div></div></div><div style="padding: 19% 0;"></div> <div style="display:block; height:50px; margin:0 auto 12px; width:50px;"><svg width="50px" height="50px" viewBox="0 0 60 60" version="1.1" xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g transform="translate(-511.000000, -20.000000)" fill="#000000"><g><path d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"></path></g></g></g></svg></div><div style="padding-top: 8px;"> <div style=" color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;">View this post on Instagram</div></div><div style="padding: 12.5% 0;"></div> <div style="display: flex; flex-direction: row; margin-bottom: 14px; align-items: center;"><div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(0px) translateY(7px);"></div> <div style="background-color: #F4F4F4; height: 12.5px; transform: rotate(-45deg) translateX(3px) translateY(1px); width: 12.5px; flex-grow: 0; margin-right: 14px; margin-left: 2px;"></div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(9px) translateY(-18px);"></div></div><div style="margin-left: 8px;"> <div style=" background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 20px; width: 20px;"></div> <div style=" width: 0; height: 0; border-top: 2px solid transparent; border-left: 6px solid #f4f4f4; border-bottom: 2px solid transparent; transform: translateX(16px) translateY(-4px) rotate(30deg)"></div></div><div style="margin-left: auto;"> <div style=" width: 0px; border-top: 8px solid #F4F4F4; border-right: 8px solid transparent; transform: translateY(16px);"></div> <div style=" background-color: #F4F4F4; flex-grow: 0; height: 12px; width: 16px; transform: translateY(-4px);"></div> <div style=" width: 0; height: 0; border-top: 8px solid #F4F4F4; border-left: 8px solid transparent; transform: translateY(-4px) translateX(8px);"></div></div></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center; margin-bottom: 24px;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 224px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 144px;"></div></div></a><p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;"><a href="https://www.instagram.com/reel/DewhlptiUko/?utm_source=ig_embed&amp;utm_campaign=loading" style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;" target="_blank">A post shared by Parvathareddy Chandra Sekhar Reddy (@chandrasekharreddy.mlc)</a></p></div></blockquote>
+<script async src="//www.instagram.com/embed.js"></script>
+            <!-- <div class="max-w-xs text-[#68758B]">
+              <div class="w-12 h-12 rounded-2xl bg-[#F2F9FB] border border-[#087CC1]/15 text-[#087CC1] flex items-center justify-center mx-auto mb-3">
+                <i data-lucide="video" class="w-6 h-6"></i>
+              </div>
+              <p class="text-sm font-extrabold text-[#11182D]" data-i18n="igEmbedSlotTitle2">Official Campaign Video 2</p>
+              <p class="text-xs text-[#68758B] mt-1" data-i18n="igEmbedSlotHint">Paste the official Instagram embed code in this container.</p>
+            </div> -->
+          </div>
+
+          <!-- Media Container 3 -->
+          <div class="instagram-embed-slot p-5 flex flex-col items-center justify-center text-center" aria-label="Official Instagram campaign video placeholder 3">
+            <!-- INSTAGRAM CAMPAIGN VIDEO EMBED 3: PASTE OFFICIAL INSTAGRAM EMBED CODE HERE -->
+             <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DezQrIaCNn3/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:16px;"> <a href="https://www.instagram.com/reel/DezQrIaCNn3/?utm_source=ig_embed&amp;utm_campaign=loading" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank"> <div style=" display: flex; flex-direction: row; align-items: center;"> <div style="background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;"></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;"></div></div></div><div style="padding: 19% 0;"></div> <div style="display:block; height:50px; margin:0 auto 12px; width:50px;"><svg width="50px" height="50px" viewBox="0 0 60 60" version="1.1" xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g transform="translate(-511.000000, -20.000000)" fill="#000000"><g><path d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"></path></g></g></g></svg></div><div style="padding-top: 8px;"> <div style=" color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;">View this post on Instagram</div></div><div style="padding: 12.5% 0;"></div> <div style="display: flex; flex-direction: row; margin-bottom: 14px; align-items: center;"><div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(0px) translateY(7px);"></div> <div style="background-color: #F4F4F4; height: 12.5px; transform: rotate(-45deg) translateX(3px) translateY(1px); width: 12.5px; flex-grow: 0; margin-right: 14px; margin-left: 2px;"></div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(9px) translateY(-18px);"></div></div><div style="margin-left: 8px;"> <div style=" background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 20px; width: 20px;"></div> <div style=" width: 0; height: 0; border-top: 2px solid transparent; border-left: 6px solid #f4f4f4; border-bottom: 2px solid transparent; transform: translateX(16px) translateY(-4px) rotate(30deg)"></div></div><div style="margin-left: auto;"> <div style=" width: 0px; border-top: 8px solid #F4F4F4; border-right: 8px solid transparent; transform: translateY(16px);"></div> <div style=" background-color: #F4F4F4; flex-grow: 0; height: 12px; width: 16px; transform: translateY(-4px);"></div> <div style=" width: 0; height: 0; border-top: 8px solid #F4F4F4; border-left: 8px solid transparent; transform: translateY(-4px) translateX(8px);"></div></div></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center; margin-bottom: 24px;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 224px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 144px;"></div></div></a><p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;"><a href="https://www.instagram.com/reel/DezQrIaCNn3/?utm_source=ig_embed&amp;utm_campaign=loading" style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;" target="_blank">A post shared by Parvathareddy Chandra Sekhar Reddy (@chandrasekharreddy.mlc)</a></p></div></blockquote>
+<script async src="//www.instagram.com/embed.js"></script>
+            <!-- <div class="max-w-xs text-[#68758B]">
+              <div class="w-12 h-12 rounded-2xl bg-[#F2F9FB] border border-[#087CC1]/15 text-[#087CC1] flex items-center justify-center mx-auto mb-3">
+                <i data-lucide="video" class="w-6 h-6"></i>
+              </div>
+              <p class="text-sm font-extrabold text-[#11182D]" data-i18n="igEmbedSlotTitle3">Official Campaign Video 3</p>
+              <p class="text-xs text-[#68758B] mt-1" data-i18n="igEmbedSlotHint">Paste the official Instagram embed code in this container.</p>
+            </div>
+          </div> -->
+        </div>
+        <!-- Official Instagram embed script integration -->
+        <script async src="https://www.instagram.com/embed.js"></script>
+      </section>
+
+      <!-- 5. HOMEPAGE CALL TO ACTION BANNER -->
       <div class="max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
         <div class="rounded-[2rem] bg-campaign-gradient p-8 sm:p-12 text-white shadow-xl flex flex-col lg:flex-row items-center justify-between gap-8">
           <div class="max-w-2xl text-center lg:text-left">
@@ -567,7 +780,7 @@
               Create Your Personalized Campaign Poster
             </h2>
             <p class="text-base sm:text-lg text-white/90" data-i18n="ctaBannerSubtext">
-              Choose your ward member, add your photo, and share your support.
+              Choose your ward template, add your photo and details, and share your support.
             </p>
           </div>
           <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 w-full sm:w-auto shrink-0">
@@ -585,7 +798,7 @@
               class="bg-white/15 hover:bg-white/25 text-white border border-white/40 font-bold px-7 py-4 rounded-full transition-all text-base cursor-pointer"
               data-i18n="ctaBannerSecondaryBtn"
             >
-              Browse 72 Templates
+              Explore 72 Ward Templates
             </button>
           </div>
         </div>
@@ -701,7 +914,8 @@
     </section>
 
     <!-- =====================================================================
-         VIEW 3: PHOTO UPLOAD & BACKGROUND REMOVAL — STEP 1 OF 2 (upload.html equivalent)
+         VIEW 3: PHOTO UPLOAD — STEP 1 OF 2 (upload.html equivalent)
+         (Remove Background AI Auto option is hidden/disabled per requirements)
          ===================================================================== -->
     <section id="view-upload" class="view-section">
       <div class="max-w-3xl mx-auto px-4 sm:px-6 py-6 sm:py-10">
@@ -730,7 +944,7 @@
               </div>
               <div>
                 <div id="uploadWardTitle" class="text-sm font-extrabold text-[#11182D]">Ward 1 Campaign Poster</div>
-                <div id="uploadWardCandidate" class="text-xs text-[#68758B]">Verified Candidate Template</div>
+                <div id="uploadWardCandidate" class="text-xs text-[#68758B]">Official Ward Candidate Template</div>
               </div>
             </div>
             <span class="text-[11px] font-bold text-[#079B59] bg-[#B9EACB]/50 px-2.5 py-1 rounded-full" data-i18n="templateSelectedTag">
@@ -785,7 +999,7 @@
             <input id="cameraFileInput" type="file" accept="image/*" capture="user" class="hidden" onchange="handleUserPhotoSelected(event)" />
           </div>
 
-          <!-- Selected Photo Preview & Client-Side AI Background Removal Panel -->
+          <!-- Selected Photo Preview Panel -->
           <div id="uploadedPreviewPanel" class="hidden border border-[#087CC1]/20 rounded-3xl p-4 sm:p-6 bg-[#F9FCFD]">
             <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
               <div class="flex items-center gap-2">
@@ -797,30 +1011,16 @@
                 </span>
               </div>
 
-              <!-- Toggle Original / Cutout Comparison when BG removal has completed -->
+              <!--
+              Remove Background (AI Auto) comparison toggle commented out per preservation & removal requirement:
               <div id="compareToggleGroup" class="hidden items-center gap-1.5 bg-white p-1 rounded-full border border-[#087CC1]/20">
-                <button
-                  type="button"
-                  id="btnShowOriginal"
-                  onclick="switchPhotoVersion('original')"
-                  class="px-3 py-1 rounded-full text-xs font-bold text-[#68758B] cursor-pointer"
-                  data-i18n="btnOriginalVersion"
-                >
-                  Original
-                </button>
-                <button
-                  type="button"
-                  id="btnShowCutout"
-                  onclick="switchPhotoVersion('cutout')"
-                  class="px-3 py-1 rounded-full text-xs font-bold bg-[#079B59] text-white cursor-pointer"
-                  data-i18n="btnCutoutVersion"
-                >
-                  BG Removed
-                </button>
+                <button type="button" id="btnShowOriginal" onclick="switchPhotoVersion('original')" class="px-3 py-1 rounded-full text-xs font-bold text-[#68758B] cursor-pointer" data-i18n="btnOriginalVersion">Original</button>
+                <button type="button" id="btnShowCutout" onclick="switchPhotoVersion('cutout')" class="px-3 py-1 rounded-full text-xs font-bold bg-[#079B59] text-white cursor-pointer" data-i18n="btnCutoutVersion">BG Removed</button>
               </div>
+              -->
             </div>
 
-            <!-- Image Comparison Stage -->
+            <!-- Image Preview Stage -->
             <div class="relative w-full max-w-xs mx-auto aspect-[4/5] rounded-2xl overflow-hidden bg-checkerboard border border-[#087CC1]/20 flex items-center justify-center mb-5 shadow-inner">
               <img
                 id="uploadedPhotoPreviewImg"
@@ -828,50 +1028,22 @@
                 alt="Your uploaded portrait preview"
                 class="max-w-full max-h-full object-contain"
               />
-
-              <!-- AI Background Removal Progress Overlay -->
-              <div id="bgRemovalProgressOverlay" class="hidden absolute inset-0 bg-[#11182D]/80 backdrop-blur-sm flex-col items-center justify-center p-6 text-center text-white">
-                <div class="w-11 h-11 rounded-full border-3 border-[#48C8D2] border-t-transparent animate-spin mb-3"></div>
-                <p id="bgRemovalProgressTitle" class="text-sm font-extrabold mb-1" data-i18n="bgRemovingTitle">
-                  Removing Background in Browser...
-                </p>
-                <p id="bgRemovalProgressStep" class="text-xs text-[#DDF3F7] mb-3">
-                  Loading neural segmentation model (runs 100% on your device)...
-                </p>
-                <div class="w-full bg-white/20 rounded-full h-2 overflow-hidden">
-                  <div id="bgRemovalProgressBar" class="bg-[#48C8D2] h-full transition-all duration-300" style="width: 12%"></div>
-                </div>
-              </div>
             </div>
 
-            <!-- Background Removal Status / Fallback Notice -->
-            <div id="bgRemovalNoticeBox" class="hidden mb-4 p-3.5 rounded-2xl bg-[#DDF3F7]/70 border border-[#48C8D2] text-xs text-[#075477] flex items-start gap-2.5">
-              <i data-lucide="info" class="w-4 h-4 shrink-0 mt-0.5 text-[#087CC1]"></i>
-              <div id="bgRemovalNoticeText" class="leading-relaxed"></div>
-            </div>
-
-            <!-- Action Controls for Background Removal, Smart Edge Cutout, Replace, and Proceed to Crop -->
+            <!-- Action Controls for Replace, Auto-Fit, and Optional Crop -->
             <div class="flex flex-col gap-3">
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                <button
-                  type="button"
-                  id="btnRunAiBgRemoval"
-                  onclick="runClientSideBackgroundRemoval()"
-                  class="inline-flex items-center justify-center gap-2 py-3 px-4 rounded-2xl bg-[#075477] hover:bg-[#087CC1] text-white font-bold text-xs sm:text-sm transition-all cursor-pointer shadow-sm"
-                >
-                  <i data-lucide="wand-2" class="w-4 h-4 text-[#48C8D2]"></i>
-                  <span data-i18n="btnRemoveBgAi">Remove Background (AI Auto)</span>
-                </button>
-
-                <button
-                  type="button"
-                  onclick="document.getElementById('galleryFileInput').click()"
-                  class="inline-flex items-center justify-center gap-2 py-3 px-4 rounded-2xl bg-white hover:bg-slate-100 text-[#11182D] border border-slate-300 font-bold text-xs sm:text-sm transition-all cursor-pointer"
-                >
-                  <i data-lucide="refresh-cw" class="w-4 h-4 text-[#68758B]"></i>
-                  <span data-i18n="btnReplacePhoto">Replace Photo</span>
-                </button>
-              </div>
+              <!--
+              Remove Background (AI Auto) button markup commented out per requirement so it is no longer visible anywhere on the website:
+              <button type="button" id="btnRemoveBgAiAuto" disabled class="hidden">Remove Background (AI Auto)</button>
+              -->
+              <button
+                type="button"
+                onclick="document.getElementById('galleryFileInput').click()"
+                class="w-full inline-flex items-center justify-center gap-2 py-3 px-4 rounded-2xl bg-white hover:bg-slate-100 text-[#11182D] border border-slate-300 font-bold text-xs sm:text-sm transition-all cursor-pointer"
+              >
+                <i data-lucide="refresh-cw" class="w-4 h-4 text-[#68758B]"></i>
+                <span data-i18n="btnReplacePhoto">Replace Photo</span>
+              </button>
 
               <!-- Automatic center-fit is the default; cropping remains optional. -->
               <button
@@ -902,8 +1074,7 @@
     </section>
 
     <!-- =====================================================================
-         SECTION 9: CROP AND ADJUST PHOTO INTERFACE (Modal Overlay matching reference)
-         Dark navy top and bottom control bars, zoom/pan/reset, Cancel & Crop & Apply
+         SECTION 9: CROP AND ADJUST PHOTO INTERFACE (Modal Overlay)
          ===================================================================== -->
     <div id="cropModal" role="dialog" aria-modal="true" aria-labelledby="cropModalTitle" class="fixed inset-0 z-50 bg-[#11182D] text-white flex-col justify-between hidden">
       <!-- Dark Navy Top Control Bar -->
@@ -1243,6 +1414,8 @@
 
     <!-- =====================================================================
          VIEW 5: POSTER GENERATION & SUCCESS / SHARE PAGE (success.html equivalent)
+         Shares the actual generated poster image file where supported via Web Share API,
+         with clear platform-specific actions and honest fallbacks.
          ===================================================================== -->
     <section id="view-success" class="view-section">
       <div class="max-w-4xl mx-auto px-4 sm:px-6 py-6 sm:py-10">
@@ -1256,38 +1429,40 @@
               Success!
             </h1>
             <p class="text-sm sm:text-base text-[#68758B] mt-1" data-i18n="successSubtext">
-              Your personalized poster is ready to share.
+              Your personalized poster is ready to download and share.
             </p>
           </div>
 
-          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             <!-- Left: Completed High-Res Poster Preview -->
             <div class="lg:col-span-6 flex flex-col items-center">
               <div class="w-full max-w-sm rounded-2xl overflow-hidden shadow-xl border border-slate-200 bg-[#11182D]">
-                <img id="finalGeneratedPosterImg" src="" alt="Completed PCSR Digital Campaign Poster" class="w-full h-auto block" />
+                <img id="finalGeneratedPosterImg" src="" alt="Completed Parvathareddy Digital Campaign Poster" class="w-full h-auto block" />
               </div>
-              <span id="finalPosterMetaLabel" class="text-xs font-semibold text-[#68758B] mt-2.5">
+              <span id="finalPosterMetaLabel" class="text-xs font-semibold text-[#68758B] mt-2.5 text-center">
                 Poster export uses the selected template’s original dimensions
               </span>
             </div>
 
             <!-- Right: Download & Social Sharing Controls -->
             <div class="lg:col-span-6 flex flex-col gap-4">
-              <!-- Prominent Download Image Button -->
-              <button
-                type="button"
-                onclick="downloadGeneratedPoster()"
-                class="btn-primary-campaign w-full py-4 px-6 text-base sm:text-lg font-extrabold inline-flex items-center justify-center gap-2.5 cursor-pointer"
-              >
-                <i data-lucide="download" class="w-5 h-5"></i>
-                <span data-i18n="btnDownloadImage">Download Image (HD PNG)</span>
-              </button>
+              <!-- Single Primary Download Poster Action -->
+              <div>
+                <button
+                  type="button"
+                  onclick="downloadGeneratedPoster()"
+                  class="btn-primary-campaign w-full py-4 px-6 text-base sm:text-lg font-extrabold inline-flex items-center justify-center gap-2.5 cursor-pointer"
+                >
+                  <i data-lucide="download" class="w-5 h-5"></i>
+                  <span data-i18n="btnDownloadImage">Download Poster</span>
+                </button>
+              </div>
 
-              <!-- Predefined Share Message Preview & Copy -->
+              <!-- Predefined Share Caption Preview & Copy Caption -->
               <div class="bg-[#F5FBFD] border border-[#48C8D2]/40 rounded-2xl p-4">
                 <div class="flex items-center justify-between mb-1.5">
                   <span class="text-xs font-extrabold uppercase tracking-wider text-[#075477]" data-i18n="shareMessageLabel">
-                    Campaign Share Message
+                    Campaign Share Caption
                   </span>
                   <button
                     type="button"
@@ -1295,58 +1470,85 @@
                     class="text-xs font-bold text-[#087CC1] hover:underline inline-flex items-center gap-1 cursor-pointer"
                   >
                     <i data-lucide="copy" class="w-3.5 h-3.5"></i>
-                    <span id="copyMsgBtnText" data-i18n="btnCopyMessage">Copy Text</span>
+                    <span id="copyMsgBtnText" data-i18n="btnCopyMessage">Copy Caption</span>
                   </button>
                 </div>
                 <p id="shareMessagePreviewBox" class="text-xs sm:text-sm text-[#11182D] leading-relaxed select-all"></p>
               </div>
 
-              <!-- Social Share Buttons Grid -->
+              <!-- Platform-Specific Social Share Buttons Grid (2x2 spacious layout so badges fit cleanly without clipping) -->
               <div class="grid grid-cols-2 gap-3">
                 <!-- WhatsApp -->
                 <button
                   type="button"
                   onclick="shareOnWhatsApp()"
-                  class="flex items-center justify-center gap-2 py-3.5 px-4 rounded-2xl bg-[#25D366] hover:bg-[#20bd5a] text-white font-extrabold text-sm shadow-sm transition-all cursor-pointer"
+                  class="w-full flex items-center justify-center gap-2 py-3.5 px-4 rounded-2xl bg-[#25D366] hover:bg-[#20bd5a] text-white font-extrabold text-sm shadow-sm transition-all cursor-pointer whitespace-nowrap"
                 >
-                  <i data-lucide="message-circle" class="w-4 h-4"></i>
+                  <i data-lucide="message-circle" class="w-4 h-4 shrink-0"></i>
                   <span>WhatsApp</span>
-                </button>
-
-                <!-- Native Share (Shares actual PNG file + text on mobile Chrome/Safari) -->
-                <button
-                  type="button"
-                  onclick="shareViaNativeWebShare()"
-                  class="flex items-center justify-center gap-2 py-3.5 px-4 rounded-2xl bg-[#075477] hover:bg-[#087CC1] text-white font-extrabold text-sm shadow-sm transition-all cursor-pointer"
-                >
-                  <i data-lucide="share-2" class="w-4 h-4"></i>
-                  <span data-i18n="btnMoreShare">Share Poster File</span>
-                </button>
-
-                <!-- X (Twitter) -->
-                <button
-                  type="button"
-                  onclick="shareOnX()"
-                  class="flex items-center justify-center gap-2 py-3 px-4 rounded-2xl bg-[#11182D] hover:bg-slate-800 text-white font-bold text-xs sm:text-sm transition-all cursor-pointer"
-                >
-                  <span>𝕏 (Twitter)</span>
                 </button>
 
                 <!-- Facebook -->
                 <button
                   type="button"
                   onclick="shareOnFacebook()"
-                  class="flex items-center justify-center gap-2 py-3 px-4 rounded-2xl bg-[#1877F2] hover:bg-[#166fe5] text-white font-bold text-xs sm:text-sm transition-all cursor-pointer"
+                  class="w-full flex items-center justify-center gap-2 py-3.5 px-4 rounded-2xl bg-[#1877F2] hover:bg-[#166fe5] text-white font-extrabold text-sm shadow-sm transition-all cursor-pointer whitespace-nowrap"
                 >
+                  <i data-lucide="share-2" class="w-4 h-4 shrink-0"></i>
                   <span>Facebook</span>
+                </button>
+
+                <!-- Instagram -->
+                <button
+                  type="button"
+                  onclick="shareOnInstagram()"
+                  class="w-full flex items-center justify-center gap-2 py-3.5 px-4 rounded-2xl bg-gradient-to-r from-[#833AB4] via-[#E1306C] to-[#F77737] hover:opacity-95 text-white font-extrabold text-sm shadow-sm transition-all cursor-pointer whitespace-nowrap"
+                >
+                  <i data-lucide="camera" class="w-4 h-4 shrink-0"></i>
+                  <span>Instagram</span>
+                </button>
+
+                <!-- X -->
+                <button
+                  type="button"
+                  onclick="shareOnX()"
+                  class="w-full flex items-center justify-center gap-2 py-3.5 px-4 rounded-2xl bg-[#11182D] hover:bg-slate-800 text-white font-extrabold text-sm shadow-sm transition-all cursor-pointer whitespace-nowrap"
+                >
+                  <span class="text-base leading-none font-extrabold">𝕏</span>
+                  <span>Post on X</span>
                 </button>
               </div>
 
-              <!-- Honest Platform Guidance Note (per Section 13 requirement) -->
+              <!-- Status & Fallback Action Area -->
+              <div id="shareFeedbackContainer" class="hidden p-3.5 rounded-2xl bg-[#F0F9FC] border border-[#087CC1]/25 text-xs text-[#075477] space-y-2">
+                <p id="shareStatus" role="status" aria-live="polite" class="font-semibold leading-relaxed"></p>
+                <div id="shareFallbackActions" class="hidden flex-wrap items-center gap-2 pt-1">
+                  <button
+                    type="button"
+                    onclick="downloadGeneratedPoster()"
+                    class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#087CC1] text-white font-bold text-xs hover:bg-[#075477] transition-colors cursor-pointer"
+                  >
+                    <i data-lucide="download" class="w-3.5 h-3.5"></i>
+                    <span data-i18n="btnDownloadImage">Download Poster</span>
+                  </button>
+                  <a
+                    id="shareFallbackExternalLink"
+                    href="#"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="hidden items-center gap-1 px-3.5 py-1.5 rounded-full bg-white border border-[#087CC1]/30 text-[#075477] font-bold text-xs hover:bg-[#DDF3F7]/50 transition-colors"
+                  >
+                    <span id="shareFallbackExternalLabel">Open Platform</span>
+                    <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                  </a>
+                </div>
+              </div>
+
+              <!-- Honest Platform Guidance Note -->
               <div id="shareGuidanceToast" class="p-3.5 rounded-2xl bg-[#DDF3F7]/60 border border-[#48C8D2]/40 text-xs text-[#075477] leading-relaxed">
-                <strong data-i18n="shareTipTitle">Tip for Social Media:</strong>
+                <strong data-i18n="shareTipTitle">How Image Sharing Works:</strong>
                 <span data-i18n="shareTipBody">
-                  Use "Share Poster File" on mobile to attach the image directly, or click "Download Image" first and attach the saved PNG along with the campaign message on WhatsApp, Facebook, or X.
+                  Clicking WhatsApp or any social badge shares the poster PNG + caption (and copies the caption to your clipboard so you can press Ctrl+V / Paste in WhatsApp's "Add a message..." box if your device's share dialog doesn't prefill it).
                 </span>
               </div>
 
@@ -1378,8 +1580,6 @@
 
     <!-- =====================================================================
          VIEW 6: CALIBRATION STUDIO & GITHUB PAGES / HOSTINGER DEPLOYMENT GUIDE
-         Fulfils Section 11 (owner calibration process for each template's photo/text
-         coordinates) & Section 17/20 (complete README, asset replacement & DNS guide).
          ===================================================================== -->
     <section id="view-calibration" class="view-section">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-10">
@@ -1448,12 +1648,12 @@
 
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label class="block text-xs font-bold text-[#11182D] mb-1">Verified Candidate Name (English)</label>
-                  <input type="text" id="calCandidateNameEn" oninput="updateCalibratedWard()" placeholder="Leave blank until verified" class="w-full px-3.5 py-2 rounded-xl border border-slate-300 text-sm" />
+                  <label class="block text-xs font-bold text-[#11182D] mb-1">Candidate Name (English)</label>
+                  <input type="text" id="calCandidateNameEn" oninput="updateCalibratedWard()" placeholder="Leave blank until provided" class="w-full px-3.5 py-2 rounded-xl border border-slate-300 text-sm" />
                 </div>
                 <div>
-                  <label class="block text-xs font-bold text-[#11182D] mb-1">Verified Candidate Name (తెలుగు)</label>
-                  <input type="text" id="calCandidateNameTe" oninput="updateCalibratedWard()" placeholder="ధృవీకరించిన అభ్యర్థి పేరు" class="w-full px-3.5 py-2 rounded-xl border border-slate-300 text-sm font-telugu" />
+                  <label class="block text-xs font-bold text-[#11182D] mb-1">Candidate Name (తెలుగు)</label>
+                  <input type="text" id="calCandidateNameTe" oninput="updateCalibratedWard()" placeholder="అభ్యర్థి పేరు" class="w-full px-3.5 py-2 rounded-xl border border-slate-300 text-sm font-telugu" />
                 </div>
               </div>
 
@@ -1529,7 +1729,7 @@
         <!-- Complete GitHub Pages & Hostinger Deployment Documentation -->
         <div class="bg-white rounded-[2rem] p-6 sm:p-10 border border-[#087CC1]/15 shadow-md space-y-6">
           <div class="border-b border-slate-200 pb-4">
-            <span class="text-xs font-extrabold uppercase tracking-widest text-[#087CC1]">SECTIONS 17, 18 & 20 DELIVERABLE</span>
+            <span class="text-xs font-extrabold uppercase tracking-widest text-[#087CC1]">DEPLOYMENT & ASSET GUIDE</span>
             <h2 class="text-xl sm:text-2xl font-extrabold text-[#11182D] mt-1">
               GitHub Pages + Hostinger Deployment & Asset Replacement Guide
             </h2>
@@ -1539,8 +1739,8 @@
             <div class="p-5 rounded-2xl bg-[#F8FCFD] border border-slate-200 space-y-2">
               <h3 class="font-extrabold text-base text-[#075477]">1. GitHub Repository & GitHub Pages Setup</h3>
               <ol class="list-decimal list-inside space-y-1.5 text-[#68758B]">
-                <li>Create a new public repository on GitHub (e.g., <code class="text-[#11182D]">pcsr-digital</code>).</li>
-                <li>Upload <code class="text-[#11182D]">index.html</code> and your <code class="text-[#11182D]">assets/</code> folder preserving relative paths.</li>
+                <li>Create a new public repository on GitHub (e.g., <code class="text-[#11182D]">parvathareddy-digital</code>).</li>
+                <li>Upload <code class="text-[#11182D]">index.html</code> and your <code class="text-[#11182D]">templates/</code> folder preserving relative paths.</li>
                 <li>Open <strong>Settings → Pages</strong> in your GitHub repository.</li>
                 <li>Under <strong>Build and deployment</strong>, select <strong>Deploy from a branch</strong>, choose <code class="text-[#11182D]">main</code> and <code class="text-[#11182D]">/ (root)</code>, and click <strong>Save</strong>.</li>
               </ol>
@@ -1563,17 +1763,17 @@
             <div class="p-5 rounded-2xl bg-[#F8FCFD] border border-slate-200 space-y-2">
               <h3 class="font-extrabold text-base text-[#075477]">3. Required Campaign Assets Checklist</h3>
               <ul class="list-disc list-inside space-y-1.5 text-[#68758B]">
-                <li><code class="text-[#11182D]">templates/logo.png</code> — Official PCSR Digital campaign logo.</li>
+                <li>The supplied Parvathareddy Digital logo URL is used consistently across the header, modal, and footer.</li>
                 <li><code class="text-[#11182D]">templates/pcsr-leader.png</code> — High-resolution cutout portrait of Parvathareddy Chandrasekhar Reddy (PCSR).</li>
-                <li><code class="text-[#11182D]">templates/ward-01.png</code> through <code class="text-[#11182D]">ward-72.png</code> — The 72 approved ward-member poster templates (1080×1350 px recommended).</li>
-                <li><code class="text-[#11182D]">SITE_CONFIG.websiteUrl</code> — Set your final custom domain for social share links.</li>
+                <li><code class="text-[#11182D]">templates/mayoral-candidate.jpg</code> — Photograph for the Mayoral Candidate profile card on the home page.</li>
+                <li><code class="text-[#11182D]">templates/ward-1.jpeg</code> through <code class="text-[#11182D]">ward-72.jpeg</code> — The 72 ward poster templates.</li>
               </ul>
             </div>
 
             <div class="p-5 rounded-2xl bg-[#F8FCFD] border border-slate-200 space-y-2">
               <h3 class="font-extrabold text-base text-[#075477]">4. Updating Candidate Names & Coordinates</h3>
               <p class="text-[#68758B]">
-                In <code class="text-[#11182D]">WARD_TEMPLATES</code> (or using the visual Calibrator above), each of the 72 wards has its own independent <code class="text-[#11182D]">photoSlots</code> and <code class="text-[#11182D]">textSlots</code> array. Update <code class="text-[#11182D]">candidateNameEn</code> and <code class="text-[#11182D]">candidateNameTe</code> with the verified ward candidate names and click <strong>Export Updated templates.js</strong>.
+                In <code class="text-[#11182D]">WARD_TEMPLATES</code> (or using the visual Calibrator above), each of the 72 wards has its own independent <code class="text-[#11182D]">photoSlots</code> and <code class="text-[#11182D]">textSlots</code> array. Update <code class="text-[#11182D]">candidateNameEn</code> and <code class="text-[#11182D]">candidateNameTe</code> with the ward candidate names and click <strong>Export Updated templates.js</strong>.
               </p>
             </div>
           </div>
@@ -1592,13 +1792,17 @@
         <!-- Brand & Campaign Description -->
         <div class="max-w-md">
           <div class="flex items-center gap-2.5 mb-2">
-            <div class="w-8 h-8 rounded-full bg-campaign-gradient text-white font-extrabold text-xs flex items-center justify-center">
-              PCSR
+            <div class="w-9 h-9 rounded-full bg-white border border-[#48C8D2]/40 p-0.5 shrink-0 overflow-hidden">
+              <img
+                src="https://yt3.googleusercontent.com/ObICO3EVk6Mk-KitHb8ISoKC8hVs-zQiXTle0-Og7DXfFPjW3uyTmvqVWlfeQKczDDMaOK1-rg=s900-c-k-c0x00ffffff-no-rj"
+                alt="Parvathareddy Digital Logo"
+                class="w-full h-full object-contain"
+              />
             </div>
-            <span class="font-extrabold text-lg text-[#11182D]">PCSR Digital</span>
+            <span class="font-extrabold text-lg text-[#11182D]">Parvathareddy Digital</span>
           </div>
           <p class="text-xs sm:text-sm text-[#68758B] leading-relaxed" data-i18n="footerDescription">
-            Official Nellore City 72-Ward Campaign Poster Creation Platform supporting Parvathareddy Chandrasekhar Reddy (PCSR), Nellore City In-charge, and all 72 Ward Member Candidates.
+            Nellore City 72-Ward Campaign Poster Creation Platform supporting Parvathareddy Chandrasekhar Reddy (PCSR), Nellore City YSRCP Party In-charge, and all 72 wards.
           </p>
         </div>
 
@@ -1606,7 +1810,7 @@
         <div class="flex flex-wrap items-center gap-4 sm:gap-6 text-xs sm:text-sm font-bold text-[#075477]">
           <a href="#home" onclick="navigateTo('home'); return false;" class="hover:text-[#087CC1]" data-i18n="navHome">Home</a>
           <a href="#templates" onclick="navigateTo('templates'); return false;" class="hover:text-[#087CC1]" data-i18n="navTemplates">72 Ward Templates</a>
-          <a href="#calibration" onclick="navigateTo('calibration'); return false;" class="hover:text-[#087CC1]" data-i18n="navAdmin">Calibration & Guide</a>
+          <!-- <a href="#calibration" onclick="navigateTo('calibration'); return false;" class="hover:text-[#087CC1]" data-i18n="navAdmin">Calibration & Guide</a> -->
           <button
             type="button"
             onclick="clearAllTemporaryData()"
@@ -1620,7 +1824,7 @@
 
       <div class="border-t border-slate-100 mt-6 pt-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-[#68758B]">
         <div>
-          © <span id="footerYear">2026</span> <strong>PCSR Digital</strong>. <span data-i18n="footerRights">All rights reserved • Nellore City Campaign.</span>
+          © <span id="footerYear">2026</span> <strong>Parvathareddy Digital</strong>. <span data-i18n="footerRights">All rights reserved • Nellore City Campaign.</span>
         </div>
         <div class="flex items-center gap-2">
           <span data-i18n="footerLanguageLabel">Language:</span>
@@ -1634,25 +1838,31 @@
 
   <script>
     /* ============================================================================
-       MODULE 1: SITE CONFIGURATION & BILINGUAL TRANSLATION SYSTEM (translations.js)
-       Natural Telugu translations for all UI labels, buttons, validation, and share text.
-       Proper nouns like Parvathareddy Chandrasekhar Reddy (PCSR) are preserved accurately.
+       MODULE 1: SITE CONFIGURATION, MAYORAL CANDIDATE CONFIG & BILINGUAL TRANSLATIONS
        ============================================================================ */
     const SITE_CONFIG = {
-      brandName: "PCSR Digital",
+      brandName: "Parvathareddy Digital",
       copyrightYear: new Date().getFullYear(),
-      // Configurable site URL for social sharing; defaults to current location origin/path on GitHub Pages or custom domain
       getWebsiteUrl: function () {
         if (window.location && window.location.href && !window.location.href.startsWith("about:") && !window.location.href.startsWith("blob:")) {
           return window.location.origin + window.location.pathname;
         }
-        return "https://pcsrdigital.in";
+        return "https://www.parvathareddydigital.com/";
       },
       leaderPortraitPath: "templates/pcsr-leader.png",
-      logoPath: "templates/logo.png",
-      socialLinks: {
-        // Populated only when official URLs are provided by the campaign owner
-      }
+      logoPath: "https://yt3.googleusercontent.com/ObICO3EVk6Mk-KitHb8ISoKC8hVs-zQiXTle0-Og7DXfFPjW3uyTmvqVWlfeQKczDDMaOK1-rg=s900-c-k-c0x00ffffff-no-rj"
+    };
+
+    /* ============================================================================
+       CONFIGURABLE MAYORAL CANDIDATE DETAILS
+       Update `nameEn`, `nameTe`, `roleEn`, `roleTe`, and `photoPath` below when ready.
+       ============================================================================ */
+    const MAYORAL_CANDIDATE_CONFIG = {
+      photoPath: "templates/mayoral-candidate.jpg",
+      nameEn: "", // Leave empty to use the default configurable placeholder label, or enter candidate's name
+      nameTe: "",
+      roleEn: "Nellore City Mayoral Candidate",
+      roleTe: "నెల్లూరు నగర మేయర్ అభ్యర్థి"
     };
 
     const TRANSLATIONS = {
@@ -1660,41 +1870,51 @@
         navSubtitle: "Nellore City Campaign Platform",
         navHome: "Home",
         navTemplates: "72 Ward Templates",
+        mobileNavHome: "Home",
+        mobileNavTemplates: "72 Ward Templates",
+        mobileNavCreatePoster: "Create Poster",
         navAdmin: "Calibration & Setup",
         navCreatePoster: "Create Poster",
         heroEyebrow: "NELLORE CITY CAMPAIGN",
-        heroHeading: "Together for Our 72 Wards",
-        heroSubtext: "Explore the 72 ward-member campaign posters and create your personalized poster to show your support.",
-        leaderName: "Parvathareddy Chandrasekhar Reddy (PCSR)",
-        leaderRole: "Nellore City In-charge • Supporting 72 Ward Candidates",
-        leaderRoleShort: "Nellore City In-charge",
+        heroHeading: "Together for Nellore's 72 Wards",
+        heroSubtext: "Explore campaign posters for all 72 wards of Nellore City. Choose your ward template, add your photo and details, and create a personalized poster ready to download and share.",
+        leaderName: "Parvathareddy Chandrasekhar Reddy",
+        leaderRole: "Nellore City YSRCP Party In-charge",
+        leaderRoleShort: "Nellore City YSRCP Party In-charge",
+        leaderBadgeLabel: "Party In-charge",
+        leaderSupport: "Supporting the campaign across all 72 wards of Nellore City.",
         heroPrimaryCta: "Create Your Support Poster",
-        heroSecondaryCta: "Explore 72 Ward Members",
+        heroSecondaryCta: "Explore 72 Ward Templates",
         btnPreviewOfficialPhoto: "Load Official PCSR Photo",
         heroBadge72: "72 Wards • Unified Campaign",
-        introTag: "Nellore Municipal Corporation",
-        intro72Label: "Ward Members",
-        introCardDesc: "Every single ward across Nellore City has a dedicated, custom-calibrated campaign poster template supporting its corporator candidate.",
-        statStep1: "Step 1",
-        statPickWard: "Pick Ward",
-        statStep2: "Step 2",
-        statAddPhoto: "Add Photo",
-        statStep3: "Step 3",
-        statShare: "Download & Share",
+        leadershipEyebrow: "CAMPAIGN LEADERSHIP",
+        leadershipHeading: "Leadership Supporting Nellore's 72 Wards",
+        mayoralBadgeLabel: "Mayoral Election",
+        mayoralNamePlaceholder: "Anam Vijay Kumar Reddy",
+        mayoralPhotoPlaceholder: "Mayoral Candidate Photograph Placeholder",
+        mayoralRole: "Nellore City Mayoral Candidate",
+        mayoralSupportingMessage: "Participating as the mayoral candidate in the Nellore City election.",
         introEyebrow: "ABOUT THE 72-WARD INITIATIVE",
-        introHeading: "Show Your Personal Support for Your Ward Candidate & PCSR",
-        introBody1: "Under the leadership of Nellore City In-charge Parvathareddy Chandrasekhar Reddy (PCSR), our campaign unites all 72 wards of Nellore City with a shared vision for civic progress and responsive representation.",
-        introBody2: "Each poster template corresponds to a specific ward member candidate (Ward 1 to Ward 72). Simply select your ward, upload your photo with automatic background removal, enter your name and designation, and download a high-resolution poster ready for WhatsApp, Facebook, and X.",
+        introHeading: "Show Your Personal Support for Your Ward Candidate",
+        introBody: "Each of Nellore City's 72 wards has a dedicated campaign poster template. Select your ward, upload your photo, enter your name and designation, and generate a personalized campaign poster.",
+        step1Title: "1. Select your ward.",
+        step1Desc: "Browse all 72 Nellore City ward templates and choose your ward.",
+        step2Title: "2. Add your photo and details.",
+        step2Desc: "Upload your photo and enter your name and designation.",
+        step3Title: "3. Download and share your poster.",
+        step3Desc: "Save your high-resolution PNG poster and share it on social media.",
         introExploreBtn: "Explore All 72 Ward Templates",
-        mediaEyebrow: "NELLORE CAMPAIGN MOMENTS",
-        mediaHeading: "Campaign Photographs & Videos",
-        mediaAddBtn: "Preview Local Campaign Media",
-        mediaEmptyTitle: "Official Campaign Media Gallery",
-        mediaEmptyDesc: "Place official campaign photos and MP4 videos in templates/ or click 'Preview Local Campaign Media' above to test with your campaign files.",
+        mediaEyebrow: "NELLORE CITY CAMPAIGN",
+        mediaHeading: "Official Media Campaign",
+        mediaPlaceholderDescription: "Official Instagram campaign videos can be embedded directly in the containers below.",
+        igEmbedSlotTitle1: "Official Campaign Video 1",
+        igEmbedSlotTitle2: "Official Campaign Video 2",
+        igEmbedSlotTitle3: "Official Campaign Video 3",
+        igEmbedSlotHint: "Paste the official Instagram embed code in this container.",
         ctaBannerHeading: "Create Your Personalized Campaign Poster",
-        ctaBannerSubtext: "Choose your ward member, add your photo, and share your support.",
+        ctaBannerSubtext: "Choose your ward template, add your photo and details, and share your support.",
         ctaBannerPrimaryBtn: "Create Poster",
-        ctaBannerSecondaryBtn: "Browse 72 Templates",
+        ctaBannerSecondaryBtn: "Explore 72 Ward Templates",
         backToHome: "Back to Homepage",
         galleryHeading: "Choose Your Ward Member",
         gallerySubtext: "Select one of the 72 ward-member templates to begin creating your personalized campaign poster.",
@@ -1721,7 +1941,6 @@
         btnOriginalVersion: "Original",
         btnCutoutVersion: "BG Removed",
         bgRemovingTitle: "Removing Background in Browser...",
-        btnRemoveBgAi: "Remove Background (AI Auto)",
         btnReplacePhoto: "Replace Photo",
         btnAutoFitContinue: "Use Photo (Auto-Fit)",
         btnContinueToCrop: "Need to Crop? Adjust Photo",
@@ -1738,6 +1957,7 @@
         editorHeading: "Add Your Details",
         editorSubtext: "Enter your name and designation to personalize your campaign support poster.",
         validationNameRequired: "Please enter your name to generate your poster.",
+        posterExportError: "Could not prepare the poster image. Please try generating it again.",
         labelYourName: "Your Name *",
         placeholderYourName: "Enter your name",
         labelDesignation: "Designation",
@@ -1750,17 +1970,27 @@
         resetStyleBtn: "Reset Styling",
         btnApplyAndGenerate: "Apply & Generate Poster",
         successHeading: "Success!",
-        successSubtext: "Your personalized poster is ready to share.",
-        btnDownloadImage: "Download Image",
-        shareMessageLabel: "Campaign Share Message",
-        btnCopyMessage: "Copy Text",
+        successSubtext: "Your personalized poster is ready to download and share.",
+        btnDownloadImage: "Download Poster",
+        shareMessageLabel: "Campaign Share Caption",
+        btnCopyMessage: "Copy Caption",
         btnCopiedMessage: "Copied!",
-        btnMoreShare: "More / Share File",
-        shareTipTitle: "Tip for Social Media:",
-        shareTipBody: "Use 'More / Share File' on mobile to attach the image directly, or click 'Download Image' first and attach the saved PNG along with the campaign message on WhatsApp, Facebook, or X.",
+        btnMoreShare: "Share Poster",
+        shareTipTitle: "How Image Sharing Works:",
+        shareTipBody: "Clicking WhatsApp or any social badge shares the poster PNG + caption (and copies the caption to your clipboard so you can press Ctrl+V / Paste in WhatsApp's 'Add a message...' box if your device's share dialog doesn't prefill it).",
+        shareCompleted: "Poster image shared! Your campaign caption is also copied to your clipboard—press Paste (Ctrl+V) in 'Add a message...' if your app didn't prefill it.",
+        shareUnsupported: "Direct image file sharing is not supported on this browser. Please click 'Download Poster' and attach the image file manually.",
+        shareCancelled: "Sharing was canceled.",
+        shareFailed: "Could not complete direct sharing. Please click 'Download Poster' to save and share the image manually.",
+        shareWhatsAppFallback: "Your poster PNG has been downloaded and WhatsApp has opened with the campaign message prefilled—attach the downloaded poster image in your WhatsApp chat.",
+        shareFacebookFallback: "Standard Facebook links cannot attach local image files automatically. We downloaded your poster PNG—please upload the downloaded image file on Facebook.",
+        shareInstagramFallback: "Instagram web links do not support automatic local image attachment. We downloaded your poster PNG—please open Instagram and upload the saved poster image from your device.",
+        shareXFallback: "X share links include text only and cannot attach a local image automatically. Please click 'Download Poster' and attach the saved PNG manually to your post on X.",
+        shareCopyError: "Could not copy the caption automatically. Please select and copy the caption text above.",
+        shareCaptionCopied: "Caption copied to clipboard.",
         btnCreateAnother: "Create Another",
         btnBackHome: "Home",
-        footerDescription: "Official Nellore City 72-Ward Campaign Poster Creation Platform supporting Parvathareddy Chandrasekhar Reddy (PCSR), Nellore City In-charge, and all 72 Ward Member Candidates.",
+        footerDescription: "Nellore City 72-Ward Campaign Poster Creation Platform supporting Parvathareddy Chandrasekhar Reddy (PCSR), Nellore City YSRCP Party In-charge, and all 72 wards.",
         footerResetSession: "Reset Session Data",
         footerRights: "All rights reserved • Nellore City Campaign.",
         footerLanguageLabel: "Language:"
@@ -1769,41 +1999,51 @@
         navSubtitle: "నెల్లూరు సిటీ ప్రచార వేదిక",
         navHome: "హోమ్",
         navTemplates: "72 వార్డు టెంప్లేట్లు",
+        mobileNavHome: "హోమ్",
+        mobileNavTemplates: "72 వార్డు టెంప్లేట్లు",
+        mobileNavCreatePoster: "పోస్టర్ రూపొందించండి",
         navAdmin: "కాలిబ్రేషన్ & సెటప్",
         navCreatePoster: "పోస్టర్ రూపొందించండి",
         heroEyebrow: "నెల్లూరు నగర ప్రచారం",
-        heroHeading: "మన 72 వార్డుల కోసం మనందరం ఏకమవుదాం",
-        heroSubtext: "72 వార్డు మెంబర్ ప్రచార పోస్టర్లను వీక్షించండి మరియు మీ మద్దతును తెలియజేస్తూ మీ వ్యక్తిగత పోస్టర్‌ను రూపొందించుకోండి.",
-        leaderName: "పర్వతరెడ్డి చంద్రశేఖర్ రెడ్డి (PCSR)",
-        leaderRole: "నెల్లూరు సిటీ ఇన్‌ఛార్జ్ • 72 వార్డు అభ్యర్థులకు మద్దతుగా",
-        leaderRoleShort: "నెల్లూరు సిటీ ఇన్‌ఛార్జ్",
+        heroHeading: "నెల్లూరు 72 వార్డుల కోసం మనమందరం కలిసి ముందుకు సాగుదాం",
+        heroSubtext: "నెల్లూరు నగరంలోని 72 వార్డుల ప్రచార పోస్టర్లను చూడండి. మీ వార్డు టెంప్లేట్‌ను ఎంచుకుని, మీ ఫోటో మరియు వివరాలను జోడించి, డౌన్‌లోడ్ చేసి పంచుకోగల వ్యక్తిగత పోస్టర్‌ను రూపొందించండి.",
+        leaderName: "పర్వతరెడ్డి చంద్రశేఖర్ రెడ్డి",
+        leaderRole: "నెల్లూరు నగర YSRCP పార్టీ ఇన్‌ఛార్జ్",
+        leaderRoleShort: "నెల్లూరు నగర YSRCP పార్టీ ఇన్‌ఛార్జ్",
+        leaderBadgeLabel: "పార్టీ ఇన్‌ఛార్జ్",
+        leaderSupport: "నెల్లూరు నగరంలోని 72 వార్డుల ప్రచారానికి మద్దతుగా.",
         heroPrimaryCta: "మీ మద్దతు పోస్టర్‌ను రూపొందించండి",
-        heroSecondaryCta: "72 వార్డు మెంబర్లను చూడండి",
+        heroSecondaryCta: "72 వార్డు టెంప్లేట్లను చూడండి",
         btnPreviewOfficialPhoto: "PCSR అధికారిక ఫోటోను లోడ్ చేయండి",
         heroBadge72: "72 వార్డులు • సమైక్య ప్రచారం",
-        introTag: "నెల్లూరు మున్సిపల్ కార్పొరేషన్",
-        intro72Label: "వార్డు మెంబర్లు",
-        introCardDesc: "నెల్లూరు నగరంలోని ప్రతి వార్డు కార్పొరేటర్ అభ్యర్థికి మద్దతుగా ప్రత్యేకంగా రూపొందించిన ప్రచార పోస్టర్ టెంప్లేట్ అందుబాటులో ఉంది.",
-        statStep1: "దశ 1",
-        statPickWard: "వార్డు ఎంపిక",
-        statStep2: "దశ 2",
-        statAddPhoto: "ఫోటో అప్‌లోడ్",
-        statStep3: "దశ 3",
-        statShare: "డౌన్‌లోడ్ & షేర్",
+        leadershipEyebrow: "ప్రచార నాయకత్వం",
+        leadershipHeading: "నెల్లూరు 72 వార్డుల ప్రచార నాయకత్వం",
+        mayoralBadgeLabel: "మేయర్ ఎన్నికలు",
+        mayoralNamePlaceholder: "ఆనం విజయ్ కుమార్ రెడ్డి",
+        mayoralPhotoPlaceholder: "మేయర్ అభ్యర్థి ఫోటో ప్లేస్‌హోల్డర్",
+        mayoralRole: "నెల్లూరు నగర మేయర్ అభ్యర్థి",
+        mayoralSupportingMessage: "నెల్లూరు నగర ఎన్నికల్లో మేయర్ అభ్యర్థిగా పాల్గొంటున్నారు.",
         introEyebrow: "72 వార్డుల ప్రచార కార్యక్రమం గురించి",
-        introHeading: "మీ వార్డు అభ్యర్థికి మరియు PCSR గారికి మీ వ్యక్తిగత మద్దతును తెలియజేయండి",
-        introBody1: "నెల్లూరు సిటీ ఇన్‌ఛార్జ్ పర్వతరెడ్డి చంద్రశేఖర్ రెడ్డి (PCSR) గారి నాయకత్వంలో, నెల్లూరు నగరంలోని 72 వార్డుల సమగ్ర అభివృద్ధి మరియు ప్రజా ప్రాతినిధ్యం కోసం ఈ ప్రచార వేదిక రూపుదిద్దుకుంది.",
-        introBody2: "ప్రతి పోస్టర్ టెంప్లేట్ ఒక నిర్దిష్ట వార్డు మెంబర్ అభ్యర్థికి (వార్డు 1 నుండి వార్డు 72 వరకు) సంబంధించినది. మీ వార్డును ఎంచుకుని, మీ ఫోటోను అప్‌లోడ్ చేసి, బ్యాక్‌గ్రౌండ్ తొలగించి, మీ పేరు మరియు హోదాను నమోదు చేసి అధిక నాణ్యత గల పోస్టర్‌ను డౌన్‌లోడ్ చేసుకోండి.",
+        introHeading: "మీ వార్డు అభ్యర్థికి మీ వ్యక్తిగత మద్దతును తెలియజేయండి",
+        introBody: "నెల్లూరు నగరంలోని 72 వార్డులలో ప్రతిదానికి ప్రత్యేక ప్రచార పోస్టర్ టెంప్లేట్ ఉంది. మీ వార్డును ఎంచుకుని, మీ ఫోటోను అప్‌లోడ్ చేసి, మీ పేరు మరియు హోదాను నమోదు చేసి, వ్యక్తిగత ప్రచార పోస్టర్‌ను రూపొందించండి.",
+        step1Title: "1. మీ వార్డును ఎంచుకోండి.",
+        step1Desc: "నెల్లూరు నగరంలోని 72 వార్డు టెంప్లేట్లలో మీ వార్డును ఎంచుకోండి.",
+        step2Title: "2. మీ ఫోటో మరియు వివరాలను జోడించండి.",
+        step2Desc: "మీ ఫోటోను అప్‌లోడ్ చేసి, మీ పేరు మరియు హోదాను నమోదు చేయండి.",
+        step3Title: "3. మీ పోస్టర్‌ను డౌన్‌లోడ్ చేసి షేర్ చేయండి.",
+        step3Desc: "మీ హై-రిజల్యూషన్ పోస్టర్‌ను డౌన్‌లోడ్ చేసుకుని సోషల్ మీడియాలో షేర్ చేయండి.",
         introExploreBtn: "మొత్తం 72 వార్డు టెంప్లేట్లను చూడండి",
-        mediaEyebrow: "నెల్లూరు ప్రచార దృశ్యాలు",
-        mediaHeading: "ప్రచార ఫోటోలు & వీడియోలు",
-        mediaAddBtn: "ప్రచార మీడియాను ప్రివ్యూ చేయండి",
-        mediaEmptyTitle: "అధికారిక ప్రచార మీడియా గ్యాలరీ",
-        mediaEmptyDesc: "అధికారిక ప్రచార ఫోటోలు మరియు వీడియోలను templates/ ఫోల్డర్‌లో ఉంచండి లేదా పై బటన్ ద్వారా ప్రివ్యూ చేయండి.",
+        mediaEyebrow: "నెల్లూరు నగర ప్రచారం",
+        mediaHeading: "అధికారిక మీడియా ప్రచారం",
+        mediaPlaceholderDescription: "అధికారిక ఇన్‌స్టాగ్రామ్ ప్రచార వీడియోలను క్రింది కంటైనర్లలో ఎంబెడ్ చేయవచ్చు.",
+        igEmbedSlotTitle1: "అధికారిక ప్రచార వీడియో 1",
+        igEmbedSlotTitle2: "అధికారిక ప్రచార వీడియో 2",
+        igEmbedSlotTitle3: "అధికారిక ప్రచార వీడియో 3",
+        igEmbedSlotHint: "అధికారిక ఇన్‌స్టాగ్రామ్ ఎంబెడ్ కోడ్‌ను ఇక్కడ పేస్ట్ చేయండి.",
         ctaBannerHeading: "మీ వ్యక్తిగత ప్రచార పోస్టర్‌ను ఇప్పుడే రూపొందించండి",
-        ctaBannerSubtext: "మీ వార్డు మెంబర్‌ను ఎంచుకోండి, మీ ఫోటోను జోడించి మీ మద్దతును పంచుకోండి.",
-        ctaBannerPrimaryBtn: "పోస్టర్ తయారు చేయండి",
-        ctaBannerSecondaryBtn: "72 టెంప్లేట్లను చూడండి",
+        ctaBannerSubtext: "మీ వార్డు టెంప్లేట్‌ను ఎంచుకుని, మీ ఫోటో మరియు వివరాలను జోడించి మీ మద్దతును పంచుకోండి.",
+        ctaBannerPrimaryBtn: "పోస్టర్ రూపొందించండి",
+        ctaBannerSecondaryBtn: "72 వార్డు టెంప్లేట్లను చూడండి",
         backToHome: "తిరిగి హోమ్ పేజీకి",
         galleryHeading: "మీ వార్డు మెంబర్‌ను ఎంచుకోండి",
         gallerySubtext: "మీ వ్యక్తిగత ప్రచార పోస్టర్‌ను రూపొందించడానికి 72 వార్డు మెంబర్ టెంప్లేట్లలో ఒకదానిని ఎంచుకోండి.",
@@ -1830,7 +2070,6 @@
         btnOriginalVersion: "ఒరిజినల్",
         btnCutoutVersion: "బ్యాక్‌గ్రౌండ్ తొలగించినది",
         bgRemovingTitle: "బ్యాక్‌గ్రౌండ్ తొలగించబడుతోంది...",
-        btnRemoveBgAi: "బ్యాక్‌గ్రౌండ్ తొలగించండి (AI Auto)",
         btnReplacePhoto: "మరొక ఫోటో మార్చండి",
         btnAutoFitContinue: "ఫోటోను ఆటో-ఫిట్ చేసి కొనసాగించండి",
         btnContinueToCrop: "క్రాప్ చేయాలా? ఫోటోను సర్దుబాటు చేయండి",
@@ -1847,6 +2086,7 @@
         editorHeading: "మీ వివరాలను జోడించండి",
         editorSubtext: "మీ ప్రచార మద్దతు పోస్టర్‌పై కనిపించేలా మీ పేరు మరియు హోదాను నమోదు చేయండి.",
         validationNameRequired: "పోస్టర్‌ను రూపొందించడానికి దయచేసి మీ పేరును నమోదు చేయండి.",
+        posterExportError: "పోస్టర్ చిత్రాన్ని సిద్ధం చేయలేకపోయాం. దయచేసి మళ్లీ రూపొందించండి.",
         labelYourName: "మీ పేరు *",
         placeholderYourName: "మీ పేరును నమోదు చేయండి",
         labelDesignation: "హోదా / పదవి",
@@ -1859,17 +2099,27 @@
         resetStyleBtn: "శైలిని రీసెట్ చేయండి",
         btnApplyAndGenerate: "వర్తింపజేసి పోస్టర్ రూపొందించండి",
         successHeading: "విజయవంతమైంది!",
-        successSubtext: "మీ వ్యక్తిగత ప్రచార పోస్టర్ షేర్ చేయడానికి సిద్ధంగా ఉంది.",
+        successSubtext: "మీ వ్యక్తిగత ప్రచార పోస్టర్ డౌన్‌లోడ్ మరియు షేర్ చేయడానికి సిద్ధంగా ఉంది.",
         btnDownloadImage: "పోస్టర్ డౌన్‌లోడ్ చేయండి",
-        shareMessageLabel: "ప్రచార షేర్ సందేశం",
-        btnCopyMessage: "సందేశం కాపీ చేయండి",
+        shareMessageLabel: "ప్రచార షేర్ క్యాప్షన్",
+        btnCopyMessage: "క్యాప్షన్ కాపీ చేయండి",
         btnCopiedMessage: "కాపీ చేయబడింది!",
-        btnMoreShare: "షేర్ చేయండి (More)",
-        shareTipTitle: "సోషల్ మీడియా షేరింగ్ సూచన:",
-        shareTipBody: "మొబైల్‌లో 'షేర్ చేయండి (More)' ద్వారా నేరుగా ఫోటోను షేర్ చేయవచ్చు, లేదా ముందుగా 'పోస్టర్ డౌన్‌లోడ్ చేయండి' నొక్కి WhatsApp, Facebook లేదా X లో ఫోటోను జతచేయండి.",
+        btnMoreShare: "పోస్టర్ షేర్ చేయండి",
+        shareTipTitle: "ఇమేజ్ షేరింగ్ విధానం:",
+        shareTipBody: "WhatsApp లేదా ఇతర బటన్లను నొక్కినప్పుడు పోస్టర్ PNG మరియు క్యాప్షన్ షేర్ చేయబడతాయి (అలాగే క్యాప్షన్ ఆటోమేటిక్‌గా కాపీ చేయబడుతుంది—అవసరమైతే 'Add a message...' బాక్స్‌లో Paste చేయండి).",
+        shareCompleted: "పోస్టర్ చిత్రం షేర్ చేయబడింది! ప్రచార సందేశం క్లిప్‌బోర్డ్‌కు కూడా కాపీ చేయబడింది—అవసరమైతే 'Add a message...' లో Paste చేయండి.",
+        shareUnsupported: "ఈ బ్రౌజర్ డైరెక్ట్ ఇమేజ్ ఫైల్ షేరింగ్‌కు మద్దతు ఇవ్వదు. దయచేసి 'పోస్టర్ డౌన్‌లోడ్ చేయండి' నొక్కి, ఆ చిత్రాన్ని మాన్యువల్‌గా షేర్ చేయండి.",
+        shareCancelled: "షేరింగ్ రద్దు చేయబడింది.",
+        shareFailed: "పోస్టర్‌ను నేరుగా షేర్ చేయలేకపోయాం. దయచేసి డౌన్‌లోడ్ చేసి మాన్యువల్‌గా షేర్ చేయండి.",
+        shareWhatsAppFallback: "మీ పోస్టర్ PNG డౌన్‌లోడ్ చేయబడింది మరియు సందేశంతో WhatsApp తెరవబడింది—దయచేసి చాట్‌లో ఆ PNG చిత్రాన్ని జతచేయండి.",
+        shareFacebookFallback: "Facebook షేర్ లింక్ స్థానిక చిత్రాలను ఆటోమేటిక్‌గా జతచేయదు. మీ పోస్టర్ PNG డౌన్‌లోడ్ చేయబడింది—దయచేసి Facebook లో మాన్యువల్‌గా అప్‌లోడ్ చేయండి.",
+        shareInstagramFallback: "Instagram వెబ్ లింక్‌లు స్థానిక చిత్రాలను నేరుగా జతచేయవు. మీ పోస్టర్ PNG డౌన్‌లోడ్ చేయబడింది—దయచేసి Instagram తెరిచి ఆ చిత్రాన్ని అప్‌లోడ్ చేయండి.",
+        shareXFallback: "X షేర్ లింక్‌లో క్యాప్షన్ మాత్రమే ఉంటుంది. దయచేసి 'పోస్టర్ డౌన్‌లోడ్ చేయండి' నొక్కి, పోస్ట్ చేసే ముందు PNG చిత్రాన్ని మాన్యువల్‌గా జతచేయండి.",
+        shareCopyError: "క్యాప్షన్‌ను కాపీ చేయలేకపోయాం. పై టెక్స్ట్‌ను ఎంచుకుని కాపీ చేయండి.",
+        shareCaptionCopied: "క్యాప్షన్ కాపీ చేయబడింది.",
         btnCreateAnother: "మరొక పోస్టర్ తయారు చేయండి",
         btnBackHome: "హోమ్ పేజీ",
-        footerDescription: "నెల్లూరు సిటీ ఇన్‌ఛార్జ్ పర్వతరెడ్డి చంద్రశేఖర్ రెడ్డి (PCSR) గారికి మరియు 72 వార్డు మెంబర్ అభ్యర్థులకు మద్దతుగా అధికారిక నెల్లూరు 72 వార్డుల ప్రచార పోస్టర్ వేదిక.",
+        footerDescription: "నెల్లూరు నగర YSRCP పార్టీ ఇన్‌ఛార్జ్ పర్వతరెడ్డి చంద్రశేఖర్ రెడ్డి (PCSR) గారికి మరియు 72 వార్డులకు మద్దతుగా నెల్లూరు 72 వార్డుల ప్రచార పోస్టర్ వేదిక.",
         footerResetSession: "తాత్కాలిక డేటాను క్లియర్ చేయండి",
         footerRights: "సర్వ హక్కులు ప్రత్యేకించబడినవి • నెల్లూరు సిటీ ప్రచారం.",
         footerLanguageLabel: "భాష:"
@@ -1881,18 +2131,15 @@
       const cleanName = (supporterName || "").trim();
       if (lang === "te") {
         const prefix = cleanName ? `${cleanName} గారు ` : "";
-        return `${prefix}వార్డు ${wardNumber} మద్దతుగా నా వ్యక్తిగత ప్రచార పోస్టర్‌ను PCSR Digital లో రూపొందించాను. మీరు కూడా మీ వార్డు ప్రచార పోస్టర్‌ను ఇక్కడ రూపొందించుకోండి: ${websiteUrl}`;
+        return `${prefix}వార్డు ${wardNumber} మద్దతుగా నా వ్యక్తిగత ప్రచార పోస్టర్‌ను Parvathareddy Digital లో రూపొందించాను. మీరు కూడా మీ వార్డు ప్రచార పోస్టర్‌ను ఇక్కడ రూపొందించుకోండి www.parvathareddydigital.com`;
       }
-      const prefixEn = cleanName ? `I (${cleanName})` : "I";
-      return `${prefixEn} created my personalized campaign support poster for Ward ${wardNumber}. Explore the campaign and create your own poster on PCSR Digital: ${websiteUrl}`;
+      const prefixEn = cleanName ? `I ${cleanName}` : "I";
+      return `${prefixEn} created my personalized campaign support poster for Ward ${wardNumber} on Parvathareddy Digital. Explore the campaign and create your own poster in www.parvathareddydigital.com`;
     }
 
     /* ============================================================================
-       STREAMING_CHUNK:Configuring 72 Ward Template Data Structure (templates.js)...
-       ============================================================================
        MODULE 2: 72 WARD TEMPLATES CONFIGURATION (templates.js)
-       Each of the 72 templates has its own unique layout preset, normalized photoSlots,
-       and textSlots so photo and text placement adapt accurately per template.
+       STRICTLY PRESERVED — DO NOT MODIFY TEMPLATE DIMENSIONS, SLOTS, OR ARTWORK PATHS
        ============================================================================ */
     const LAYOUT_PRESETS = [
       {
@@ -1995,15 +2242,8 @@
       return wardTemplateImageCheckPromise;
     }
 
-    // Verified Campaign Media Items (Starts empty or loads actual owner files from templates/)
-    const CAMPAIGN_MEDIA = [];
-
     /* ============================================================================
-       STREAMING_CHUNK:Implementing Client-Side State Management & IndexedDB Storage...
-       ============================================================================
        MODULE 3: BROWSER STORAGE & STATE MANAGEMENT (app.js)
-       - Stores lightweight preferences (language, selected ward ID, text inputs) in sessionStorage/localStorage
-       - Stores binary image Blobs in IndexedDB (never putting huge base64 strings into localStorage)
        ============================================================================ */
     const APP_STATE = {
       language: localStorage.getItem("pcsr_lang") || "en",
@@ -2071,7 +2311,7 @@
     };
 
     /* ============================================================================
-       STREAMING_CHUNK:Implementing Navigation, Language Modal Rules, and View Switching...
+       NAVIGATION, LANGUAGE MODAL & MAYORAL CANDIDATE RENDERING
        ============================================================================ */
     function showLanguageModal() {
       const modal = document.getElementById("languageModal");
@@ -2090,6 +2330,31 @@
     function selectLanguageFromModal(lang) {
       setLanguage(lang);
       hideLanguageModal();
+    }
+
+    function syncMayoralCandidateCard() {
+      const dict = TRANSLATIONS[APP_STATE.language];
+      const nameEl = document.getElementById("mayoralCandidateName");
+      const roleEl = document.getElementById("mayoralCandidateRole");
+      const photoEl = document.getElementById("mayoralCandidatePhotoImg");
+
+      if (nameEl) {
+        const customName = APP_STATE.language === "te"
+          ? (MAYORAL_CANDIDATE_CONFIG.nameTe || MAYORAL_CANDIDATE_CONFIG.nameEn)
+          : (MAYORAL_CANDIDATE_CONFIG.nameEn || MAYORAL_CANDIDATE_CONFIG.nameTe);
+        nameEl.textContent = customName || dict.mayoralNamePlaceholder;
+      }
+      if (roleEl) {
+        const customRole = APP_STATE.language === "te"
+          ? MAYORAL_CANDIDATE_CONFIG.roleTe
+          : MAYORAL_CANDIDATE_CONFIG.roleEn;
+        roleEl.textContent = customRole || dict.mayoralRole;
+      }
+      if (photoEl && MAYORAL_CANDIDATE_CONFIG.photoPath) {
+        if (photoEl.getAttribute("src") !== MAYORAL_CANDIDATE_CONFIG.photoPath) {
+          photoEl.setAttribute("src", MAYORAL_CANDIDATE_CONFIG.photoPath);
+        }
+      }
     }
 
     function setLanguage(lang) {
@@ -2136,9 +2401,11 @@
         }
       });
 
+      syncMayoralCandidateCard();
+      clearShareFeedback();
+
       // Refresh dynamic views that depend on language
       renderWardTemplatesGrid();
-      renderCampaignMediaGallery();
       updateSelectedWardBanner();
       if (APP_STATE.currentView === "editor") {
         renderLivePosterCanvas();
@@ -2148,11 +2415,6 @@
       }
     }
 
-    /**
-     * Single-Page + Hash-friendly View Navigation
-     * Requirement 5B: Language modal MUST appear when visitor opens homepage, refreshes homepage,
-     * or navigates away and subsequently opens homepage again. It MUST NOT appear on internal pages.
-     */
     function navigateTo(viewName, options = {}) {
       const validViews = ["home", "templates", "upload", "editor", "success", "calibration"];
       if (!validViews.includes(viewName)) viewName = "home";
@@ -2168,7 +2430,7 @@
         targetSection.classList.add("active");
       }
 
-      // Update active state on desktop nav pills
+      // Update active state on nav pills
       document.querySelectorAll(".nav-pill").forEach((pill) => {
         if (pill.getAttribute("data-nav") === viewName) {
           pill.classList.add("bg-white", "shadow-sm", "text-[#087CC1]");
@@ -2179,7 +2441,6 @@
 
       window.scrollTo({ top: 0, behavior: "smooth" });
 
-      // Section 5B rule: When navigating back to homepage from another view, show the language modal
       if (viewName === "home" && (previousView !== "home" || options.isInitialHomeLoad)) {
         showLanguageModal();
       } else if (viewName !== "home") {
@@ -2194,89 +2455,11 @@
       } else if (viewName === "editor") {
         initializeEditorForSelectedWard();
       } else if (viewName === "success") {
+        clearShareFeedback();
         updateShareMessagePreview();
       } else if (viewName === "calibration") {
         initCalibrationStudio();
       }
-    }
-
-    /* ============================================================================
-       STREAMING_CHUNK:Rendering the Campaign Media Gallery and 72-Template Gallery...
-       ============================================================================ */
-    function renderCampaignMediaGallery() {
-      const container = document.getElementById("campaignMediaContainer");
-      if (!container) return;
-      const dict = TRANSLATIONS[APP_STATE.language];
-
-      if (CAMPAIGN_MEDIA.length === 0) {
-        // Graceful empty state when owner media files haven't been added yet
-        container.innerHTML = `
-          <div class="md:col-span-3 rounded-3xl bg-white border border-[#087CC1]/15 p-8 sm:p-10 text-center shadow-sm">
-            <div class="w-14 h-14 rounded-2xl bg-[#DDF3F7] text-[#075477] flex items-center justify-center mx-auto mb-3">
-              <i data-lucide="film" class="w-7 h-7"></i>
-            </div>
-            <h3 class="text-lg font-extrabold text-[#11182D] mb-1">${dict.mediaEmptyTitle}</h3>
-            <p class="text-xs sm:text-sm text-[#68758B] max-w-xl mx-auto mb-5">${dict.mediaEmptyDesc}</p>
-            <button
-              type="button"
-              onclick="document.getElementById('mediaGalleryInput').click()"
-              class="btn-secondary-campaign px-5 py-2.5 text-xs font-extrabold inline-flex items-center gap-2 cursor-pointer"
-            >
-              <i data-lucide="upload-cloud" class="w-4 h-4 text-[#087CC1]"></i>
-              <span>${dict.mediaAddBtn}</span>
-            </button>
-          </div>
-        `;
-        if (window.lucide) lucide.createIcons();
-        return;
-      }
-
-      container.innerHTML = CAMPAIGN_MEDIA.map((item, idx) => {
-        if (item.type === "video") {
-          return `
-            <div class="premium-card overflow-hidden flex flex-col">
-              <div class="relative aspect-video bg-[#11182D]">
-                <video
-                  src="${item.url}"
-                  controls
-                  preload="metadata"
-                  class="w-full h-full object-cover"
-                  aria-label="${item.title || 'Campaign Video ' + (idx + 1)}"
-                ></video>
-              </div>
-              <div class="p-4 flex items-center justify-between">
-                <span class="text-xs font-extrabold text-[#11182D] truncate">${item.title}</span>
-                <span class="text-[10px] font-bold uppercase px-2 py-0.5 rounded-full bg-[#DDF3F7] text-[#075477]">Video</span>
-              </div>
-            </div>
-          `;
-        }
-        return `
-          <div class="premium-card overflow-hidden flex flex-col">
-            <div class="aspect-video bg-slate-100 overflow-hidden">
-              <img src="${item.url}" alt="${item.title}" loading="lazy" class="w-full h-full object-cover" />
-            </div>
-            <div class="p-4 flex items-center justify-between">
-              <span class="text-xs font-extrabold text-[#11182D] truncate">${item.title}</span>
-              <span class="text-[10px] font-bold uppercase px-2 py-0.5 rounded-full bg-[#B9EACB]/60 text-[#079B59]">Photo</span>
-            </div>
-          </div>
-        `;
-      }).join("");
-      if (window.lucide) lucide.createIcons();
-    }
-
-    function handleCampaignMediaPreview(event) {
-      const files = Array.from(event.target.files || []);
-      files.forEach((file) => {
-        const url = URL.createObjectURL(file);
-        CAMPAIGN_MEDIA.push({
-          type: file.type.startsWith("video/") ? "video" : "image",
-          url,
-          title: file.name.replace(/\.[^/.]+$/, "")
-        });
-      });
-      renderCampaignMediaGallery();
     }
 
     function handleLeaderPhotoPreview(event) {
@@ -2286,10 +2469,17 @@
       APP_STATE.customLeaderPhotoUrl = url;
       const heroImg = document.getElementById("pcsrHeroPortrait");
       const placeholder = document.getElementById("pcsrPortraitPlaceholder");
+      const cardImg = document.getElementById("pcsrLeadershipCardImg");
+      const cardFallback = document.getElementById("pcsrCardPhotoFallback");
       if (heroImg && placeholder) {
         heroImg.src = url;
         heroImg.style.display = "block";
         placeholder.style.display = "none";
+      }
+      if (cardImg && cardFallback) {
+        cardImg.src = url;
+        cardImg.style.display = "block";
+        cardFallback.style.display = "none";
       }
       renderLivePosterCanvas();
     }
@@ -2317,15 +2507,12 @@
       const hideMissing = document.getElementById("hideMissingWardTemplates")?.checked ?? true;
 
       const filtered = WARD_TEMPLATES.filter((t) => {
-        // Hide templates whose artwork image failed to load (enabled by default).
         if (hideMissing && WARD_TEMPLATE_IMAGE_STATUS[t.wardNumber] === false) return false;
 
-        // Range check
         if (rangeVal !== "all") {
           const [minW, maxW] = rangeVal.split("-").map(Number);
           if (t.wardNumber < minW || t.wardNumber > maxW) return false;
         }
-        // Search query check (matches ward number, padded number, or candidate name)
         if (!query) return true;
         const padded = String(t.wardNumber).padStart(2, "0");
         const matchNum = String(t.wardNumber) === query || padded === query || `ward ${t.wardNumber}`.includes(query) || `వార్డు ${t.wardNumber}`.includes(query);
@@ -2360,7 +2547,7 @@
               onclick="selectWardTemplate(${t.wardNumber})"
               class="relative aspect-[4/5] w-full overflow-hidden bg-campaign-gradient cursor-pointer group"
             >
-              <!-- Attempts to load official ward-XX.png; falls back to crisp vector campaign preview -->
+              <!-- Attempts to load official ward-XX.jpeg; falls back to crisp vector campaign preview -->
               <img
                 src="${t.customDataUrl || t.thumbnail}"
                 alt="${dict.wardLabelPrefix} ${t.wardNumber} Campaign Poster Template"
@@ -2374,7 +2561,7 @@
                 <!-- Top Header Ribbon -->
                 <div class="flex items-center justify-between gap-1">
                   <span class="text-[9px] sm:text-[10px] font-extrabold uppercase tracking-wider px-2 py-0.5 rounded-full bg-white/20 backdrop-blur-sm">
-                    PCSR Digital
+                    Parvathareddy Digital
                   </span>
                   <span class="text-[10px] sm:text-xs font-extrabold px-2.5 py-0.5 rounded-full bg-[#11182D]/70 text-[#48C8D2] border border-white/20">
                     ${dict.wardLabelPrefix} ${padded}
@@ -2487,7 +2674,6 @@
 
     function updateSelectedWardBanner() {
       const ward = getSelectedWardTemplate();
-      const dict = TRANSLATIONS[APP_STATE.language];
       const padded = String(ward.wardNumber).padStart(2, "0");
 
       const badge = document.getElementById("uploadWardBadge");
@@ -2506,14 +2692,8 @@
     }
 
     /* ============================================================================
-       STREAMING_CHUNK:Implementing Photo Upload Validation and Client-Side AI Background Removal...
-       ============================================================================
-       MODULE 5: PHOTO UPLOAD & REAL CLIENT-SIDE BACKGROUND REMOVAL
-       - Validates browser-supported image files and max size (15MB)
-       - Uses @imgly/background-removal via dynamic ES module import in browser
-       - Includes an automatic client-side portrait edge-keying fallback if the user's
-         mobile connection blocks the 35MB WASM model or runs out of WebAssembly memory,
-         transparently informing the user and never faking status.
+       MODULE 5: PHOTO UPLOAD & VALIDATION
+       (Remove Background AI Auto button handler disabled per requirement)
        ============================================================================ */
     function showUploadError(msg) {
       const box = document.getElementById("uploadErrorBox");
@@ -2557,7 +2737,6 @@
         return;
       }
 
-      // Verify that this browser can decode the selected image before opening the crop tool.
       const objectUrl = URL.createObjectURL(file);
       const testImage = new Image();
       testImage.onload = () => {
@@ -2597,222 +2776,9 @@
       testImage.src = objectUrl;
     }
 
-    /**
-     * Real Browser-Based Background Removal Pipeline
-     * 1. Attempts to dynamically load `@imgly/background-removal` WASM/ONNX model in browser.
-     * 2. If the browser/device succeeds, produces a true neural cutout PNG.
-     * 3. If the device blocks CDN WASM threads or lacks memory, executes our transparent
-     *    Client-Side Corner Flood-Fill Subject Segmentation on Canvas and clearly reports the method used.
-     */
+    // Disabled handler for the hidden Remove Background (AI Auto) option so it cannot be triggered
     async function runClientSideBackgroundRemoval() {
-      if (!APP_STATE.originalPhotoUrl) return;
-
-      const overlay = document.getElementById("bgRemovalProgressOverlay");
-      const progressStep = document.getElementById("bgRemovalProgressStep");
-      const progressBar = document.getElementById("bgRemovalProgressBar");
-      const noticeBox = document.getElementById("bgRemovalNoticeBox");
-      const noticeText = document.getElementById("bgRemovalNoticeText");
-      const btnRun = document.getElementById("btnRunAiBgRemoval");
-
-      if (overlay) {
-        overlay.classList.remove("hidden");
-        overlay.classList.add("flex");
-      }
-      if (btnRun) btnRun.disabled = true;
-      if (noticeBox) noticeBox.classList.add("hidden");
-
-      try {
-        if (progressStep) {
-          progressStep.textContent = APP_STATE.language === "te"
-            ? "బ్రౌజర్ AI బ్యాక్‌గ్రౌండ్ రిమూవల్ మాడ్యూల్ లోడ్ అవుతోంది..."
-            : "Loading browser AI segmentation model (@imgly/background-removal)...";
-        }
-        if (progressBar) progressBar.style.width = "25%";
-
-        let transparentBlob = null;
-        let usedMethod = "neural";
-
-        try {
-          // Attempt @imgly/background-removal ESM bundle from CDN
-          const imglyModule = await import("https://cdn.jsdelivr.net/npm/@imgly/background-removal@1.4.5/+esm");
-          const removeBgFn = imglyModule.removeBackground || imglyModule.default;
-          if (typeof removeBgFn === "function") {
-            transparentBlob = await removeBgFn(APP_STATE.originalPhotoUrl, {
-              progress: (key, current, total) => {
-                if (total > 0 && progressBar) {
-                  const pct = Math.min(95, Math.round((current / total) * 100));
-                  progressBar.style.width = `${pct}%`;
-                }
-              }
-            });
-          } else {
-            throw new Error("Module export unavailable");
-          }
-        } catch (wasmErr) {
-          console.info("Switching to smart client-side canvas background keying:", wasmErr.message);
-          usedMethod = "smart-canvas-keying";
-          if (progressStep) {
-            progressStep.textContent = APP_STATE.language === "te"
-              ? "స్మార్ట్ కాన్వాస్ బ్యాక్‌గ్రౌండ్ కటౌట్ ప్రాసెస్ అవుతోంది..."
-              : "Applying client-side smart background segmentation...";
-          }
-          if (progressBar) progressBar.style.width = "75%";
-          transparentBlob = await performSmartCanvasBackgroundKeying(APP_STATE.originalPhotoUrl);
-        }
-
-        if (!transparentBlob) {
-          throw new Error("Could not produce cutout image.");
-        }
-
-        if (APP_STATE.cutoutPhotoUrl) {
-          URL.revokeObjectURL(APP_STATE.cutoutPhotoUrl);
-        }
-        APP_STATE.cutoutPhotoUrl = URL.createObjectURL(transparentBlob);
-        IDB_HELPER.saveBlob("cutout_photo", transparentBlob);
-
-        switchPhotoVersion("cutout");
-
-        const compareGroup = document.getElementById("compareToggleGroup");
-        if (compareGroup) {
-          compareGroup.classList.remove("hidden");
-          compareGroup.classList.add("inline-flex");
-        }
-
-        if (noticeBox && noticeText) {
-          noticeBox.classList.remove("hidden");
-          if (usedMethod === "neural") {
-            noticeText.textContent = APP_STATE.language === "te"
-              ? "AI బ్యాక్‌గ్రౌండ్ తొలగింపు పూర్తయింది! మీరు పైన ఉన్న బటన్లతో 'ఒరిజినల్' మరియు 'బ్యాక్‌గ్రౌండ్ తొలగించిన' ఫోటోలను పోల్చి చూడవచ్చు."
-              : "AI background removal succeeded! Use the toggle above to compare the Original and BG Removed versions.";
-          } else {
-            noticeText.textContent = APP_STATE.language === "te"
-              ? "బ్రౌజర్ స్మార్ట్ ఎడ్జ్-కీయింగ్ ద్వారా బ్యాక్‌గ్రౌండ్ తొలగించబడింది. మీకు ఒరిజినల్ ఫోటో కావాలంటే పైన 'ఒరిజినల్' బటన్ నొక్కవచ్చు."
-              : "Processed using fast client-side perimeter background keying (offline/mobile fallback). Compare with 'Original' above and pick whichever looks best.";
-          }
-        }
-      } catch (err) {
-        console.error("Background removal error:", err);
-        if (noticeBox && noticeText) {
-          noticeBox.classList.remove("hidden");
-          noticeText.textContent = APP_STATE.language === "te"
-            ? "ఈ పరికరంలో ఆటోమేటిక్ బ్యాక్‌గ్రౌండ్ తొలగింపు సాధ్యపడలేదు. మీరు మీ ఒరిజినల్ ఫోటోను క్రాప్ చేసి కొనసాగవచ్చు."
-            : "Automatic background removal could not run on this device/photo. Your original photo is preserved so you can crop and continue seamlessly.";
-        }
-      } finally {
-        if (overlay) {
-          overlay.classList.add("hidden");
-          overlay.classList.remove("flex");
-        }
-        if (btnRun) btnRun.disabled = false;
-      }
-    }
-
-    /**
-     * Client-Side Perimeter Flood-Fill & Feathering Background Segmentation
-     * Samples the outer perimeter background color of a portrait and removes contiguous
-     * background pixels while preserving the central face & torso region.
-     */
-    function performSmartCanvasBackgroundKeying(imgSrc) {
-      return new Promise((resolve, reject) => {
-        const img = new Image();
-        img.crossOrigin = "anonymous";
-        img.onload = () => {
-          try {
-            const maxDim = 900;
-            let w = img.naturalWidth || img.width;
-            let h = img.naturalHeight || img.height;
-            if (w > maxDim || h > maxDim) {
-              const scale = maxDim / Math.max(w, h);
-              w = Math.round(w * scale);
-              h = Math.round(h * scale);
-            }
-
-            const canvas = document.createElement("canvas");
-            canvas.width = w;
-            canvas.height = h;
-            const ctx = canvas.getContext("2d");
-            ctx.drawImage(img, 0, 0, w, h);
-
-            const imageData = ctx.getImageData(0, 0, w, h);
-            const data = imageData.data;
-
-            // Sample top-left, top-right, and upper perimeter pixels to estimate background color
-            const sampleCoords = [
-              [2, 2], [w - 3, 2], [Math.floor(w * 0.5), 2],
-              [2, Math.floor(h * 0.25)], [w - 3, Math.floor(h * 0.25)]
-            ];
-            let rSum = 0, gSum = 0, bSum = 0;
-            sampleCoords.forEach(([sx, sy]) => {
-              const idx = (sy * w + sx) * 4;
-              rSum += data[idx];
-              gSum += data[idx + 1];
-              bSum += data[idx + 2];
-            });
-            const bgR = rSum / sampleCoords.length;
-            const bgG = gSum / sampleCoords.length;
-            const bgB = bSum / sampleCoords.length;
-
-            // BFS flood-fill from top/left/right border pixels
-            const visited = new Uint8Array(w * h);
-            const queue = new Int32Array(w * h);
-            let qHead = 0, qTail = 0;
-
-            const pushSeed = (x, y) => {
-              const p = y * w + x;
-              if (!visited[p]) {
-                visited[p] = 1;
-                queue[qTail++] = p;
-              }
-            };
-
-            for (let x = 0; x < w; x++) pushSeed(x, 0);
-            for (let y = 0; y < Math.floor(h * 0.85); y++) {
-              pushSeed(0, y);
-              pushSeed(w - 1, y);
-            }
-
-            const tolerance = 58;
-            while (qHead < qTail) {
-              const p = queue[qHead++];
-              const x = p % w;
-              const y = (p - x) / w;
-              const idx = p * 4;
-
-              // Protect central portrait core oval (head & shoulders)
-              const normX = (x / w - 0.5) / 0.28;
-              const normY = (y / h - 0.56) / 0.38;
-              if (normX * normX + normY * normY < 0.72) {
-                continue;
-              }
-
-              const dr = data[idx] - bgR;
-              const dg = data[idx + 1] - bgG;
-              const db = data[idx + 2] - bgB;
-              const dist = Math.sqrt(dr * dr + dg * dg + db * db);
-
-              if (dist <= tolerance) {
-                // Feather alpha near threshold boundary
-                data[idx + 3] = dist > tolerance * 0.78 ? Math.round(((tolerance - dist) / (tolerance * 0.22)) * 110) : 0;
-
-                if (x > 0 && !visited[p - 1]) { visited[p - 1] = 1; queue[qTail++] = p - 1; }
-                if (x < w - 1 && !visited[p + 1]) { visited[p + 1] = 1; queue[qTail++] = p + 1; }
-                if (y > 0 && !visited[p - w]) { visited[p - w] = 1; queue[qTail++] = p - w; }
-                if (y < h - 1 && !visited[p + w]) { visited[p + w] = 1; queue[qTail++] = p + w; }
-              }
-            }
-
-            ctx.putImageData(imageData, 0, 0);
-            canvas.toBlob((blob) => {
-              if (blob) resolve(blob);
-              else reject(new Error("Canvas toBlob failed"));
-            }, "image/png");
-          } catch (e) {
-            reject(e);
-          }
-        };
-        img.onerror = () => reject(new Error("Image load failed"));
-        img.src = imgSrc;
-      });
+      return;
     }
 
     function switchPhotoVersion(version) {
@@ -2823,32 +2789,11 @@
         APP_STATE.activePhotoVersion = "original";
         document.getElementById("uploadedPhotoPreviewImg").src = APP_STATE.originalPhotoUrl;
       }
-
-      const btnOrig = document.getElementById("btnShowOriginal");
-      const btnCut = document.getElementById("btnShowCutout");
-      const badge = document.getElementById("bgStatusBadge");
-
-      if (APP_STATE.activePhotoVersion === "cutout") {
-        if (btnCut) btnCut.className = "px-3 py-1 rounded-full text-xs font-bold bg-[#079B59] text-white cursor-pointer";
-        if (btnOrig) btnOrig.className = "px-3 py-1 rounded-full text-xs font-bold text-[#68758B] cursor-pointer";
-        if (badge) {
-          badge.textContent = APP_STATE.language === "te" ? "బ్యాక్‌గ్రౌండ్ తొలగించబడింది" : "Background Removed";
-          badge.className = "text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-[#B9EACB] text-[#075477]";
-        }
-      } else {
-        if (btnOrig) btnOrig.className = "px-3 py-1 rounded-full text-xs font-bold bg-[#087CC1] text-white cursor-pointer";
-        if (btnCut) btnCut.className = "px-3 py-1 rounded-full text-xs font-bold text-[#68758B] cursor-pointer";
-        if (badge) {
-          badge.textContent = APP_STATE.language === "te" ? "ఒరిజినల్ ఫోటో" : "Original Image";
-          badge.className = "text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-slate-200 text-slate-700";
-        }
-      }
     }
 
     /* ============================================================================
-       STREAMING_CHUNK:Implementing Cropper.js Modal with Aspect Ratio & Mask Support...
-       ============================================================================
        MODULE 6: CROP & ADJUST PHOTO INTERFACE (crop.js)
+       STRICTLY PRESERVED
        ============================================================================ */
     function continueWithAutoFitPhoto() {
       const sourceUrl = APP_STATE.activePhotoVersion === "cutout" && APP_STATE.cutoutPhotoUrl
@@ -2983,18 +2928,8 @@
     }
 
     /* ============================================================================
-       STREAMING_CHUNK:Implementing the High-Resolution Canvas Poster Renderer (poster-renderer.js)...
-       ============================================================================
        MODULE 7: EXACT PHOTO & TEXT PLACEMENT ENGINE (poster-renderer.js & editor.js)
-       Renders each poster in the strict 8-step layering sequence defined in Section 11:
-       1. Template background artwork (or high-resolution vector campaign template if image file not yet placed)
-       2. Official campaign header/leader graphics
-       3. Processed & cropped user photo in the template's exact normalized slot
-       4. Shape mask (circle / rounded rect / rect) & border ring
-       5. User name & designation in their designated normalized coordinates
-       6. Configured font family, color, stroke, and automatic line-wrapping/scaling for long names & Telugu glyphs
-       7. Foreground decorative badges
-       8. Export as a high-resolution PNG at the source template dimensions
+       STRICTLY PRESERVED
        ============================================================================ */
     function initializeEditorForSelectedWard() {
       const ward = getSelectedWardTemplate();
@@ -3262,11 +3197,6 @@
       // Keep the source template unchanged beyond the photo, name, and designation overlays.
     }
 
-    /**
-     * Draws a rich, high-resolution Nellore 72-Ward campaign poster template
-     * using the exact blue (#087CC1), aqua (#48C8D2), deep blue (#075477), green (#079B59),
-     * and white palette when `templates/ward-XX.png` is not yet uploaded.
-     */
     async function drawBuiltInWardPosterArtwork(ctx, W, H, ward) {
       const padded = String(ward.wardNumber).padStart(2, "0");
       const isTe = APP_STATE.language === "te";
@@ -3309,7 +3239,7 @@
       ctx.fillStyle = "#075477";
       ctx.font = "800 30px 'Inter', 'Noto Sans Telugu', sans-serif";
       ctx.textAlign = "left";
-      ctx.fillText("PCSR DIGITAL", 92, 98);
+      ctx.fillText("PARVATHAREDDY DIGITAL", 92, 98);
 
       // Ward Badge Pill on right of header
       drawRoundedRectPath(ctx, W - 310, 56, 246, 64, 32);
@@ -3472,16 +3402,11 @@
       ctx.drawImage(img, cx, cy, nw, nh);
     }
 
-    /**
-     * Draws supporter text with automatic font-shrinking for long names or Telugu glyphs
-     * so text never overflows or clips outside its configured slot width.
-     */
     function drawStyledCampaignText(ctx, cfg) {
       ctx.save();
       let currentSize = cfg.fontSize;
       ctx.font = `${cfg.fontWeight} ${currentSize}px ${cfg.fontFamily}`;
 
-      // Shrink long names to fit without dropping below the configured minimum size.
       const minFontSize = cfg.minFontSize || 20;
       while (ctx.measureText(cfg.text).width > cfg.maxWidth && currentSize > minFontSize) {
         currentSize = Math.max(minFontSize, currentSize - 2);
@@ -3528,9 +3453,13 @@
     }
 
     /* ============================================================================
-       STREAMING_CHUNK:Implementing Poster Generation, PNG Export, and Social Sharing (sharing.js)...
-       ============================================================================
-       MODULE 8: POSTER GENERATION, DOWNLOAD & SOCIAL SHARING (sharing.js)
+       MODULE 8: POSTER GENERATION, DOWNLOAD & ENHANCED IMAGE-FILE SOCIAL SHARING
+       - Uses the exact final generated poster Blob/DataURL produced by the template
+         workflow without regenerating or altering dimensions, fonts, or layout.
+       - Checks `navigator.canShare({ files: [file] })` and shares the actual
+         generated PNG file (`paravathareddy-campaign-poster.png`) + caption.
+       - Provides platform-specific fallbacks and a clear Download Poster button
+         when direct image-file sharing is unsupported.
        ============================================================================ */
     async function handleGeneratePoster(event) {
       if (event) event.preventDefault();
@@ -3549,12 +3478,28 @@
       await composePosterOnCanvas(canvas, ward);
 
       const dataUrl = canvas.toDataURL("image/png", 1.0);
-      APP_STATE.generatedPosterDataUrl = dataUrl;
+      let blob;
+      try {
+        blob = await new Promise((resolve, reject) => {
+          canvas.toBlob((result) => {
+            if (result) {
+              resolve(result);
+            } else {
+              reject(new Error("Canvas did not produce a poster image blob."));
+            }
+          }, "image/png", 1.0);
+        });
+      } catch (error) {
+        console.error("Could not create the generated poster image:", error);
+        const validationText = document.getElementById("editorValidationText");
+        if (validationText) validationText.textContent = TRANSLATIONS[APP_STATE.language].posterExportError;
+        validationBox?.classList.remove("hidden");
+        return;
+      }
 
-      canvas.toBlob((blob) => {
-        APP_STATE.generatedPosterBlob = blob;
-        if (blob) IDB_HELPER.saveBlob("last_generated_poster", blob);
-      }, "image/png", 1.0);
+      APP_STATE.generatedPosterDataUrl = dataUrl;
+      APP_STATE.generatedPosterBlob = blob;
+      IDB_HELPER.saveBlob("last_generated_poster", blob);
 
       const finalImg = document.getElementById("finalGeneratedPosterImg");
       const metaLabel = document.getElementById("finalPosterMetaLabel");
@@ -3562,7 +3507,7 @@
 
       if (finalImg) finalImg.src = dataUrl;
       if (metaLabel) {
-        metaLabel.textContent = `PCSR-Digital-Ward-${padded}-Poster.png (${canvas.width} × ${canvas.height} px)`;
+        metaLabel.textContent = `paravathareddy-campaign-poster-ward-${padded}.png (${canvas.width} × ${canvas.height} px)`;
       }
 
       navigateTo("success");
@@ -3571,7 +3516,20 @@
     function getGeneratedPosterFilename() {
       const ward = getSelectedWardTemplate();
       const padded = String(ward.wardNumber).padStart(2, "0");
-      return `PCSR-Digital-Ward-${padded}-Poster.png`;
+      return `paravathareddy-campaign-poster-ward-${padded}.png`;
+    }
+
+    async function ensureGeneratedPosterBlob() {
+      if (APP_STATE.generatedPosterBlob instanceof Blob) {
+        return APP_STATE.generatedPosterBlob;
+      }
+      if (APP_STATE.generatedPosterDataUrl) {
+        const res = await fetch(APP_STATE.generatedPosterDataUrl);
+        const blob = await res.blob();
+        APP_STATE.generatedPosterBlob = blob;
+        return blob;
+      }
+      throw new Error("No generated poster image is available.");
     }
 
     function downloadGeneratedPoster() {
@@ -3601,84 +3559,261 @@
       }
     }
 
-    function copyShareMessage() {
+    function clearShareFeedback() {
+      const container = document.getElementById("shareFeedbackContainer");
+      const status = document.getElementById("shareStatus");
+      const actions = document.getElementById("shareFallbackActions");
+      const extLink = document.getElementById("shareFallbackExternalLink");
+      if (container) container.classList.add("hidden");
+      if (status) status.textContent = "";
+      if (actions) {
+        actions.classList.add("hidden");
+        actions.classList.remove("flex");
+      }
+      if (extLink) {
+        extLink.classList.add("hidden");
+        extLink.classList.remove("inline-flex");
+      }
+    }
+
+    function showShareStatus(message, options = {}) {
+      const container = document.getElementById("shareFeedbackContainer");
+      const status = document.getElementById("shareStatus");
+      const actions = document.getElementById("shareFallbackActions");
+      const extLink = document.getElementById("shareFallbackExternalLink");
+      const extLabel = document.getElementById("shareFallbackExternalLabel");
+
+      if (!container || !status) return;
+      container.classList.remove("hidden");
+      status.textContent = message;
+
+      if (options.showDownloadFallback && actions) {
+        actions.classList.remove("hidden");
+        actions.classList.add("flex");
+      } else if (actions) {
+        actions.classList.add("hidden");
+        actions.classList.remove("flex");
+      }
+
+      if (options.actionLabel && options.actionUrl && extLink && extLabel) {
+        extLink.href = options.actionUrl;
+        extLabel.textContent = options.actionLabel;
+        extLink.classList.remove("hidden");
+        extLink.classList.add("inline-flex");
+      } else if (extLink) {
+        extLink.classList.add("hidden");
+        extLink.classList.remove("inline-flex");
+      }
+    }
+
+    async function copyShareMessage() {
       const msg = getActiveShareMessage();
-      const tempArea = document.createElement("textarea");
-      tempArea.value = msg;
-      document.body.appendChild(tempArea);
-      tempArea.select();
+      const dict = TRANSLATIONS[APP_STATE.language];
       try {
-        document.execCommand("copy");
-      } catch (e) {}
-      document.body.removeChild(tempArea);
+        if (navigator.clipboard?.writeText) {
+          await navigator.clipboard.writeText(msg);
+        } else {
+          const tempArea = document.createElement("textarea");
+          tempArea.value = msg;
+          tempArea.style.position = "fixed";
+          tempArea.style.opacity = "0";
+          document.body.appendChild(tempArea);
+          tempArea.select();
+          const copied = document.execCommand("copy");
+          document.body.removeChild(tempArea);
+          if (!copied) throw new Error("Clipboard copy was not accepted by the browser.");
+        }
+      } catch (error) {
+        showShareStatus(dict.shareCopyError);
+        return;
+      }
 
       const btnTxt = document.getElementById("copyMsgBtnText");
-      const dict = TRANSLATIONS[APP_STATE.language];
       if (btnTxt) {
         btnTxt.textContent = dict.btnCopiedMessage;
         setTimeout(() => {
           btnTxt.textContent = dict.btnCopyMessage;
         }, 2000);
       }
+      showShareStatus(dict.shareCaptionCopied);
+    }
+
+    async function createGeneratedPosterFile() {
+      if (typeof File === "undefined" || typeof Blob === "undefined") {
+        throw new Error("This browser does not support constructing a File object.");
+      }
+      const blob = await ensureGeneratedPosterBlob();
+      return new File([blob], "paravathareddy-campaign-poster.png", { type: "image/png" });
+    }
+
+    async function copyCaptionSilently(text) {
+      try {
+        if (navigator.clipboard?.writeText) {
+          await navigator.clipboard.writeText(text);
+          return true;
+        }
+      } catch (e) {}
+      try {
+        const tempArea = document.createElement("textarea");
+        tempArea.value = text;
+        tempArea.style.position = "fixed";
+        tempArea.style.opacity = "0";
+        document.body.appendChild(tempArea);
+        tempArea.select();
+        const ok = document.execCommand("copy");
+        document.body.removeChild(tempArea);
+        return ok;
+      } catch (e) {
+        return false;
+      }
+    }
+
+    /**
+     * Native Web Share API with actual generated poster File object + text message.
+     * Also copies the caption to the clipboard automatically so if Windows/Desktop WhatsApp
+     * ignores the `text` field when `files` are attached, the user can immediately Paste (Ctrl+V)
+     * into WhatsApp's "Add a message..." field or send via the companion WhatsApp message link.
+     */
+    async function tryNativePosterShare() {
+      const captionText = getActiveShareMessage();
+      await copyCaptionSilently(captionText);
+
+      if (typeof navigator === "undefined" || typeof navigator.share !== "function" || typeof File === "undefined") {
+        return "unsupported";
+      }
+
+      let posterFile;
+      try {
+        posterFile = await createGeneratedPosterFile();
+      } catch (err) {
+        console.warn("Could not create File object for sharing:", err);
+        return "unsupported";
+      }
+
+      if (typeof navigator.canShare === "function") {
+        try {
+          if (!navigator.canShare({ files: [posterFile] })) {
+            return "unsupported";
+          }
+        } catch (err) {
+          return "unsupported";
+        }
+      } else {
+        return "unsupported";
+      }
+
+      // Build share payload with both the image file and the campaign text message
+      let shareData = {
+        files: [posterFile],
+        text: captionText,
+        title: captionText
+      };
+
+      // If a browser rejects combining `files` + `text` in canShare, fall back to `files` + clipboard
+      if (typeof navigator.canShare === "function") {
+        try {
+          if (!navigator.canShare(shareData)) {
+            shareData = { files: [posterFile] };
+          }
+        } catch (e) {
+          shareData = { files: [posterFile] };
+        }
+      }
+
+      try {
+        await navigator.share(shareData);
+        const waUrl = `https://wa.me/?text=${encodeURIComponent(captionText)}`;
+        showShareStatus(TRANSLATIONS[APP_STATE.language].shareCompleted, {
+          showDownloadFallback: false,
+          actionLabel: "Send Message on WhatsApp",
+          actionUrl: waUrl
+        });
+        return "shared";
+      } catch (error) {
+        if (error && error.name === "AbortError") {
+          showShareStatus(TRANSLATIONS[APP_STATE.language].shareCancelled);
+          return "cancelled";
+        }
+        console.error("Native file share failed:", error);
+        return "failed";
+      }
+    }
+
+    async function shareViaNativeWebShare() {
+      const dict = TRANSLATIONS[APP_STATE.language];
+      const result = await tryNativePosterShare();
+      if (result === "unsupported") {
+        showShareStatus(dict.shareUnsupported, { showDownloadFallback: true });
+      } else if (result === "failed") {
+        showShareStatus(dict.shareFailed, { showDownloadFallback: true });
+      }
     }
 
     async function shareOnWhatsApp() {
+      const dict = TRANSLATIONS[APP_STATE.language];
       const msg = getActiveShareMessage();
-      // Open wa.me with encoded predefined campaign message + website URL
+      await copyCaptionSilently(msg);
+
+      const result = await tryNativePosterShare();
+      if (result === "shared" || result === "cancelled") return;
+
+      // Fallback when browser cannot natively share image files: download the poster PNG and open WhatsApp with the message prefilled
+      downloadGeneratedPoster();
       const waUrl = `https://wa.me/?text=${encodeURIComponent(msg)}`;
       window.open(waUrl, "_blank", "noopener,noreferrer");
+      showShareStatus(dict.shareWhatsAppFallback, {
+        showDownloadFallback: true,
+        actionLabel: "Open WhatsApp with Message",
+        actionUrl: waUrl
+      });
     }
 
-    function shareOnX() {
-      const msg = getActiveShareMessage();
-      const xUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(msg)}`;
-      window.open(xUrl, "_blank", "noopener,noreferrer");
-    }
+    async function shareOnFacebook() {
+      const dict = TRANSLATIONS[APP_STATE.language];
+      const result = await tryNativePosterShare();
+      if (result === "shared" || result === "cancelled") return;
 
-    function shareOnFacebook() {
+      // Standard Facebook share URLs cannot attach a local image; download the poster and provide Facebook link + instructions
+      downloadGeneratedPoster();
       const siteUrl = SITE_CONFIG.getWebsiteUrl();
       const msg = getActiveShareMessage();
       const fbUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(siteUrl)}&quote=${encodeURIComponent(msg)}`;
       window.open(fbUrl, "_blank", "noopener,noreferrer");
+      showShareStatus(dict.shareFacebookFallback, {
+        showDownloadFallback: true,
+        actionLabel: "Open Facebook",
+        actionUrl: fbUrl
+      });
     }
 
-    /**
-     * Native Web Share API (More / Share Poster File)
-     * Shares the actual generated PNG file + predefined message + link when supported by mobile browsers.
-     */
-    async function shareViaNativeWebShare() {
-      const msg = getActiveShareMessage();
-      const siteUrl = SITE_CONFIG.getWebsiteUrl();
-      const filename = getGeneratedPosterFilename();
+    async function shareOnInstagram() {
+      const dict = TRANSLATIONS[APP_STATE.language];
+      const result = await tryNativePosterShare();
+      if (result === "shared" || result === "cancelled") return;
 
-      if (navigator.share) {
-        try {
-          if (APP_STATE.generatedPosterBlob && navigator.canShare) {
-            const file = new File([APP_STATE.generatedPosterBlob], filename, { type: "image/png" });
-            if (navigator.canShare({ files: [file] })) {
-              await navigator.share({
-                title: "PCSR Digital Campaign Poster",
-                text: msg,
-                files: [file]
-              });
-              return;
-            }
-          }
-          await navigator.share({
-            title: "PCSR Digital Campaign Poster",
-            text: msg,
-            url: siteUrl
-          });
-          return;
-        } catch (err) {
-          if (err.name !== "AbortError") {
-            copyShareMessage();
-          }
-        }
-      } else {
-        copyShareMessage();
-        downloadGeneratedPoster();
-      }
+      // Instagram does not allow websites to attach a local image via URL; download poster and guide user
+      downloadGeneratedPoster();
+      showShareStatus(dict.shareInstagramFallback, {
+        showDownloadFallback: true,
+        actionLabel: "Open Instagram",
+        actionUrl: "https://www.instagram.com/"
+      });
+    }
+
+    async function shareOnX() {
+      const dict = TRANSLATIONS[APP_STATE.language];
+      const result = await tryNativePosterShare();
+      if (result === "shared" || result === "cancelled") return;
+
+      // X intent URLs support text caption only; open X with caption and provide obvious Download Poster action
+      const msg = getActiveShareMessage();
+      const xUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(msg)}`;
+      window.open(xUrl, "_blank", "noopener,noreferrer");
+      showShareStatus(dict.shareXFallback, {
+        showDownloadFallback: true,
+        actionLabel: "Open X",
+        actionUrl: xUrl
+      });
     }
 
     function startAnotherPoster() {
@@ -3701,8 +3836,6 @@
     }
 
     /* ============================================================================
-       STREAMING_CHUNK:Implementing the Owner Slot Calibration Studio & README Generator...
-       ============================================================================
        MODULE 9: OWNER SLOT CALIBRATION STUDIO & CONFIG EXPORTER
        ============================================================================ */
     function initCalibrationStudio() {
@@ -3803,7 +3936,6 @@
       if (!calCanvas || !ward) return;
       await composePosterOnCanvas(calCanvas, ward, { isCalibrationGuide: true });
 
-      // Draw dashed calibration bounding overlays for photo and text slots
       const ctx = calCanvas.getContext("2d");
       const W = calCanvas.width;
       const H = calCanvas.height;
@@ -3824,7 +3956,7 @@
 
     function downloadUpdatedTemplatesConfig() {
       const exportData = JSON.stringify(WARD_TEMPLATES, null, 2);
-      const jsContent = `// PCSR Digital — Calibrated 72 Ward Templates Configuration\nconst WARD_TEMPLATES = ${exportData};\n`;
+      const jsContent = `// Parvathareddy Digital — Calibrated 72 Ward Templates Configuration\nconst WARD_TEMPLATES = ${exportData};\n`;
       const blob = new Blob([jsContent], { type: "application/javascript" });
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
@@ -3837,37 +3969,17 @@
     }
 
     function downloadReadmeMarkdown() {
-      const md = `# PCSR Digital — Nellore 72 Ward Campaign Poster Creation Platform
+      const md = `# Parvathareddy Digital — Nellore 72 Ward Campaign Poster Creation Platform
 
 ## 1. Overview
-PCSR Digital is a static, mobile-first bilingual (English & Telugu) campaign poster creation platform for **Parvathareddy Chandrasekhar Reddy (PCSR)**, Nellore City In-charge, supporting all **72 Ward Member Candidates** in the Nellore City Corporator Elections.
+Parvathareddy Digital is a static, mobile-first bilingual (English & Telugu) campaign poster creation platform supporting **Parvathareddy Chandrasekhar Reddy (PCSR)**, Nellore City YSRCP Party In-charge, and all **72 Wards** of Nellore City.
 
 ## 2. Assets to Supply Before Launch
 Place your official campaign files in these relative paths:
-- \`templates/logo.png\` — Official PCSR Digital logo.
+- The supplied image URL is used for the Parvathareddy Digital logo.
 - \`templates/pcsr-leader.png\` — High-resolution transparent PNG or portrait of Parvathareddy Chandrasekhar Reddy (PCSR).
-- \`templates/ward-01.png\` through \`templates/ward-72.png\` — The 72 approved ward-member poster templates (1080×1350 px recommended).
-
-## 3. GitHub Pages Deployment Steps
-1. Create a public GitHub repository (e.g., \`pcsr-digital\`).
-2. Upload \`index.html\` and the \`assets/\` folder to the root of the \`main\` branch.
-3. In GitHub, open **Settings → Pages**.
-4. Under **Source**, choose **Deploy from a branch**, select \`main\` and \`/ (root)\`, and click **Save**.
-
-## 4. Hostinger Custom Domain & DNS Configuration
-1. Purchase or open your custom domain in **Hostinger hPanel → Domains → DNS / Nameservers**.
-2. Add four **A** records for \`@\` pointing to GitHub Pages IPv4 addresses:
-   - \`185.199.108.153\`
-   - \`185.199.109.153\`
-   - \`185.199.110.153\`
-   - \`185.199.111.153\`
-3. Add a **CNAME** record for \`www\` pointing to \`<your-github-username>.github.io\`.
-4. Return to GitHub **Settings → Pages → Custom domain**, enter your domain name, click **Save**, and check **Enforce HTTPS**.
-
-## 5. Calibrating Photo & Text Positions
-1. Open the website and click **Calibration & Setup** in the top navigation bar.
-2. Select any Ward (1 to 72), adjust the normalized Photo Slot (X, Y, Width, Height, Mask Shape) and Text Slot sliders, and enter the verified candidate names in English and Telugu.
-3. Click **Export Updated templates.js** to save your calibrated coordinates.
+- \`templates/mayoral-candidate.png\` — Official photograph of the Mayoral Candidate.
+- \`templates/ward-1.jpeg\` through \`templates/ward-72.jpeg\` — The 72 approved ward-member poster templates.
 `;
       const blob = new Blob([md], { type: "text/markdown;charset=utf-8" });
       const url = URL.createObjectURL(blob);
@@ -3881,7 +3993,7 @@ Place your official campaign files in these relative paths:
     }
 
     /* ============================================================================
-       STREAMING_CHUNK:Initializing Application on Window Load...
+       INITIALIZATION ON WINDOW LOAD
        ============================================================================ */
     window.addEventListener("DOMContentLoaded", () => {
       const yearEl = document.getElementById("footerYear");
@@ -3893,7 +4005,7 @@ Place your official campaign files in these relative paths:
       // Detect missing ward artwork and hide those cards by default.
       checkWardTemplateImages();
 
-      // Requirement 5B: Display language-selection popup when visitor opens or refreshes the homepage
+      // Display language-selection popup when visitor opens or refreshes the homepage
       navigateTo("home", { isInitialHomeLoad: true });
 
       if (window.lucide) {
