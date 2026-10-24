@@ -2245,6 +2245,7 @@
        ============================================================================ */
     const APP_STATE = {
       language: localStorage.getItem("pcsr_lang") || "en",
+      hasSavedLanguage: localStorage.getItem("pcsr_lang") !== null,
       currentView: "home",
       selectedWardId: Number(sessionStorage.getItem("pcsr_selected_ward")) || 1,
       originalPhotoUrl: null,
@@ -2439,7 +2440,7 @@
 
       window.scrollTo({ top: 0, behavior: "smooth" });
 
-      if (viewName === "home" && (previousView !== "home" || options.isInitialHomeLoad)) {
+      if (viewName === "home" && (previousView !== "home" || (options.isInitialHomeLoad && !APP_STATE.hasSavedLanguage))) {
         showLanguageModal();
       } else if (viewName !== "home") {
         hideLanguageModal();
