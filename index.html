@@ -405,21 +405,9 @@
     </nav>
 
     <!-- Mobile Navigation Bar -->
-    <!-- <nav aria-label="Mobile navigation" class="lg:hidden max-w-7xl mx-auto mt-2 glass-nav rounded-full px-2 py-1.5 flex items-center justify-around gap-1">
-      <button type="button" onclick="navigateTo('home')" data-nav="home" class="nav-pill flex items-center gap-1 px-3 py-1.5 rounded-full text-[11px] font-semibold text-[#075477] hover:bg-white transition-all cursor-pointer">
-        <i data-lucide="house" class="w-3.5 h-3.5"></i>
-        <span data-i18n="mobileNavHome">Home</span>
-      </button>
-      <button type="button" onclick="navigateTo('templates')" data-nav="templates" class="nav-pill flex items-center gap-1 px-3 py-1.5 rounded-full text-[11px] font-semibold text-[#075477] hover:bg-white transition-all cursor-pointer">
-        <i data-lucide="layout-grid" class="w-3.5 h-3.5"></i>
-        <span data-i18n="mobileNavTemplates">72 Ward Templates</span>
-      </button>
-      <button type="button" onclick="navigateTo('templates')" class="flex items-center gap-1 px-3 py-1.5 rounded-full text-[11px] font-extrabold bg-campaign-gradient text-white shadow-sm transition-all cursor-pointer">
-        <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
-        <span data-i18n="mobileNavCreatePoster">Create Poster</span>
-      </button>
+    <nav aria-label="Mobile navigation">
     </nav>
-  </header> -->
+  </header>
 
   <!-- MAIN APPLICATION CONTAINER -->
   <main class="flex-grow">
@@ -489,16 +477,23 @@
               </div> -->
             </div>
 
-            <!-- Right Column: PCSR Spotlight Portrait Frame -->
-            <div class="lg:col-span-5 flex flex-col items-center justify-center">
-              <div class="relative w-full max-w-[360px] aspect-[4/4.5] rounded-[2rem] bg-gradient-to-b from-white/15 to-white/5 border border-white/25 backdrop-blur-md p-0 flex flex-col items-center justify-end overflow-hidden shadow-2xl">
-                <img
-                  id="pcsrHeroPortrait"
-                  src="templates/pcsr-leader.png"
-                  alt="Parvathareddy Chandrasekhar Reddy (PCSR) - Nellore City YSRCP Party In-charge"
-                  class="pcsr-hero-portrait z-10 transition-opacity duration-300"
-                  onerror="this.style.display='none'; document.getElementById('pcsrPortraitPlaceholder').style.display='flex';"
-                />
+            
+<!-- Right Column: PCSR Spotlight Portrait -->
+<div class="lg:col-span-5 flex flex-col items-center justify-center">
+  <div class="relative w-full max-w-[360px] aspect-[4/4.5] flex items-center justify-center">
+    <img
+      id="pcsrHeroPortrait"
+      src="https://scontent.fmaa6-1.fna.fbcdn.net/v/t39.30808-6/481475720_655726587002885_5922487396008364209_n.jpg?stp=dst-jpg_tt6&cstp=mx958x960&ctp=s958x960&_nc_cat=101&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=m_mZWonaa3sQ7kNvwFPZt8y&_nc_oc=Adq6p3o1uL2NiayI5tEa7BFtUR_Y-jeo5BH7MvdJM0W70TQ9O3EeW-KCL6_4Yups5aY&_nc_zt=23&_nc_ht=scontent.fmaa6-1.fna&_nc_gid=ksxFmE1MLLXni21K3UorSw&_nc_ss=7b2a8&oh=00_AQNbn9zmASaYLB2149qdMptkN6u6lZxeb5zuiTA3pj968g&oe=6AE2E5E3"
+      alt="Parvathareddy Chandrasekhar Reddy (PCSR) - Nellore City YSRCP Party In-charge"
+      class="pcsr-hero-portrait relative z-10
+             w-full h-full object-cover object-center
+             rounded-[14px] border border-white
+             shadow-lg transition-opacity duration-300"
+      onerror="this.style.display='none'; document.getElementById('pcsrPortraitPlaceholder').style.display='flex';"
+    />
+  </div>
+</div>
+
 
                 <!-- Fallback slot if templates/pcsr-leader.png is not found on disk -->
                 <div id="pcsrPortraitPlaceholder" class="hidden w-full h-full flex-col items-center justify-between p-5 text-center z-10">
@@ -718,11 +713,11 @@
             NELLORE CITY CAMPAIGN
           </span>
           <h2 id="mediaCampaignHeading" class="text-2xl sm:text-4xl font-extrabold text-[#11182D] tracking-tight mt-1" data-i18n="mediaHeading">
-            Official Media Campaign
+            Our Media Campaigns
           </h2>
-          <p class="text-sm sm:text-base text-[#68758B] mt-2" data-i18n="mediaPlaceholderDescription">
+          <!-- <p class="text-sm sm:text-base text-[#68758B] mt-2" data-i18n="mediaPlaceholderDescription">
             Official Instagram campaign videos can be embedded directly in the containers below.
-          </p>
+          </p> -->
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
@@ -882,7 +877,7 @@
               class="font-bold text-[#087CC1] hover:underline inline-flex items-center gap-1 cursor-pointer"
             >
               <i data-lucide="sliders" class="w-3.5 h-3.5"></i>
-              <span data-i18n="calibrateTemplatesLink">Manage Artwork & Slot Calibration</span>
+              <!-- <span data-i18n="calibrateTemplatesLink">Manage Artwork & Slot Calibration</span> -->
             </button>
           </div>
         </div>
@@ -1881,7 +1876,7 @@
         leaderName: "Parvathareddy Chandrasekhar Reddy",
         leaderRole: "Nellore City YSRCP Party In-charge",
         leaderRoleShort: "Nellore City YSRCP Party In-charge",
-        leaderBadgeLabel: "Party In-charge",
+        leaderBadgeLabel: "PCSR ",
         leaderSupport: "Supporting the campaign across all 72 wards of Nellore City.",
         heroPrimaryCta: "Create Your Support Poster",
         heroSecondaryCta: "Explore 72 Ward Templates",
@@ -1889,7 +1884,7 @@
         heroBadge72: "72 Wards • Unified Campaign",
         leadershipEyebrow: "CAMPAIGN LEADERSHIP",
         leadershipHeading: "Leadership Supporting Nellore's 72 Wards",
-        mayoralBadgeLabel: "Mayoral Election",
+        mayoralBadgeLabel: "AVKR",
         mayoralNamePlaceholder: "Anam Vijay Kumar Reddy",
         mayoralPhotoPlaceholder: "Mayoral Candidate Photograph Placeholder",
         mayoralRole: "Nellore City Mayoral Candidate",
@@ -2134,7 +2129,10 @@
         return `${prefix}వార్డు ${wardNumber} మద్దతుగా నా వ్యక్తిగత ప్రచార పోస్టర్‌ను Parvathareddy Digital లో రూపొందించాను. మీరు కూడా మీ వార్డు ప్రచార పోస్టర్‌ను ఇక్కడ రూపొందించుకోండి www.parvathareddydigital.com`;
       }
       const prefixEn = cleanName ? `I ${cleanName}` : "I";
-      return `${prefixEn} created my personalized campaign support poster for Ward ${wardNumber} on Parvathareddy Digital. Explore the campaign and create your own poster in www.parvathareddydigital.com`;
+      return `${prefixEn} created my personalized campaign support poster for Ward ${wardNumber} on Parvathareddy Digital. Explore the campaign and create your own poster in www.parvathareddydigital.com
+      
+      An Initiative by The PCSR Talks: 
+      https://www.instagram.com/thepcsrtalks`;
     }
 
     /* ============================================================================
